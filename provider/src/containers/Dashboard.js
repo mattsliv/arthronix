@@ -1,8 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React , { Component } from 'react';
 
-class PatientRow extends React.Component {
+class PatientRow extends Component {
   render() {
     const patient = this.props.patient
     const msgStatus = this.props.patient.messages
@@ -24,7 +22,7 @@ class PatientRow extends React.Component {
   }
 }
 
-class PatientTable extends React.Component {
+class PatientTable extends Component {
   render() {
     const rows = [];
 
@@ -54,7 +52,7 @@ class PatientTable extends React.Component {
   }
 }
 
-class Header extends React.Component {
+class Header extends Component {
   render() {
     return (
       <table>
@@ -71,7 +69,7 @@ class Header extends React.Component {
   }
 }
 
-export default class ProviderNav extends React.Component {
+class ProviderNav extends Component {
   render() {
     return (
       <div>
@@ -81,3 +79,5 @@ export default class ProviderNav extends React.Component {
     )
   }
 }
+
+export default ProviderNav;
