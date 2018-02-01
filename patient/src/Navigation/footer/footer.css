@@ -1,10 +1,10 @@
 footer{
-  max-width:100%;
+  min-width:100%;
   background-color:#3F424B;
   color:white;
   padding:1em;
   position:absolute;
-  bottom:0;
+  bottom:0
 }
 
 footer ul li{
@@ -12,6 +12,7 @@ footer ul li{
   float:left;
 }
 
-footer .footer-label{
+.footer-label{
   border-right:1px solid #707070;
+  max-width: 15%
 }

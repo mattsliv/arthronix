@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './images/logo.svg';
 import ReactDOM from 'react-dom';
-import './containers/App.css';
+import Navigation from './Navigation/';
+import Streak from './Streak/';
 
 class App extends Component {
   render() {
