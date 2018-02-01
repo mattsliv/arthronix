@@ -3,8 +3,9 @@ import NavigationView from './NavigationView'
 
 export default class extends Component {
   render() {
-    return(
-    <NavigationView patients={this.props.patients} />
-    );
+    return (
+
+
+    )
   }
 }

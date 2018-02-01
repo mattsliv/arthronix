@@ -1,15 +1,4 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch } from 'react-router-dom'
-import registerServiceWorker from './registerServiceWorker'
-
-import App from './App'
-
-// Static data
-const PATIENTS = [
+const patients = [
   {
     id: 0,
     name: 'Shemona Singh',
@@ -52,13 +41,10 @@ const PATIENTS = [
   }
 ]
 
-// Render app to DOM
-ReactDOM.render(
-  <Router>
-    <App patients={PATIENTS}/>
-  </Router>,
-   document.getElementById('root')
-)
+const rows = [];
+var patient;
 
-// Service worker for cache speedup
-registerServiceWorker();
+for (var i = 0; i < patients.length; i++){
+  patient = patients[i];
+  console.log(patient);
+}
