@@ -4,4 +4,46 @@ body {
   font-family: sans-serif;
   background-color:#252830;
   color:#fff;
+  /* font-family: 'Roboto', sans-serif; */
+}
+
+/* the following styles are for the Evaluation container */
+
+section{
+  margin-bottom:50px;
+}
+
+.days-app{
+  width:60%;
+  margin:0 auto;
+}
+
+.days{
+  max-width:30%;
+  margin:0 auto;
+  padding:1em;
+  border:3px solid #9F86FF;
+}
+
+.days span{
+  font-size:50px;
+}
+
+.app{
+  font-size:20px;
+}
+
+.days-app time{
+  border:1px solid #707070;
+  padding:1em;
+  font-size:15px;
+  border-radius:3px;
+}
+
+.days-of-week li{
+  float:left;
+  border:1px solid #707070;
+  border-radius:3px;
+  padding:1em;
+  list-style: none;
 }

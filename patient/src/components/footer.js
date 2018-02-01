@@ -9,22 +9,24 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        <li className="footer-label">
-          <img src={home} alt="home"/>
-          <p>Home</p>
-        </li>
-        <li className="footer-label">
-          <img src={bar} alt="bar"/>
-          <p>Stats</p>
-        </li>
-        <li className="footer-label">
-          <img src={tick} alt="tick"/>
-          <p>Bundles</p>
-        </li>
-        <li className="footer-label">
-          <img src={chat} alt="chat"/>
-          <p>Chat</p>
-        </li>
+        <ul>
+          <li className="footer-label">
+            <img src={home} alt="home"/>
+            <p>Home</p>
+          </li>
+          <li className="footer-label">
+            <img src={bar} alt="bar"/>
+            <p>Stats</p>
+          </li>
+          <li className="footer-label">
+            <img src={tick} alt="tick"/>
+            <p>Bundles</p>
+          </li>
+          <li className="footer-label">
+            <img src={chat} alt="chat"/>
+            <p>Chat</p>
+          </li>
+        </ul>
       </footer>
     );
   }

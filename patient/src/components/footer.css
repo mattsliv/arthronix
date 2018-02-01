@@ -1,6 +1,5 @@
 footer{
   max-width:100%;
-  max-height:5vh;
   background-color:#3F424B;
   color:white;
   padding:1em;
@@ -8,9 +7,9 @@ footer{
   bottom:0;
 }
 
-footer li{
+footer ul li{
+  list-style: none;
   float:left;
-  text-decoration: none;
 }
 
 footer .footer-label{
