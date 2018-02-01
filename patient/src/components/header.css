@@ -1,0 +1,21 @@
+header{
+  max-width:100%;
+  height:5vh;
+  background-color:#3F424B;
+  color:white;
+  padding:1em;
+  position:relative;
+}
+
+header img{
+  position:absolute;
+}
+
+header .logo{
+  max-width:7%;
+  left:20px;
+}
+
+header .settings{
+  right:20px;
+}
