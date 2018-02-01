@@ -52,14 +52,14 @@ class PatientTable extends Component {
     const rows = [];
     var patient;
 
-    // for (var i = 0; i < patients.length; i++){
-    //   patient = patients[i];
-    //   rows.push(
-    //     <PatientRow
-    //       patient={patient}
-    //       key={patient.name}/>
-    //   )
-    // }
+    for (var i = 0; i < patients.length; i++){
+      patient = patients[i];
+      rows.push(
+        <PatientRow
+          patient={patient}
+          key={patient.name}/>
+      )
+    }
 
     // patients.forEach((patient) => {
     //   rows.push(
