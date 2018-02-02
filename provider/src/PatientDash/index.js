@@ -14,7 +14,7 @@ export default class extends Component {
       <Router>
         <div>
           <h1>Patient Page</h1>
-          <DashboardView patients={patients}/>
+          //<DashboardView patients={patients}/>
         </div>
       </Router>
     )

@@ -10,9 +10,15 @@ import Library from './Library/'
 import Community from './Community'
 
 class App extends Component {
-  render() {
-    const patients = this.props.patients
+  state = {users: []}
 
+  componentDidMount() {
+    fetch('/users')
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
+  }
+
+  render() {
     return (
       <Router>
         <div>
@@ -30,9 +36,14 @@ class App extends Component {
                   </div>
               </div>
           </nav>
-          <Route path="/patients" component={PatientDash} patients={patients}/>
-          <Route path="/library" component={Library} patients={patients}/>
-          <Route path="/community" component={Community} patients={patients}/>
+          <Route path="/patients" component={PatientDash}/>
+          <Route path="/library" component={Library}/>
+          <Route path="/community" component={Community}/>
+
+          <h1>Users</h1>
+          {this.state.users.map(user =>
+            <div key={user.id}>{user.name}</div>
+          )}
         </div>
       </Router>
 
