@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import DashboardView from './DashboardView';
 
@@ -13,8 +10,8 @@ export default class extends Component {
     return (
       <Router>
         <div>
-          <h1>Patient Page</h1>
-          //<DashboardView patients={patients}/>
+          <h1>Patient Dashboard</h1>
+          <DashboardView patients={patients}/>
         </div>
       </Router>
     )

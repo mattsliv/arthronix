@@ -7,40 +7,37 @@ import {
 } from 'react-router-dom'
 import PatientView from './PatientView'
 
-class PatientRow extends Component {
+class UserID extends Component {
+  render() {
+    return(
+      <div>
+        <h2>{this.props.match.params.patient.id}</h2>
+      </div>
+    )
+  }
+}
 
+class PatientRow extends Component {
   render() {
     const patient = this.props.patient
-    // const id = patient.id
-    const msgStatus = this.props.patient.messages
     var msg = ''
-    if (msgStatus === true) {
+    if (patient.messages === true) {
       msg = "New message!"
-
     }
 
     return (
       <Router>
-        <div>
-          <tr>
-            {/*FIX: needs dynamic path  */}
-            <td><Link to="/patients/patientName">{patient.name}</Link></td>
-            <td>{patient.status}</td>
-            <td>{msg}</td>
-            <td>{patient.type}</td>
-            <td>{patient.appointment}</td>
-          </tr>
-          <Switch>
-            <Route
-              path="/patients/patientName"
-              render={(routeProps) =>
-                (<PatientView
-                  patient={patient}
-                />)
-              }
-            />
-          </Switch>
-        </div>
+        <tr>
+          {/*  FIX: need dynamic path */}
+          <td><Link to="/patients/:id">{patient.name}</Link></td>
+          <td>{patient.status}</td>
+          <td>{msg}</td>
+          <td>{patient.type}</td>
+          <td>{patient.appointment}</td>
+        </tr>
+        {/* <Switch>
+          <Route path="/patients/:id" render={() => <UserID patient={patient}/>}/>
+        </Switch> */}
       </Router>
     )
   }
@@ -49,39 +46,30 @@ class PatientRow extends Component {
 class PatientTable extends Component {
   render() {
     const patients = this.props.patients
-    const rows = [];
-    var patient;
+    const rows = []
 
-    for (var i = 0; i < patients.length; i++){
-      patient = patients[i];
+    patients.forEach((patient) => {
       rows.push(
-        <PatientRow
-          patient={patient}
-          key={patient.name}/>
+        <PatientRow key={patient.id} patient={patient}/>
       )
-    }
-
-    // patients.forEach((patient) => {
-    //   rows.push(
-    //     <PatientRow
-    //       patient={patient}
-    //       key={patient.name}/>
-    //   )
-    // })
+    })
 
     return (
-      <table cellpadding="5" cellspacing="5">
-        <thead>
-          <tr>
-            <th><a href="" scope="col">Name</a></th>
-            <th><a href="" scope="col">Status</a></th>
-            <th><a href="" scope="col">Messages</a></th>
-            <th><a href="" scope="col">Type</a></th>
-            <th><a href="" scope="col">Next Appointment</a></th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
+      <div class="panel panel-default">
+        {/* <div class="panel-heading"></div> */}
+        <table class="table">
+          <thead>
+            <tr>
+              <th><a href="" scope="col">Name</a></th>
+              <th><a href="" scope="col">Status</a></th>
+              <th><a href="" scope="col">Messages</a></th>
+              <th><a href="" scope="col">Type</a></th>
+              <th><a href="" scope="col">Next Appointment</a></th>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
     )
   }
 }
