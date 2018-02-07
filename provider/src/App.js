@@ -69,18 +69,18 @@ class Users extends Component {
 }
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {patients: PATIENTS}
-  }
-
-  // state = {users: []}
-
-  // componentDidMount() {
-  //   fetch('/users')
-  //     .then(res => res.json())
-  //     .then(users => this.setState({ users }));
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {patients: PATIENTS}
   // }
+
+  state = {users: []}
+
+  componentDidMount() {
+    fetch('/users')
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
+  }
 
   render() {
     const patients = PATIENTS

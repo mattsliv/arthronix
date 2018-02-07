@@ -5,6 +5,8 @@ import {
   Link
 } from 'react-router-dom'
 
+import Charts from '../charts/'
+
 class PatientBundle extends Component {
 
 }
@@ -30,6 +32,9 @@ class PatientPage extends Component {
         </table>
         <div class="btn-group">
           <button type="button" class="btn btn-default">+ Add new data</button>
+        </div>
+        <div>
+          {/* <Charts /> */}
         </div>
       </div>
 
