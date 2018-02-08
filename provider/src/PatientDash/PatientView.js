@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import Charts from '../charts/'
+// import Charts from './Charts'
 
 class PatientBundle extends Component {
 

@@ -29,7 +29,7 @@ class PatientRow extends Component {
       <Router>
         <tr>
           {/*  FIX: need dynamic path */}
-          <td><Link to="/patients/:id">{patient.name}</Link></td>
+          <td><Link to="/patients/${id}">{patient.name}</Link></td>
           <td>{patient.status}</td>
           <td>{msg}</td>
           <td>{patient.type}</td>

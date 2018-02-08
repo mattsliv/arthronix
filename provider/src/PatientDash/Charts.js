@@ -9,7 +9,7 @@ var data = {
           borderColor:'rgba(153, 102, 255, 1)',
           borderWidth: 1
       }]
-}
+};
 
 var options = {
     scales: {
@@ -21,15 +21,21 @@ var options = {
     }
 }
 
-export default class extends Component {
+class Charts extends Component {
   render() {
     // var ctx = document.getElementById("strength").getContext("2d");
-    var BarChart = require("react-chartjs").Bar
-    var MyChart = React.createClass({
-      render: function() {
-        return <BarChart data={data} options={options}/>
-      }
-    });
+    var BarChart = require('react-chartjs').Bar
+
+    function MyChart(props) {
+      return (
+        <BarChart data={data} options={options}/>
+      )
+    }
+    // var MyChart = React.createClass({
+    //   render: function() {
+    //     return <BarChart data={data} options={options}/>
+    //   }
+    // });
 
     // var barChart = new Chart(ctx, {
     //   type:'bar',
@@ -47,9 +53,11 @@ export default class extends Component {
           <div class="canvas-container">
             <canvas id="strength"></canvas>
           </div>
-          {MyChart}
+          {myChart}
         </body>
       </div>
     )
   }
 }
+
+export default Charts
