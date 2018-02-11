@@ -5,6 +5,8 @@ import {
   Link
 } from 'react-router-dom'
 
+// import Charts from './Charts'
+
 class PatientBundle extends Component {
 
 }
@@ -18,16 +20,24 @@ class PatientPage extends Component {
     const patient = this.props.patient
 
     return (
-      <body>
-        Welcome!
+      <div>
+        <h1>Patient Page</h1>
         <table>
-          <tr>
-            <td>{patient.name}</td>
+          <tr padding="15px">
+            <td><h3>{patient.name}</h3></td>
+            <td><h5><span class="label label-success">{patient.status}  </span>
+              <a href="#">Messages <span class="badge">1</span></a></h5></td>
           </tr>
+          <tr><h5>{patient.type}</h5></tr>
         </table>
-        <PatientBundle patients={patient}/>
-        <PatientStats patients={patient}/>s
-      </body>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default">+ Add new data</button>
+        </div>
+        <div>
+          {/* <Charts /> */}
+        </div>
+      </div>
+
     )
   }
 }
