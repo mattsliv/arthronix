@@ -10,6 +10,8 @@ import Library from './Library/'
 import Community from './Community'
 import PatientView from './PatientDash/PatientView'
 
+var JSONPretty = require('react-json-pretty');
+
 class Users extends Component {
   render(){
     return(
@@ -73,7 +75,11 @@ class App extends Component {
             <Route path="/library" component={Library}/>
             <Route path="/community" component={Community}/>
           </Switch>
+
+          <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty>
         </div>
+
+
       </Router>
     )
   }

@@ -4,11 +4,24 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var pgp = require('pg-promise')(/*options*/)
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var db = pgp('postgres://chrisstumper@localhost/example');
+
+/*
+db.any('SELECT * FROM Patients')
+    .then(function(data) {
+        console.log(data);
+    })
+    .catch(function(error) {
+        console.log('error');
+        console.log(error);
+    });
+*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
