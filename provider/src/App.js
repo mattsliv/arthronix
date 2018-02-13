@@ -16,7 +16,8 @@ class Users extends Component {
       <div>
         <h1>Users</h1>
         <h3>
-          {this.props.patients.map(user => <div key={user.id}>{user.id} : {user.name}</div>)}
+          {this.props.patients.map(user =>
+            <div key={user.id}>{user.id} : {user.name}</div>)}
         </h3>
       </div>
     )
@@ -68,7 +69,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Users patients={this.state.users}/>}/>
             <Route path="/patients" render={() => <PatientDash patients={this.state.users}/>}/>
-            <Route path="/patient" render={() => <PatientView patient={this.state.users[0]}/>}/>
+            <Route path="/patient" render={() => <PatientView patients={this.state.users}/>}/>
             <Route path="/library" component={Library}/>
             <Route path="/community" component={Community}/>
           </Switch>

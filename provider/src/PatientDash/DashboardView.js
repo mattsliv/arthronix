@@ -7,15 +7,15 @@ import {
 } from 'react-router-dom'
 import PatientView from './PatientView'
 
-class UserID extends Component {
-  render() {
-    return(
-      <div>
-        <h2>{this.props.match.params.patient.id}</h2>
-      </div>
-    )
-  }
-}
+// class UserID extends Component {
+//   render() {
+//     return(
+//       <div>
+//         <h2>{this.props.match.params.patient.id}</h2>
+//       </div>
+//     )
+//   }
+// }
 
 class PatientRow extends Component {
   render() {
@@ -29,7 +29,7 @@ class PatientRow extends Component {
       <Router>
         <tr>
           {/*  FIX: need dynamic path */}
-          <td><Link to="/patients/${id}">{patient.name}</Link></td>
+          <td><Link to="/patients/${:id}">{patient.name}</Link></td>
           <td>{patient.status}</td>
           <td>{msg}</td>
           <td>{patient.type}</td>
@@ -44,8 +44,12 @@ class PatientRow extends Component {
 }
 
 class PatientTable extends Component {
+  constructor(props) {
+    super(props)
+    // this.state = {patients: []}
+  }
   render() {
-    const patients = this.props.patients
+    const patients = this.props.patients;
     const rows = []
 
     patients.forEach((patient) => {
