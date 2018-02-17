@@ -4,20 +4,20 @@ var router = express.Router();
 var pgp = require('pg-promise')(/*options*/)
 var db = pgp('postgres://chrisstumper@localhost/example');
 
-console.log(db);
+// console.log(db);
 
-router.get('/', function(req, res, next){
-  db.any('SELECT * FROM Patients')
-    .then(function(data) {
-      //console.log(data);
-      res.json(data);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-});
+// router.get('/', function(req, res, next){
+//   db.any('SELECT * FROM Patients')
+//     .then(function(data) {
+//       //console.log(data);
+//       res.json(data);
+//     })
+//     .catch(function(error) {
+//       console.log(error);
+//     });
+// });
 
-/*
+
 router.get('/', function(req, res, next) {
   res.json([
     {
@@ -62,6 +62,6 @@ router.get('/', function(req, res, next) {
     }
   ]);
 });
-*/
+
 
 module.exports = router;
