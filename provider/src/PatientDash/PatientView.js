@@ -30,19 +30,19 @@ class PatientBundle extends Component {
           <tbody>
             <tr>
               <th>1</th>
-              <th>Body weight Squat</th>
+              <th>Body weight squats</th>
               <th>1/2/18</th>
               <th>10 reps</th>
             </tr>
             <tr>
               <th>2</th>
-              <th>Walking Lunges</th>
+              <th>Walking lunges</th>
               <th>1/1/18</th>
               <th>12 reps</th>
             </tr>
             <tr>
               <th>3</th>
-              <th>Jumping Jacks</th>
+              <th>Jumping jacks</th>
               <th>1/10/18</th>
               <th>8 reps</th>
             </tr>
