@@ -7,10 +7,11 @@ import {
 
 import PatientDash from './PatientDash/'
 import Library from './Library/'
+import CreateBundle from './Library/CreateBundleView'
 import Community from './Community'
 import PatientView from './PatientDash/PatientView'
 
-var JSONPretty = require('react-json-pretty');
+// var JSONPretty = require('react-json-pretty');
 
 class Users extends Component {
   render(){
@@ -18,7 +19,8 @@ class Users extends Component {
       <div>
         <h1>Users</h1>
         <h3>
-          {this.props.patients.map(user => <div key={user.id}>{user.id} : {user.name}</div>)}
+          {this.props.patients.map(user =>
+            <div key={user.id}>{user.id} : {user.name}</div>)}
         </h3>
       </div>
     )
@@ -62,6 +64,7 @@ class App extends Component {
                   <li><Link to="/patients" activeClassName="active">Patients</Link></li>
                   <li><Link to="/patient" activeClassName="active">Patient</Link></li>
                   <li><Link to="/library" activeClassName="active">Library</Link></li>
+                  <li><Link to="/createBundle" activeClassName="active">Create Bundle</Link></li>
                   <li><Link to="/community" activeClassName="active">Community</Link></li>
                 </ul>
               </div>
@@ -70,12 +73,13 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Users patients={this.state.users}/>}/>
             <Route path="/patients" render={() => <PatientDash patients={this.state.users}/>}/>
-            <Route path="/patient" render={() => <PatientView patient={this.state.users[0]}/>}/>
+            <Route path="/patient" render={() => <PatientView patients={this.state.users}/>}/>
             <Route path="/library" component={Library}/>
+            <Route path="/createBundle" component={CreateBundle}/>
             <Route path="/community" component={Community}/>
           </Switch>
 
-          <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty>
+          {/* <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty> */}
         </div>
 
 

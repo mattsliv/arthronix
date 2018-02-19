@@ -10,7 +10,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-var db = pgp('postgres://chrisstumper@localhost/example');
+// var db = pgp('postgres://chrisstumper@localhost/example');
 
 /*
 db.any('SELECT * FROM Patients')
