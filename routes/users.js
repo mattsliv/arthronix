@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var pgp = require('pg-promise')(/*options*/)
-var db = pgp('postgres://chrisstumper@localhost/example');
+var db = pgp('postgres://arthronix@localhost/testdb');
 
 console.log(db);
 
