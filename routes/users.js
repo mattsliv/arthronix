@@ -6,18 +6,18 @@ var db = pgp('postgres://arthronix@localhost/testdb');
 
 // console.log(db);
 
-// router.get('/', function(req, res, next){
-//   db.any('SELECT * FROM Patients')
-//     .then(function(data) {
-//       //console.log(data);
-//       res.json(data);
-//     })
-//     .catch(function(error) {
-//       console.log(error);
-//     });
-// });
+router.get('/', function(req, res, next){
+  db.any('SELECT * FROM Patients')
+     .then(function(data) {
+       console.log(data);
+       res.json(data);
+     })
+     .catch(function(error) {
+       console.log(error);
+     });
+});
 
-
+/*
 router.get('/', function(req, res, next) {
   res.json([
     {
@@ -62,6 +62,6 @@ router.get('/', function(req, res, next) {
     }
   ]);
 });
-
+*/
 
 module.exports = router;
