@@ -29,7 +29,7 @@ class PatientRow extends Component {
       <Router>
         <tr>
           {/*  FIX: need dynamic path */}
-          <td><Link to="/patients/${:id}">{patient.name}</Link></td>
+          {/* <td><Link to="/patients/${:id}">{patient.name}</Link></td> */}
           <td>{patient.status}</td>
           <td>{msg}</td>
           <td>{patient.type}</td>
@@ -59,21 +59,72 @@ class PatientTable extends Component {
     })
 
     return (
-      <div class="panel panel-default">
-        {/* <div class="panel-heading"></div> */}
-        <table class="table">
+
+      <div class="table-responsive">
+        <table class="table" data-sort="table">
           <thead>
             <tr>
-              <th><a href="" scope="col">Name</a></th>
-              <th><a href="" scope="col">Status</a></th>
-              <th><a href="" scope="col">Messages</a></th>
-              <th><a href="" scope="col">Type</a></th>
-              <th><a href="" scope="col">Next Appointment</a></th>
+              <th><input type="checkbox" class="select-all" id="selectAll"/></th>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Messages</th>
+              <th>Type</th>
+              <th>Next Appointment</th>
             </tr>
           </thead>
-          <tbody>{rows}</tbody>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" class="select-row"/></td>
+              <td><a href="#">#10001</a></td>
+              <td>First Last</td>
+              <td>Admin theme, marketing theme</td>
+              <td>01/01/2015</td>
+              <td>$200.00</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="select-row"/></td>
+              <td><a href="#">#10004</a></td>
+              <td>One More</td>
+              <td>Marketing theme, personal blog theme, admin theme</td>
+              <td>01/01/2015</td>
+              <td>$300.00</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="select-row"/></td>
+              <td><a href="#">#10019</a></td>
+              <td>One More</td>
+              <td>Marketing theme, personal blog theme, admin theme</td>
+              <td>01/01/2015</td>
+              <td>$300.00</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="select-row"/></td>
+              <td><a href="#">#10020</a></td>
+              <td>Name Right Here</td>
+              <td>Personal blog theme, admin theme</td>
+              <td>01/02/2015</td>
+              <td>$200.00</td>
+            </tr>
+          </tbody>
         </table>
       </div>
+
+      
+      // <div class="panel panel-default">
+      //   {/* <div class="panel-heading"></div> */}
+      //   <table class="table">
+      //     <thead>
+      //       <tr>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Name</a></th>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Status</a></th>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Messages</a></th>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Type</a></th>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Next Appointment</a></th>
+      //       </tr>
+      //     </thead>
+      //     <tbody>{rows}</tbody>
+      //   </table>
+      // </div>
     )
   }
 }
