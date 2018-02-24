@@ -6,8 +6,19 @@ import {
 } from 'react-router-dom'
 
 // import Charts from './Charts'
+var JSONPretty = require('react-json-pretty');
 
 class PatientBundle extends Component {
+    constructor(props) {
+      super(props)
+      this.state = {stats: ['1']}
+    }
+
+  componentWillMount() {
+    fetch('/stats')
+      .then(res => res.json())
+      .then(stats => this.setState({ stats }));
+  }
   render() {
     return(
       <div class="panel panel-info">
@@ -96,8 +107,16 @@ class PatientPage extends Component {
         <div class="btn-group">
           <button type="button" class="btn btn-default">+ Add new data</button>
         </div>
+<<<<<<< HEAD
         {/* <PatientStats patient={this.props.patients}/> */}
         {/* <PatientBundle patients={this.props.patients}/> */}
+=======
+        <PatientStats patient={this.props.patients}/>
+        <PatientBundle patients={this.props.patients}/>
+
+      <JSONPretty id="json-pretty" json={this.state.stats}></JSONPretty>
+
+>>>>>>> 5bcf0a4a6c2410af599bcd20008f4c202749a086
       </div>
 
     )

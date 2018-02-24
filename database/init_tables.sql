@@ -33,4 +33,11 @@ CREATE TABLE Providers (
   PatientIDs varchar(255)
 );
 
+CREATE TABLE Statistics (
+  UserId int, /*should make this required*/
+  DateRecorded date,
+  ROM float,
+  Strength float,
+  PEG float
+);
 COMMIT;

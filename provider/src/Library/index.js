@@ -3,6 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import LibraryView from './LibraryView';
 
+import './styles.css';
+
 export default class extends Component {
   render(){
     return (

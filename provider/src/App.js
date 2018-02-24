@@ -10,6 +10,8 @@ import Library from './Library/'
 import CreateBundle from './Library/CreateBundleView'
 import Community from './Community'
 import PatientView from './PatientDash/PatientView'
+import './styles/dist/toolkit-inverse.min.css';
+
 
 // var JSONPretty = require('react-json-pretty');
 
@@ -53,11 +55,11 @@ class App extends Component {
               </div>
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav">
-                  <li><Link to="/patients" activeClassName="active">Patients</Link></li>
-                  <li><Link to="/patient" activeClassName="active">Patient</Link></li>
-                  <li><Link to="/library" activeClassName="active">Library</Link></li>
-                  <li><Link to="/createBundle" activeClassName="active">Create Bundle</Link></li>
-                  <li><Link to="/community" activeClassName="active">Community</Link></li>
+                  <li><Link to="/patients" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-users"></span> Patients</a></Link></li>
+                  <li><Link to="/patient" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-user"></span> Patient</a></Link></li>
+                  <li><Link to="/library" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-video"></span> Library</a></Link></li>
+                  <li><Link to="/createBundle" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-video-camera"></span> Create Bundle</a></Link></li>
+                  <li><Link to="/community" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-typing"></span> Community</a></Link></li>
                 </ul>
               </div>
             </div>
