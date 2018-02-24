@@ -19,21 +19,19 @@ import PatientView from './PatientView'
 
 class PatientRow extends Component {
   render() {
-    const patient = this.props.patient
-    var msg = ''
-    if (patient.messages === true) {
-      msg = "New message!"
+    if (this.props.patient.messages === true) {
+      var msg = "New message!"
     }
 
     return (
       <Router>
         <tr>
           {/*  FIX: need dynamic path */}
-          <td><Link to="/patients/${:id}">{patient.name}</Link></td>
-          <td>{patient.status}</td>
+          <td><Link to="/patients/${:id}">{this.props.patient.name}</Link></td>
+          <td>{this.props.patient.status}</td>
           <td>{msg}</td>
-          <td>{patient.type}</td>
-          <td>{patient.appointment}</td>
+          <td>{this.props.patient.type}</td>
+          <td>{this.props.patient.appointment}</td>
         </tr>
         {/* <Switch>
           <Route path="/patients/:id" render={() => <UserID patient={patient}/>}/>
@@ -44,15 +42,12 @@ class PatientRow extends Component {
 }
 
 class PatientTable extends Component {
-  constructor(props) {
-    super(props)
-    // this.state = {patients: []}
-  }
   render() {
-    const patients = this.props.patients;
+    // console.log(this.props.patients);
+
     const rows = []
 
-    patients.forEach((patient) => {
+    this.props.patients.forEach((patient) => {
       rows.push(
         <PatientRow key={patient.id} patient={patient}/>
       )

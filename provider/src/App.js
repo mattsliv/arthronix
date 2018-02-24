@@ -11,7 +11,7 @@ import CreateBundle from './Library/CreateBundleView'
 import Community from './Community'
 import PatientView from './PatientDash/PatientView'
 
-var JSONPretty = require('react-json-pretty');
+// var JSONPretty = require('react-json-pretty');
 
 class Users extends Component {
   render(){
@@ -39,16 +39,8 @@ class App extends Component {
       .then(users => this.setState({ users }));
   }
 
-  // componentWillReceiverProps(prevProps) {
-  //   // only update patient data if it has changed
-  //   if (prevProps.users !== this.state.users) {
-  //     fetch('/users')
-  //       .then(res => res.json())
-  //       .then(users => this.setState({ users }));
-  //   }
-  // }
-
   render() {
+    console.log(this.state.users);
     return (
       <Router>
         <div>
@@ -79,7 +71,7 @@ class App extends Component {
             <Route path="/community" component={Community}/>
           </Switch>
 
-          <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty>
+          {/* <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty> */}
         </div>
 
 

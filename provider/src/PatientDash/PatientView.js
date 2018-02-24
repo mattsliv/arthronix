@@ -76,30 +76,28 @@ class PatientStats extends Component {
 }
 
 class PatientPage extends Component {
-  constructor(props) {
-    super(props)
-    // this.state = {patient : []}
-  }
+
   render() {
     const patients = this.props.patients;
-    const patient = this.props.patients[0];
+    // const patient = this.props.patients[0];
 
+    console.log(patients);
     return (
       <div>
         <h1>Patient Page</h1>
         <table>
           <tr padding="15px">
-            <td><h3>{patient.name}</h3></td>
-            <td><h5><span class="label label-success">{patient.status}</span>
+            <td><h3>{this.props.patients[1].name}</h3></td>
+            <td><h5><span class="label label-warning">{this.props.patients[1].status}</span>
               <a href="#">Messages <span class="badge">1</span></a></h5></td>
           </tr>
-          <tr><h5>{patient.type}</h5></tr>
+          <tr><h5>{this.props.patients[1].type}</h5></tr>
         </table>
         <div class="btn-group">
           <button type="button" class="btn btn-default">+ Add new data</button>
         </div>
-        <PatientStats patient={this.props.patients}/>
-        <PatientBundle patients={this.props.patients}/>
+        {/* <PatientStats patient={this.props.patients}/> */}
+        {/* <PatientBundle patients={this.props.patients}/> */}
       </div>
 
     )
