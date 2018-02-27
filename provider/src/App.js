@@ -10,8 +10,10 @@ import Library from './Library/'
 import CreateBundle from './Library/CreateBundleView'
 import Community from './Community'
 import PatientView from './PatientDash/PatientView'
-import './styles/dist/toolkit-inverse.min.css';
-
+import './styles/docs/assets/css/toolkit-inverse.css';
+import './styles/docs/assets/css/application.css';
+import './styles/docs/assets/css/docs.css';
+import './styles/docs/assets/css/styles.css';
 
 var JSONPretty = require('react-json-pretty');
 
@@ -72,6 +74,8 @@ class App extends Component {
               </div>
             </div>
           </nav>
+
+
           <Switch>
             <Route exact path="/" render={() => <Users patients={this.state.users}/>}/>
             <Route path="/patients" render={() => <PatientDash patients={this.state.users}/>}/>
@@ -81,7 +85,8 @@ class App extends Component {
             <Route path="/community" component={Community}/>
           </Switch>
 
-          <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty>
+          {/* <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty> */}
+
         </div>
 
 

@@ -1,0 +1,40 @@
+/* --------- Nav Styles --------- */
+
+.nav.navbar-nav{
+  display: -webkit-inline-box;
+}
+
+.navbar-default{
+  background-color:transparent;
+  border-color:transparent
+}
+
+.navbar-brand{
+  font-size:30px;
+}
+
+.navbar > .container, .navbar > .container-fluid{
+  display:block
+}
+
+.navbar-nav{
+  float:right
+}
+
+
+/* --------- Dashboard View --------- */
+.icon-green{
+  color:#1BC98E!important;
+}
+
+.dash-table img{
+  max-width:10%;
+}
+
+.dash-table td{
+  font-size:15px
+}
+
+table th{
+  font-size:18px
+}
