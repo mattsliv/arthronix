@@ -27,13 +27,12 @@ class PatientRow extends Component {
       <Router>
         <tr>
           {/*  FIX: need dynamic path */}
-<<<<<<< HEAD
+
           <td><Link to="/patients/${:id}">{this.props.patient.name}</Link></td>
           <td>{this.props.patient.status}</td>
-=======
           {/* <td><Link to="/patients/${:id}">{patient.name}</Link></td> */}
-          <td>{patient.status}</td>
->>>>>>> 5bcf0a4a6c2410af599bcd20008f4c202749a086
+
+
           <td>{msg}</td>
           <td>{this.props.patient.type}</td>
           <td>{this.props.patient.appointment}</td>
@@ -109,7 +108,7 @@ class PatientTable extends Component {
         </table>
       </div>
 
-      
+
       // <div class="panel panel-default">
       //   {/* <div class="panel-heading"></div> */}
       //   <table class="table">
