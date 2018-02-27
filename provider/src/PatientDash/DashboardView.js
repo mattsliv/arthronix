@@ -5,17 +5,10 @@ import {
   Link,
   Switch
 } from 'react-router-dom'
-import PatientView from './PatientView'
-
-// class UserID extends Component {
-//   render() {
-//     return(
-//       <div>
-//         <h2>{this.props.match.params.patient.id}</h2>
-//       </div>
-//     )
-//   }
-// }
+import PatientView from './PatientView';
+import green from '../images/green.png';
+import red from '../images/red.png';
+import yellow from '../images/yellow.png';
 
 class PatientRow extends Component {
   render() {
@@ -45,7 +38,13 @@ class PatientRow extends Component {
   }
 }
 
+
 class PatientTable extends Component {
+
+  constructor(props) {
+    super(props)
+    // this.state = {patients: []}
+  }
   render() {
     // console.log(this.props.patients);
 
@@ -60,10 +59,9 @@ class PatientTable extends Component {
     return (
 
       <div class="table-responsive">
-        <table class="table" data-sort="table">
+        <table id="myTable" class="table" data-sort="table">
           <thead>
             <tr>
-              <th><input type="checkbox" class="select-all" id="selectAll"/></th>
               <th>Name</th>
               <th>Status</th>
               <th>Messages</th>
@@ -71,43 +69,48 @@ class PatientTable extends Component {
               <th>Next Appointment</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="dash-table">
             <tr>
-              <td><input type="checkbox" class="select-row"/></td>
-              <td><a href="#">#10001</a></td>
-              <td>First Last</td>
-              <td>Admin theme, marketing theme</td>
+              <td>Abby Clayton</td>
+              <td><img src={green} alt="green"/></td>
+              <td><span class="icon icon-typing"></span></td>
+              <td>Knee</td>
               <td>01/01/2015</td>
-              <td>$200.00</td>
             </tr>
             <tr>
-              <td><input type="checkbox" class="select-row"/></td>
-              <td><a href="#">#10004</a></td>
-              <td>One More</td>
-              <td>Marketing theme, personal blog theme, admin theme</td>
+              <td>Christopher Hanson</td>
+              <td><img src={yellow} alt="yellow"/></td>
+              <td><span class="icon icon-green icon-typing"></span></td>
+              <td>Hip</td>
               <td>01/01/2015</td>
-              <td>$300.00</td>
             </tr>
             <tr>
-              <td><input type="checkbox" class="select-row"/></td>
-              <td><a href="#">#10019</a></td>
-              <td>One More</td>
-              <td>Marketing theme, personal blog theme, admin theme</td>
+              <td>David Castillo</td>
+              <td><img src={red} alt="red"/></td>
+              <td><span class="icon icon-typing"></span></td>
+              <td>Knee</td>
               <td>01/01/2015</td>
-              <td>$300.00</td>
             </tr>
             <tr>
-              <td><input type="checkbox" class="select-row"/></td>
-              <td><a href="#">#10020</a></td>
-              <td>Name Right Here</td>
-              <td>Personal blog theme, admin theme</td>
+              <td>Marilyn Peters</td>
+              <td><img src={green} alt="green"/></td>
+              <td><span class="icon icon-green icon-typing"></span></td>
+              <td>Knee</td>
               <td>01/02/2015</td>
-              <td>$200.00</td>
+            </tr>
+            <tr>
+              <td>Rebecca Dean</td>
+              <td><img src={green} alt="green"/></td>
+              <td><span class="icon icon-green icon-typing"></span></td>
+              <td>Hip</td>
+              <td>01/02/2015</td>
             </tr>
           </tbody>
         </table>
       </div>
 
+<<<<<<< HEAD
+=======
 
       // <div class="panel panel-default">
       //   {/* <div class="panel-heading"></div> */}
@@ -124,6 +127,7 @@ class PatientTable extends Component {
       //     <tbody>{rows}</tbody>
       //   </table>
       // </div>
+>>>>>>> f58f1225693f5aeb5c99b319b55c23c8474e4b77
     )
   }
 }
