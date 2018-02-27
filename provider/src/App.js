@@ -15,7 +15,7 @@ import './styles/docs/assets/css/application.css';
 import './styles/docs/assets/css/docs.css';
 import './styles/docs/assets/css/styles.css';
 
-var JSONPretty = require('react-json-pretty');
+// var JSONPretty = require('react-json-pretty');
 
 class Users extends Component {
   render(){
@@ -42,15 +42,6 @@ class App extends Component {
       .then(res => res.json())
       .then(users => this.setState({ users }));
   }
-
-  // componentWillReceiverProps(prevProps) {
-  //   // only update patient data if it has changed
-  //   if (prevProps.users !== this.state.users) {
-  //     fetch('/users')
-  //       .then(res => res.json())
-  //       .then(users => this.setState({ users }));
-  //   }
-  // }
 
   render() {
     return (

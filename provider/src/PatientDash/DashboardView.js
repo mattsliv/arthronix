@@ -12,21 +12,23 @@ import yellow from '../images/yellow.png';
 
 class PatientRow extends Component {
   render() {
-    const patient = this.props.patient
-    var msg = ''
-    if (patient.messages === true) {
-      msg = "New message!"
+    if (this.props.patient.messages === true) {
+      var msg = "New message!"
     }
 
     return (
       <Router>
         <tr>
           {/*  FIX: need dynamic path */}
+
+          <td><Link to="/patients/${:id}">{this.props.patient.name}</Link></td>
+          <td>{this.props.patient.status}</td>
           {/* <td><Link to="/patients/${:id}">{patient.name}</Link></td> */}
-          <td>{patient.status}</td>
+
+
           <td>{msg}</td>
-          <td>{patient.type}</td>
-          <td>{patient.appointment}</td>
+          <td>{this.props.patient.type}</td>
+          <td>{this.props.patient.appointment}</td>
         </tr>
         {/* <Switch>
           <Route path="/patients/:id" render={() => <UserID patient={patient}/>}/>
@@ -44,10 +46,11 @@ class PatientTable extends Component {
     // this.state = {patients: []}
   }
   render() {
-    const patients = this.props.patients;
+    // console.log(this.props.patients);
+
     const rows = []
 
-    patients.forEach((patient) => {
+    this.props.patients.forEach((patient) => {
       rows.push(
         <PatientRow key={patient.id} patient={patient}/>
       )
@@ -106,6 +109,25 @@ class PatientTable extends Component {
         </table>
       </div>
 
+<<<<<<< HEAD
+=======
+
+      // <div class="panel panel-default">
+      //   {/* <div class="panel-heading"></div> */}
+      //   <table class="table">
+      //     <thead>
+      //       <tr>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Name</a></th>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Status</a></th>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Messages</a></th>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Type</a></th>
+      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Next Appointment</a></th>
+      //       </tr>
+      //     </thead>
+      //     <tbody>{rows}</tbody>
+      //   </table>
+      // </div>
+>>>>>>> f58f1225693f5aeb5c99b319b55c23c8474e4b77
     )
   }
 }

@@ -8,9 +8,10 @@ var pgp = require('pg-promise')(/*options*/)
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var stats = require('./routes/stats');
 
 var app = express();
-var db = pgp('postgres://arthronix@localhost/testdb');
+// var db = pgp('postgres://arthronix@localhost/testdb');
 
 /*
 db.any('SELECT * FROM Patients')
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/stats', stats);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

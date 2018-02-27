@@ -1,15 +1,5 @@
 import React, { Component } from 'react'
-
-var data = {
-  labels: ["Mon", "Tues", "Weds", "Thurs", "Fri", "Sat", "Sun"], //x-axis
-  datasets: [{
-          label: 'Strength',
-          data: [2, 2, 4, 3, 5, 4, 5.5], //y-axis
-          backgroundColor:'rgba(75, 192, 192, 0.2)',
-          borderColor:'rgba(153, 102, 255, 1)',
-          borderWidth: 1
-      }]
-};
+import {Bar} from 'react-chartjs';
 
 var options = {
     scales: {
@@ -20,42 +10,36 @@ var options = {
         }]
     }
 }
+function formatDate(elem){
+    let date = new Date(elem.daterecorded);
+    return (date.getMonth()+1) + "-" + date.getDate(); //month index starts at 0
+}
+
+function transformStats(stats) {
+  let chartData = {
+    labels: stats.map(formatDate),
+    datasets: [{
+            label: 'Strength',
+            data: stats.map(e => e.strength),
+            backgroundColor:'rgba(75, 192, 192, 0.2)',
+            borderColor:'rgba(153, 102, 255, 1)',
+            borderWidth: 1
+        }]
+  }
+  return chartData;
+}
 
 class Charts extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    // var ctx = document.getElementById("strength").getContext("2d");
-    var BarChart = require('react-chartjs').Bar
-
-    function MyChart(props) {
-      return (
-        <BarChart data={data} options={options}/>
-      )
-    }
-    // var MyChart = React.createClass({
-    //   render: function() {
-    //     return <BarChart data={data} options={options}/>
-    //   }
-    // });
-
-    // var barChart = new Chart(ctx, {
-    //   type:'bar',
-    //   data: data,
-    //   options: options
-    // });
     return (
-      <div>
-        <head>
-          <h1>My Progress</h1>
-          <script src="Chart.min.js"></script>
-          <script src="progress_chart_ROM.js"></script>
-        </head>
-        <body>
-          <div class="canvas-container">
-            <canvas id="strength"></canvas>
-          </div>
-          {myChart}
-        </body>
-      </div>
+      <Bar
+      data={transformStats(this.props.statsData)}
+      options={options}
+      />
     )
   }
 }
