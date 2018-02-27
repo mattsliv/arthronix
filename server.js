@@ -11,7 +11,7 @@ var users = require('./routes/users');
 var stats = require('./routes/stats');
 
 var app = express();
-// var db = pgp('postgres://arthronix@localhost/testdb');
+var db = pgp('postgres://arthronix@localhost/testdb');
 
 /*
 db.any('SELECT * FROM Patients')
