@@ -1,3 +1,6 @@
+import '../styles/docs/assets/css/toolkit-inverse.css';
+import '../styles/docs/assets/css/application.css';
+
 import React , { Component } from 'react'
 import {
   BrowserRouter as Router,
@@ -5,8 +8,15 @@ import {
   Link
 } from 'react-router-dom'
 
-import Charts from './Charts'
+import Charts from './Charts';
 var JSONPretty = require('react-json-pretty');
+
+ // import '../styles/docs/assets/js/popper.min.js';
+ // import '../styles/docs/assets/js/chart.js';
+// import '../styles/docs/assets/js/tablesorter.min.js';
+// import '../styles/docs/assets/js/toolkit.js';
+// import '../styles/docs/assets/js/application.js';
+
 
 class PatientBundle extends Component {
   render() {
@@ -19,7 +29,8 @@ class PatientBundle extends Component {
             <li><a href="#">Next</a></li>
           </ul>
         </div>
-        <table class="table">
+        <div class="table-responsive">
+          <table id="myTable" class="table" data-sort="table">
           <thead>
             <tr>
               <th><a href="" scope="col">#</a></th>
@@ -50,6 +61,9 @@ class PatientBundle extends Component {
           </tbody>
         </table>
       </div>
+
+
+    </div>
     )
   }
 }
@@ -70,7 +84,98 @@ class PatientStats extends Component {
       // FIX: Render charts from Chart.js
       <div>
         {/* <img src={require('chart.png')} /> */}
-        [Insert charts here]
+        {/* insert chart here */}
+        <div class="hr-divider my-4">
+          <ul class="nav nav-pills hr-divider-content hr-divider-nav" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a href="#sales" class="nav-link active" role="tab" data-toggle="tab" aria-controls="sales">Sales</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a href="#inventory" class="nav-link" role="tab" data-toggle="tab" aria-controls="inventory">Inventory</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a href="#profit" class="nav-link" role="tab" data-toggle="tab" aria-controls="profit">Profit</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="sales">
+            <div class="ex-line-graphs">
+               <canvas
+                class="ex-line-graph"
+                width="600" height="350"
+                data-chart="line"
+                data-dataset="[[2500, 3300, 2512, 2775, 2498, 3512, 2925, 4275, 3507, 3825, 3445, 3985]]"
+                data-labels="['','Aug 29','','','Sept 5','','','Sept 12','','','Sept 19','']"
+                data-dark="true">
+              </canvas>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="inventory">
+            <div class="ex-line-graphs">
+              <canvas
+                class="ex-line-graph"
+                width="600" height="400"
+                data-chart="bar"
+                data-dark="true"
+                data-labels="['August','September','October','November','December','January','February']"
+                data-dataset="[[65, 59, 80, 81, 56, 55, 40], [28, 48, 40, 19, 86, 27, 90]]"
+                data-dataset-options="[{label: 'First dataset'}, {label: 'Second dataset'}]">
+              </canvas>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="profit">
+            <div class="row ex-graphs text-center">
+              <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="w-3 mx-auto">
+                  <canvas
+                    class="ex-graph"
+                    width="200" height="200"
+
+                    data-chart="doughnut"
+                    data-dataset="[230, 130]"
+                    data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }"
+                    data-labels="['Returning', 'New']">
+                  </canvas>
+                </div>
+                <strong class="text-muted">Traffic</strong>
+                <h3>New vs Returning</h3>
+              </div>
+              <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="w-3 mx-auto">
+                  <canvas
+                    class="ex-graph"
+                    width="200" height="200"
+                    data-chart="doughnut"
+                    data-dataset="[330,30]"
+                    data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }"
+                    data-labels="['Returning', 'New']">
+                  </canvas>
+                </div>
+                <strong class="text-muted">Revenue</strong>
+                <h3>New vs Recurring</h3>
+              </div>
+              <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="w-3 mx-auto">
+                  <canvas
+                    class="ex-graph"
+                    width="200" height="200"
+                    data-chart="doughnut"
+                    data-dataset="[100,260]"
+                    data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }"
+                    data-labels="['Referrals', 'Direct']">
+                  </canvas>
+                </div>
+                <strong class="text-muted">Traffic</strong>
+                <h3>Direct vs Referrals</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     )
   }
@@ -84,8 +189,8 @@ class PatientPage extends Component {
 
 componentWillMount() {
   fetch('/stats')
-    .then(res => res.json())
-    .then(stats => this.setState({ stats }));
+    // .then(res => res.json())
+    // .then(stats => this.setState({ stats }));
 }
   render() {
     const patients = this.props.patients;
@@ -94,7 +199,7 @@ componentWillMount() {
     let readyPatient = '';
     if(patients[1]) {
        readyPatient = (
-      <table>
+      <table class="patient-main">
         <tr padding="15px">
           <td><h3>{this.props.patients[1].name}</h3></td>
           <td><h5><span class="label label-warning">{this.props.patients[1].status}</span>

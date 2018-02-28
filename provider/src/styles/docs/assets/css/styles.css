@@ -21,6 +21,13 @@
   float:right
 }
 
+.nav.navbar-nav a{
+  font-size:12px!important
+}
+
+.btn:focus{
+  color: #cfd2db!important;
+}
 
 /* --------- Dashboard View --------- */
 .icon-green{

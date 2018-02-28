@@ -5,7 +5,6 @@ import {
   Link
 } from 'react-router-dom';
 
-import './styles.css';
 
 class BundleMatrix extends Component {
   render() {

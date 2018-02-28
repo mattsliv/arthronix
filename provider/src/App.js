@@ -10,10 +10,11 @@ import Library from './Library/'
 import CreateBundle from './Library/CreateBundleView'
 import Community from './Community'
 import PatientView from './PatientDash/PatientView'
-import './styles/docs/assets/css/toolkit-inverse.css';
-import './styles/docs/assets/css/application.css';
-import './styles/docs/assets/css/docs.css';
-import './styles/docs/assets/css/styles.css';
+import 'styles/docs/assets/css/toolkit-inverse.css';
+import 'styles/docs/assets/css/application.css';
+import 'styles/docs/assets/css/docs.css';
+import 'styles/docs/assets/css/styles.css';
+
 
 // var JSONPretty = require('react-json-pretty');
 
