@@ -108,26 +108,6 @@ class PatientTable extends Component {
           </tbody>
         </table>
       </div>
-
-<<<<<<< HEAD
-=======
-
-      // <div class="panel panel-default">
-      //   {/* <div class="panel-heading"></div> */}
-      //   <table class="table">
-      //     <thead>
-      //       <tr>
-      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Name</a></th>
-      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Status</a></th>
-      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Messages</a></th>
-      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Type</a></th>
-      //         <th class="nav-item"><a class="nav-link active" href="" scope="col">Next Appointment</a></th>
-      //       </tr>
-      //     </thead>
-      //     <tbody>{rows}</tbody>
-      //   </table>
-      // </div>
->>>>>>> f58f1225693f5aeb5c99b319b55c23c8474e4b77
     )
   }
 }

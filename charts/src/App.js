@@ -172,7 +172,6 @@ class App extends Component {
           <Chart chartData={this.state.chartWeekData} title="Patient Statistics (Weekly)" legendPosition="bottom"/>
           <Chart chartData={this.state.chartMonthData} title="Patient Statistics (Monthly)" legendPosition="bottom"/>
         </div>
-
       </div>
     );
   }

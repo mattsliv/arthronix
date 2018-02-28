@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 
 import Charts from './Charts'
+import Charts2 from './Charts2'
 var JSONPretty = require('react-json-pretty');
 
 class PatientBundle extends Component {
@@ -79,14 +80,167 @@ class PatientStats extends Component {
 class PatientPage extends Component {
   constructor(props) {
     super(props)
-    this.state = {stats: []}
+    this.state = {
+      stats: [],
+      chartWeekData:{},
+      CahrtMonthData:{}}
   }
 
 componentWillMount() {
+  this.getChartWeekData();
+  this.getChartMonthData();
   fetch('/stats')
     .then(res => res.json())
     .then(stats => this.setState({ stats }));
+
 }
+
+/* Retrieves Weekly charts */
+getChartWeekData(){
+  // Ajax calls here
+  this.setState({
+    chartWeekData:
+      {
+        labels:[
+          "",
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          ""
+        ],
+        datasets:[
+          {
+            label: 'PEG',
+            yAxisID: "y-axis-1",
+            data:[
+              0,
+              4,6,8,10,9,7,5,
+              0
+            ],
+            backgroundColor:[
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+            ]
+          },
+          {
+            label: 'ROM',
+            yAxisID: "y-axis-2",
+            data:[
+              0,
+              90,125,160,180,150,115,80,
+              0
+            ],
+            backgroundColor:[
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+
+            ]
+          }
+        ]
+    }
+  }
+ )
+}
+
+/* Retrieves Monthly charts */
+getChartMonthData(){
+  // Ajax calls here
+  this.setState({
+    chartMonthData:
+      {
+        labels:[
+          "",
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+          ""
+        ],
+        datasets:[
+          {
+            label: 'PEG',
+            yAxisID: "y-axis-1",
+            data:[
+              0,
+              1,2,4,6,8,10,10,9,7,5,3,1,
+              0
+            ],
+            backgroundColor:[
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+              'rgba(64, 9, 199, 0.66)',
+
+            ]
+          },
+          {
+            label: 'ROM',
+            yAxisID: "y-axis-2",
+            data:[
+              0,
+              25,40,80,120,150,180,180,145,115,75,40,15,
+              0
+            ],
+            backgroundColor:[
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+              'rgba(0, 113, 195, 0.67)',
+
+            ]
+          }
+        ]
+    }
+  }
+ )
+}
+
   render() {
     const patients = this.props.patients;
 
@@ -105,20 +259,25 @@ componentWillMount() {
     )
     }
     return (
-      <div>
-        <h1>Patient Page</h1>
-        {readyPatient}
-        <div class="btn-group">
-          <button type="button" class="btn btn-default">+ Add new data</button>
+      <Router>
+        <div>
+          <h1>Patient Page</h1>
+          {readyPatient}
+          <div class="btn-group">
+            <button type="button" class="btn btn-default">+ Add new data</button>
+          </div>
+          {/* <PatientStats patient={this.props.patients}/> */}
+          {/* <PatientBundle patients={this.props.patients}/> */}
+
+          <PatientStats patient={this.props.patients}/>
+          <PatientBundle patients={this.props.patients}/>
+          <Charts2 chartData={this.state.chartWeekData} title="Patient Statistics (Weekly)" legendPosition="bottom"/>
+          <Charts2 chartData={this.state.chartMonthData} title="Patient Statistics (Monthly)" legendPosition="bottom"/>
+          <Charts statsData={this.state.stats}/>
+
         </div>
-        {/* <PatientStats patient={this.props.patients}/> */}
-        {/* <PatientBundle patients={this.props.patients}/> */}
+      </Router>
 
-        <PatientStats patient={this.props.patients}/>
-        <PatientBundle patients={this.props.patients}/>
-        <Charts statsData={this.state.stats}/>
-
-      </div>
 
     )
   }
