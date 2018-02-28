@@ -195,15 +195,12 @@ componentWillMount() {
   this.getChartWeekData();
   this.getChartMonthData();
   fetch('/stats')
-<<<<<<< HEAD
-    // .then(res => res.json())
-    // .then(stats => this.setState({ stats }));
-=======
     .then(res => res.json())
     .then(stats => this.setState({ stats }));
 
 }
 
+//this should really all be in another file please
 /* Retrieves Weekly charts */
 getChartWeekData(){
   // Ajax calls here
@@ -348,7 +345,7 @@ getChartMonthData(){
     }
   }
  )
->>>>>>> b6aaa95203663c183fde27b7610733527c5fbcb2
+//end of chart data
 }
 
   render() {
@@ -379,12 +376,11 @@ getChartMonthData(){
           {/* <PatientStats patient={this.props.patients}/> */}
           {/* <PatientBundle patients={this.props.patients}/> */}
 
-          <PatientStats patient={this.props.patients}/>
-          <PatientBundle patients={this.props.patients}/>
           <Charts2 chartData={this.state.chartWeekData} title="Patient Statistics (Weekly)" legendPosition="bottom"/>
           <Charts2 chartData={this.state.chartMonthData} title="Patient Statistics (Monthly)" legendPosition="bottom"/>
           <Charts statsData={this.state.stats}/>
-
+          <PatientStats patient={this.props.patients}/>
+          <PatientBundle patients={this.props.patients}/>
         </div>
       </Router>
 

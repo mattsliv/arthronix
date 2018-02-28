@@ -19,8 +19,8 @@ function transformStats(stats) {
   let chartData = {
     labels: stats.map(formatDate),
     datasets: [{
-            label: 'Strength',
-            data: stats.map(e => e.strength),
+            label: 'PEG',
+            data: stats.map(e => e.peg),
             backgroundColor:'rgba(75, 192, 192, 0.2)',
             borderColor:'rgba(153, 102, 255, 1)',
             borderWidth: 1
