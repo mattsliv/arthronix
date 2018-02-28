@@ -45,3 +45,23 @@
 table th{
   font-size:18px
 }
+
+/* --------- Library View --------- */
+
+.bundle-week-button .btn-info{
+  padding: 1em;
+  font-size: 25px;
+  margin: 1em;
+}
+
+.bundle-week-button .btn-pill{
+  border-radius:10px
+}
+
+.bundle-week-video iframe{
+  margin:1em
+}
+
+.pdf-image{
+  max-width:15%
+}
