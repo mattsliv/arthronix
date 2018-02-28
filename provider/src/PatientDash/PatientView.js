@@ -32,6 +32,7 @@ class PatientBundle extends Component {
               <li><a href="#">Next</a></li>
             </ul>
           </div>
+          
           <table id="myTable" class="table" data-sort="table">
           <thead>
             <tr>
