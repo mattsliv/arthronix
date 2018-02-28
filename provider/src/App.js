@@ -16,7 +16,7 @@ import 'styles/docs/assets/css/docs.css';
 import 'styles/docs/assets/css/styles.css';
 
 
-// var JSONPretty = require('react-json-pretty');
+var JSONPretty = require('react-json-pretty');
 
 class Users extends Component {
   render(){
@@ -25,7 +25,7 @@ class Users extends Component {
         <h1>Users</h1>
         <h3>
           {this.props.patients.map(user =>
-            <div key={user.id}>{user.id} : {user.name}</div>)}
+            <div key={user.id}>{user.id} : {user.firstname} {user.lastname}</div>)}
         </h3>
       </div>
     )
@@ -76,12 +76,9 @@ class App extends Component {
             <Route path="/createBundle" component={CreateBundle}/>
             <Route path="/community" component={Community}/>
           </Switch>
-
           {/* <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty> */}
 
         </div>
-
-
       </Router>
     )
   }

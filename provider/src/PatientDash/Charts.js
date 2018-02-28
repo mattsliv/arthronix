@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Bar} from 'react-chartjs';
+import {Bar} from 'react-chartjs-2';
 
 var options = {
     scales: {
