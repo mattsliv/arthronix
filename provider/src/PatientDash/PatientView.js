@@ -24,15 +24,39 @@ var JSONPretty = require('react-json-pretty');
 class PatientBundle extends Component {
   render() {
     return(
-        <div class="table-responsive">
-          <div class="panel-heading">
-            <ul class="pager">
-              <li>Bundles</li>
-              <li><a href="#">Previous</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
+
+      <div>
+
+        <div class="hr-divider my-4">
+          <h3 class="hr-divider-content hr-divider-heading">Quick stats</h3>
+        </div>
+
+        <div class="averages row statcards mt-3 mb-3 text-xs-center text-md-left">
+          <div class="col-6 col-md-3 statcard mb-4">
+            <h3 class="statcard-number text-success">
+              6
+              <small class="delta-indicator delta-positive">5%</small>
+            </h3>
+            <span class="statcard-desc">Average PEG</span>
           </div>
-          
+          <div class="col-6 col-md-3 statcard mb-4">
+            <h3 class="statcard-number text-danger">
+              160
+              <small class="delta-indicator delta-negative">1.3%</small>
+            </h3>
+            <span class="statcard-desc">Average ROM</span>
+          </div>
+        </div>
+
+      <div class="panel-heading">
+        <ul class="pager">
+          <li>Bundles</li>
+          <li><a href="#">Previous</a></li>
+          <li><a href="#">Next</a></li>
+        </ul>
+      </div>
+
+        <div class="table-responsive">
           <table id="myTable" class="table" data-sort="table">
           <thead>
             <tr>
@@ -64,6 +88,8 @@ class PatientBundle extends Component {
           </tbody>
         </table>
       </div>
+
+    </div>
     )
   }
 }
