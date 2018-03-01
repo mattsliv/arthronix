@@ -65,3 +65,26 @@ table th{
 .pdf-image{
   max-width:15%
 }
+
+/* --------- Patient View --------- */
+
+.averages div{
+  margin:0 auto;
+  border:1px solid #434857;
+  max-width:15%;
+  padding:1em
+}
+
+.averages h3{
+  font-size:45px;
+  text-align: center
+}
+
+.averages .delta-indicator{
+  font-size:25px;
+}
+
+.averages .statcard-desc{
+  font-size:135%;
+  text-align: center
+}
