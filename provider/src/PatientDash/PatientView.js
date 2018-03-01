@@ -10,7 +10,11 @@ import {
   Link
 } from 'react-router-dom'
 
-import Charts from './Charts';
+import green from '../images/green.png';
+import red from '../images/red.png';
+import yellow from '../images/yellow.png';
+
+// import Charts from './Charts';
 import Charts2 from './Charts2';
 var JSONPretty = require('react-json-pretty');
 
@@ -46,7 +50,7 @@ class PatientBundle extends Component {
             </h3>
             <span class="statcard-desc">Average ROM</span>
           </div>
-          
+
           <table id="myTable" class="table" data-sort="table">
           <thead>
             <tr>
@@ -154,15 +158,15 @@ class PatientPage extends Component {
                 0
               ],
               backgroundColor:[
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)'
               ]
             },
             {
@@ -174,15 +178,15 @@ class PatientPage extends Component {
                 0
               ],
               backgroundColor:[
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)'
 
               ]
             }
@@ -224,21 +228,20 @@ class PatientPage extends Component {
                 0
               ],
               backgroundColor:[
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-                'rgba(64, 9, 199, 0.66)',
-
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)',
+                'rgb(114, 71, 255)'
               ]
             },
             {
@@ -250,20 +253,20 @@ class PatientPage extends Component {
                 0
               ],
               backgroundColor:[
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
-                'rgba(0, 113, 195, 0.67)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)',
+                'rgba(57, 172, 255, 1)'
 
               ]
             }
@@ -282,11 +285,13 @@ class PatientPage extends Component {
        readyPatient = (
       <table class="patient-main">
         <tr padding="15px">
-          <td><h3>{this.props.patients[1].name}</h3></td>
-          <td><h5><span class="label label-warning">{this.props.patients[1].status}</span>
-            <a href="#">Messages <span class="badge">1</span></a></h5></td>
+          <td><h2>Elaine Tsun</h2></td>
+          <td><img src={green} alt="green" width="25px"/></td>
         </tr>
-        <tr><h5>{this.props.patients[1].type}</h5></tr>
+        <tr>
+          <h3><a href="#">Messages <span class="badge">1</span></a></h3>
+        </tr>
+        <tr><h5>Knee</h5></tr>
       </table>
     )
     }
@@ -300,9 +305,9 @@ class PatientPage extends Component {
           </div>
           <PatientStats patient={this.props.patients}/>
           <PatientBundle patients={this.props.patients}/>
-          <Charts2 chartData={this.state.chartWeekData} title="Patient Statistics (Weekly)" legendPosition="bottom"/>
-          <Charts2 chartData={this.state.chartMonthData} title="Patient Statistics (Monthly)" legendPosition="bottom"/>
-          <Charts statsData={this.state.stats}/>
+          <Charts2 chartData={this.state.chartWeekData} title="Patient PEG & ROM (Weekly)" legendPosition="bottom"/>
+          <Charts2 chartData={this.state.chartMonthData} title="Patient PEG & ROM (Monthly)" legendPosition="bottom"/>
+          {/* <Charts statsData={this.state.stats}/> */}
 
         </div>
       </Router>
