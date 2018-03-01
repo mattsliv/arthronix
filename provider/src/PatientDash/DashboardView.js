@@ -12,27 +12,55 @@ import yellow from '../images/yellow.png';
 
 class PatientRow extends Component {
   render() {
-    if (this.props.patient.messages === true) {
-      var msg = "New message!"
+    var rand = Math.floor((Math.random() * 3) + 1);
+    let row = '';
+    const patient = this.patient;
+
+    if (rand == 1) {
+      row = (
+        <tr>
+          <td>Matt</td>
+          <td><img src={green} alt="green"/></td>
+          <td><span class="icon icon-typing"></span></td>
+          <td>Knee</td>
+          <td>01/01/2015</td>
+        </tr>
+      )
+    }
+    else if (rand == 2) {
+      row = (
+        <tr>
+          <td>Chris</td>
+          <td><img src={yellow} alt="yellow"/></td>
+          <td><span class="icon icon-typing"></span></td>
+          <td>Knee</td>
+          <td>01/01/2015</td>
+        </tr>
+      )
+    }
+    else {
+      row = (
+        <tr>
+          <td>Sav</td>
+          <td><img src={red} alt="red"/></td>
+          <td><span class="icon icon-typing"></span></td>
+          <td>Knee</td>
+          <td>01/01/2015</td>
+        </tr>
+      )
     }
 
     return (
       <Router>
-        <tr>
-          {/*  FIX: need dynamic path */}
-
-          <td><Link to="/patients/${:id}">{this.props.patient.name}</Link></td>
+        {row}
+        {/* <tr> */}
+        {/*  FIX: need dynamic path */}
+        {/* <td><Link to="/patients/${:id}">{this.props.patient.name}</Link></td>
           <td>{this.props.patient.status}</td>
-          {/* <td><Link to="/patients/${:id}">{patient.name}</Link></td> */}
-
-
           <td>{msg}</td>
           <td>{this.props.patient.type}</td>
           <td>{this.props.patient.appointment}</td>
-        </tr>
-        {/* <Switch>
-          <Route path="/patients/:id" render={() => <UserID patient={patient}/>}/>
-        </Switch> */}
+        {/* </tr> */}
       </Router>
     )
   }
@@ -47,7 +75,6 @@ class PatientTable extends Component {
   }
   render() {
     // console.log(this.props.patients);
-
     const rows = []
 
     this.props.patients.forEach((patient) => {
@@ -71,45 +98,43 @@ class PatientTable extends Component {
           </thead>
           <tbody class="dash-table">
             <tr>
-              <td>Abby Clayton</td>
+              <td>Elaine Tsun</td>
               <td><img src={green} alt="green"/></td>
               <td><span class="icon icon-typing"></span></td>
               <td>Knee</td>
               <td>01/01/2015</td>
             </tr>
             <tr>
-              <td>Christopher Hanson</td>
+              <td>Chris Stumper</td>
               <td><img src={yellow} alt="yellow"/></td>
               <td><span class="icon icon-green icon-typing"></span></td>
               <td>Hip</td>
-              <td>01/01/2015</td>
+              <td>01/12/2015</td>
             </tr>
             <tr>
-              <td>David Castillo</td>
+              <td>Shemona Singh</td>
               <td><img src={red} alt="red"/></td>
               <td><span class="icon icon-typing"></span></td>
               <td>Knee</td>
-              <td>01/01/2015</td>
+              <td>02/05/2015</td>
             </tr>
             <tr>
-              <td>Marilyn Peters</td>
+              <td>Savanna Smith</td>
               <td><img src={green} alt="green"/></td>
               <td><span class="icon icon-green icon-typing"></span></td>
               <td>Knee</td>
-              <td>01/02/2015</td>
+              <td>01/22/2015</td>
             </tr>
             <tr>
-              <td>Rebecca Dean</td>
+              <td>Matt Slivinski</td>
               <td><img src={green} alt="green"/></td>
               <td><span class="icon icon-green icon-typing"></span></td>
               <td>Hip</td>
-              <td>01/02/2015</td>
+              <td>02/02/2015</td>
             </tr>
           </tbody>
         </table>
       </div>
-
-
     )
   }
 }
