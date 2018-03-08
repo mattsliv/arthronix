@@ -5,9 +5,49 @@ import {
   Link
 } from 'react-router-dom';
 
+class RadioBox extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.state = {
+      selectedOption: 'option1'
+    }
+  }
+
+  handleOptionChange(changeEvent) {
+    this.setState({
+      selectedOption: changeEvent.target.value
+    });
+  }
+
+  render(){
+    return (
+    <form>
+      <div className="radio">
+        <label>
+          <input type="radio" value="option1" checked={this.state.selectedOption === 'option1'} onChange={this.handleOptionChange} />
+          L
+        </label>
+      </div>
+      <div className="radio">
+        <label>
+        <input type="radio" value="option2" checked={this.state.selectedOption === 'option2'} onChange={this.handleOptionChange} />
+          M
+        </label>
+      </div>
+      <div className="radio">
+        <label>
+        <input type="radio" value="option3" checked={this.state.selectedOption === 'option3'} onChange={this.handleOptionChange} />
+          H
+        </label>
+      </div>
+    </form>
+   )
+  }
+}
 
 class BundleMatrix extends Component {
-
   render() {
     return (
       <div>
@@ -25,28 +65,10 @@ class BundleMatrix extends Component {
             <tbody class="dash-table">
               <tr>
                 <td>
-                <form>
-        <div className="radio">
-          <label>
-            <input type="radio" value="option1" checked={true}/>
-            L
-          </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input type="radio" value="option2" />
-            M
-          </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input type="radio" value="option3" />
-            H
-          </label>
-        </div>
-      </form>
-                </td>
+                  <RadioBox radio/>
 
+
+                </td>
               </tr>
               </tbody>
             </table>
@@ -55,5 +77,4 @@ class BundleMatrix extends Component {
     )
   }
 }
-
 export default BundleMatrix;
