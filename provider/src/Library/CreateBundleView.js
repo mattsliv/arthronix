@@ -64,11 +64,22 @@ class BundleMatrix extends Component {
             </thead>
             <tbody class="dash-table">
               <tr>
-                <td>
-                  <RadioBox radio/>
-
-
-                </td>
+                <td><RadioBox radio/></td>
+                <td><p>Leg Stretch</p></td>
+                <td><p>3</p></td>
+                <td><p>5</p></td>
+              </tr>
+              <tr>
+                <td><RadioBox radio/></td>
+                <td><p>Jumping Jacks</p></td>
+                <td><p>3</p></td>
+                <td><p>5</p></td>
+              </tr>
+              <tr>
+                <td><RadioBox radio/></td>
+                <td><p>Lunges</p></td>
+                <td><p>3</p></td>
+                <td><p>5</p></td>
               </tr>
               </tbody>
             </table>
