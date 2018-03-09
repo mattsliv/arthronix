@@ -23,26 +23,26 @@ class RadioBox extends Component {
 
   render(){
     return (
-    <form>
+    <div class="form-check form-check-inline">
       <div className="radio">
         <label>
-          <input type="radio" value="option1" checked={this.state.selectedOption === 'option1'} onChange={this.handleOptionChange} />
+          <input class="form-check-input" type="radio" value="option1" checked={this.state.selectedOption === 'option1'} onChange={this.handleOptionChange} />
           L
         </label>
       </div>
       <div className="radio">
         <label>
-        <input type="radio" value="option2" checked={this.state.selectedOption === 'option2'} onChange={this.handleOptionChange} />
+        <input class="form-check-input" type="radio" value="option2" checked={this.state.selectedOption === 'option2'} onChange={this.handleOptionChange} />
           M
         </label>
       </div>
       <div className="radio">
         <label>
-        <input type="radio" value="option3" checked={this.state.selectedOption === 'option3'} onChange={this.handleOptionChange} />
+        <input class="form-check-input" type="radio" value="option3" checked={this.state.selectedOption === 'option3'} onChange={this.handleOptionChange} />
           H
         </label>
       </div>
-    </form>
+    </div>
    )
   }
 }
