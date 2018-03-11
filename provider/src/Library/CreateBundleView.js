@@ -5,6 +5,7 @@ import {
   Link
 } from 'react-router-dom';
 
+var JSONPretty = require('react-json-pretty');
 class RadioBox extends Component {
 
   constructor(props) {
@@ -42,6 +43,18 @@ class RadioBox extends Component {
 }
 
 class BundleMatrix extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {exercises: []}
+  }
+  componentWillMount() {
+    fetch('/exercises')
+      .then(res => res.json())
+      .then(exercises => this.setState({ exercises }));
+
+  }
+
   render() {
     return (
       <div>
@@ -51,7 +64,7 @@ class BundleMatrix extends Component {
             <thead>
               <tr>
                 <th>Select</th>
-                <th>Exercise Name</th>
+                <th>Exercise</th>
                 <th>Sets</th>
                 <th>Reps</th>
               </tr>
@@ -59,7 +72,7 @@ class BundleMatrix extends Component {
             <tbody class="dash-table">
               <tr>
                 <td><RadioBox radio/></td>
-                <td><p>Leg Stretch</p></td>
+                <td><p></p></td>
                 <td><p>3</p></td>
                 <td><p>5</p></td>
               </tr>
@@ -78,6 +91,7 @@ class BundleMatrix extends Component {
               </tbody>
             </table>
           </div>
+          <JSONPretty id="json-pretty" json={this.state.exercises}></JSONPretty>
       </div>
     )
   }
