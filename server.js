@@ -14,16 +14,6 @@ var exercises = require('./routes/exercises');
 var app = express();
 var db = pgp('postgres://arthronix@localhost/testdb');
 
-/*
-db.any('SELECT * FROM Patients')
-    .then(function(data) {
-        console.log(data);
-    })
-    .catch(function(error) {
-        console.log('error');
-        console.log(error);
-    });
-*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

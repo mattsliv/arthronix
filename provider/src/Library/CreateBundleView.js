@@ -1,9 +1,5 @@
 import React , { Component } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+
 
 var JSONPretty = require('react-json-pretty');
 class RadioBox extends Component {
@@ -52,7 +48,6 @@ class BundleMatrix extends Component {
     fetch('/exercises')
       .then(res => res.json())
       .then(exercises => this.setState({ exercises }));
-
   }
 
   render() {
@@ -91,7 +86,7 @@ class BundleMatrix extends Component {
               </tbody>
             </table>
           </div>
-          <JSONPretty id="json-pretty" json={this.state.exercises}></JSONPretty>
+        { <JSONPretty id="json-pretty" json={this.state.exercises}></JSONPretty>}
       </div>
     )
   }
