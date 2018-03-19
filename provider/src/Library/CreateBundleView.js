@@ -51,6 +51,7 @@ class BundleMatrix extends Component {
   }
 
   render() {
+    let exnames = this.state.exercises.map(e => e.exname);
     return (
       <div>
         <h1>Create Bundle</h1>
@@ -67,26 +68,25 @@ class BundleMatrix extends Component {
             <tbody class="dash-table">
               <tr>
                 <td><RadioBox radio/></td>
-                <td><p></p></td>
+                <td><p>{exnames[1]}</p></td>
                 <td><p>3</p></td>
                 <td><p>5</p></td>
               </tr>
               <tr>
                 <td><RadioBox radio/></td>
-                <td><p>Jumping Jacks</p></td>
+                <td><p>{exnames[2]}</p></td>
                 <td><p>3</p></td>
                 <td><p>5</p></td>
               </tr>
               <tr>
                 <td><RadioBox radio/></td>
-                <td><p>Lunges</p></td>
+                <td><p>{exnames[3]}</p></td>
                 <td><p>3</p></td>
                 <td><p>5</p></td>
               </tr>
               </tbody>
             </table>
           </div>
-        { <JSONPretty id="json-pretty" json={this.state.exercises}></JSONPretty>}
       </div>
     )
   }
