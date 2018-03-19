@@ -1,7 +1,5 @@
 import React , { Component } from 'react'
 
-
-var JSONPretty = require('react-json-pretty');
 class RadioBox extends Component {
 
   constructor(props) {
@@ -51,7 +49,8 @@ class BundleMatrix extends Component {
   }
 
   render() {
-    let exnames = this.state.exercises.map(e => e.exname);
+    let titles = ["Select", "Exercise", "Sets", "Reps"];
+    let rows = this.state.exercises.map(e => e.exname);
     return (
       <div>
         <h1>Create Bundle</h1>
@@ -59,31 +58,18 @@ class BundleMatrix extends Component {
             <table id="bundleTable" class="table" data-sort="table">
             <thead>
               <tr>
-                <th>Select</th>
-                <th>Exercise</th>
-                <th>Sets</th>
-                <th>Reps</th>
+                {titles.map(title => <th>{title}</th>)}
               </tr>
             </thead>
             <tbody class="dash-table">
+            {rows.map(row =>
               <tr>
                 <td><RadioBox radio/></td>
-                <td><p>{exnames[1]}</p></td>
+                <td><p>{row}</p></td>
                 <td><p>3</p></td>
                 <td><p>5</p></td>
               </tr>
-              <tr>
-                <td><RadioBox radio/></td>
-                <td><p>{exnames[2]}</p></td>
-                <td><p>3</p></td>
-                <td><p>5</p></td>
-              </tr>
-              <tr>
-                <td><RadioBox radio/></td>
-                <td><p>{exnames[3]}</p></td>
-                <td><p>3</p></td>
-                <td><p>5</p></td>
-              </tr>
+            )}
               </tbody>
             </table>
           </div>
