@@ -1,6 +1,6 @@
 import React , { Component } from 'react'
 
-class RadioBox extends Component {
+class SelectLevelBox extends Component {
 
   constructor(props) {
     super(props);
@@ -36,6 +36,11 @@ class RadioBox extends Component {
   }
 }
 
+class SubmitBox extends Component {
+/*On click, creates new bundle entry in DB with data selected*/
+
+}
+
 class BundleMatrix extends Component {
 
   constructor(props) {
@@ -50,7 +55,8 @@ class BundleMatrix extends Component {
 
   render() {
     let titles = ["Select", "Exercise", "Sets", "Reps"];
-    let rows = this.state.exercises.map(e => e.exname);
+    let rows   = this.state.exercises.map(e => e.exname);
+    rows       = rows.filter(word => word); //remove null entries
     return (
       <div>
         <h1>Create Bundle</h1>
@@ -64,7 +70,7 @@ class BundleMatrix extends Component {
             <tbody class="dash-table">
             {rows.map(row =>
               <tr>
-                <td><RadioBox radio/></td>
+                <td><SelectLevelBox levelbox/></td>
                 <td><p>{row}</p></td>
                 <td><p>3</p></td>
                 <td><p>5</p></td>
