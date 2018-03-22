@@ -8,6 +8,7 @@ import {
 
 import pdf from '../images/pdf.png';
 import CreateBundle from './CreateBundleView'
+import EditBundle from './EditBundle'
 
 class SupportRow extends Component {
   render() {
@@ -78,24 +79,23 @@ class BundleRow extends Component {
           <tr padding="20px">
             <td><h3>Bundles</h3></td>
             <td>
-              <ul>
-                  <li><Link to="/createBundle" activeClassName="active"><a href="#" class="btn btn-primary"> + Add New</a></Link></li>
-                  <li>   <button type="button" class="btn btn-primary" >
-                      Expand All
-                      </button>
-                  </li>
-              </ul>
+              <Link to="/createBundle" activeClassName="active"><a href="#" class="btn btn-primary"> + Add New</a></Link>
             </td>
-
+            <td>
+            <button type="button" class="btn btn-primary" >
+                Expand All
+            </button>
+            </td>
           </tr>
-          <button type="button" class="btn btn-sm btn-pill btn-info">Week 1</button>
-          <button type="button" class="btn btn-sm btn-pill btn-info">Week 2</button>
-          <button type="button" class="btn btn-sm btn-pill btn-info">Week 3</button>
-          <button type="button" class="btn btn-sm btn-pill btn-info">Week 4</button>
-          <button type="button" class="btn btn-sm btn-pill btn-info">Week 5</button>
+          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 1</a></Link>
+          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 2</a></Link>
+          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 3</a></Link>
+          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 4</a></Link>
+          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 5</a></Link>
         </table>
         <Switch>
           <Route path="/createBundle" component={CreateBundle}/>
+          <Route path="/editBundle" component={EditBundle}/>
         </Switch>
       </div>
       </Router>
