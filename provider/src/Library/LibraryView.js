@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 
 import pdf from '../images/pdf.png';
+import CreateBundle from './CreateBundleView'
 
 class SupportRow extends Component {
   render() {
@@ -17,7 +18,7 @@ class SupportRow extends Component {
             <td><h3>Educational Support</h3></td>
             <td>
               <button type="button" class="btn btn-primary" >
-                + Add New
+               + Add New
               </button>
             </td>
             <td>
@@ -71,20 +72,21 @@ class VideoRow extends Component {
 class BundleRow extends Component {
   render() {
     return (
+      <Router>
       <div>
         <table class="bundle-week-button">
           <tr padding="20px">
             <td><h3>Bundles</h3></td>
             <td>
-              <button type="button" class="btn btn-primary" >
-                + Add New
-              </button>
+              <ul>
+                  <li><Link to="/createBundle" activeClassName="active"><a href="#" class="btn btn-primary"> + Add New</a></Link></li>
+                  <li>   <button type="button" class="btn btn-primary" >
+                      Expand All
+                      </button>
+                  </li>
+              </ul>
             </td>
-            <td>
-              <button type="button" class="btn btn-primary" >
-                Expand All
-              </button>
-            </td>
+
           </tr>
           <button type="button" class="btn btn-sm btn-pill btn-info">Week 1</button>
           <button type="button" class="btn btn-sm btn-pill btn-info">Week 2</button>
@@ -92,7 +94,11 @@ class BundleRow extends Component {
           <button type="button" class="btn btn-sm btn-pill btn-info">Week 4</button>
           <button type="button" class="btn btn-sm btn-pill btn-info">Week 5</button>
         </table>
+        <Switch>
+          <Route path="/createBundle" component={CreateBundle}/>
+        </Switch>
       </div>
+      </Router>
     )
   }
 }
