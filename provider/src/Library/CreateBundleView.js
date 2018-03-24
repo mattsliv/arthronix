@@ -15,6 +15,9 @@ class SelectLevelBox extends Component {
     this.setState({
       selectedOption: changeEvent.target.value
     });
+    const {key} = this.state;
+    const {onSelect} = this.props;
+    onSelect(key, changeEvent.target.value);
   }
 
   render(){
@@ -37,10 +40,7 @@ class SelectLevelBox extends Component {
   }
 }
 
-class SubmitBox extends Component {
-/*On click, creates new bundle entry in DB with data selected*/
 
-}
 
 class BundleMatrix extends Component {
 
@@ -64,7 +64,7 @@ class BundleMatrix extends Component {
               exname: ex.exname,
               level: "low",
               reps: "6-8",
-              sets: "2-3"
+              sets: "1-2"
             };
             return rEx;
           }                          /// to here will be replaced by loading exercises already in bundle
@@ -80,24 +80,36 @@ class BundleMatrix extends Component {
           }
           })
         bundle = bundle.filter(entry => entry); //remove null entries
-        bundle.sort(function(a,b){          //sort by which exercises are selected or not
-          if(a.level == b.level) return 0;
-          if(a.level == "-") return 1;
-          else return -1;
-        });
         this.setState({bundle});
-
   })};
 
   onLevelSelect(key, level) {
     let bundle = this.state.bundle;
-    bundle[key].level = level;
+    bundle[key-1].level = level; // key-1 since I started id's in DB at 1
+    if(level == 'high'){
+      bundle[key-1].reps = "10-12";
+      bundle[key-1].sets = "3-4";
+    }
+    else if (level == 'med'){
+      bundle[key-1].reps = "8-10";
+      bundle[key-1].sets = "2-3";
+    }
+    else {
+      bundle[key-1].reps = "6-8";
+      bundle[key-1].sets = "1-2";
+    }
     this.setState({ bundle });
+    console.log(bundle);
   }
 
   render() {
     let titles = ["Select", "Exercise", "Sets", "Reps"];
-    let {bundle} = this.state;
+    let bundle = this.state.bundle.slice(); //create a copy so I can rearrange it
+    bundle.sort(function(a,b){          //sort by which exercises are selected or not
+       if(a.level == b.level) return 0;
+       if(a.level == "-") return 1;
+       else return -1;
+    });
     return (
       <div>
         <h1>Create Bundle</h1>
@@ -111,7 +123,7 @@ class BundleMatrix extends Component {
             <tbody class="dash-table">
             {bundle.map(ex =>
               <tr>
-                <td><SelectLevelBox level={ex.level} row={ex.key}/></td>
+                <td><SelectLevelBox level={ex.level} row={ex.key} onSelect= {this.onLevelSelect}/></td>
                 <td><p>{ex.exname}</p></td>
                 <td><p>{ex.sets}</p></td>
                 <td><p>{ex.reps}</p></td>
@@ -121,7 +133,7 @@ class BundleMatrix extends Component {
             </table>
           </div>
           <p align = "right"><button type="button" class="btn btn-primary" > Cancel </button>
-             <button type="button" class="btn btn-primary" > Submit </button>
+             <button type="button" class="btn btn-primary" > Submit </button> {/*On click, creates new bundle entry in DB with data selected*/}
           </p>
       </div>
     )
