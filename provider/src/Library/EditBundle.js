@@ -1,5 +1,7 @@
 import React , { Component } from 'react'
 
+/* This is fine for testing purposes but afterwards we should
+really only use the CreateBundleView to avoid code duplication */
 class SelectLevelBox extends Component {
 
   constructor(props) {

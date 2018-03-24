@@ -6,6 +6,7 @@ class SelectLevelBox extends Component {
     super(props);
     this.handleOptionChange = this.handleOptionChange.bind(this);
       this.state = {
+        key: props.row,
         selectedOption: props.level
       }
   }
@@ -46,48 +47,53 @@ class BundleMatrix extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      exercises: [],
       bundleID: props.bundleID,
       bundle: []
     }
   }
+
   componentWillMount() {
     fetch('/exercises')
       .then(res => res.json())
-      .then(exercises => this.setState({ exercises }));
-  }
+      .then(exercises => {
+        let bundle   = exercises.map(ex => {
+          if(ex.id == 2 || ex.id == 6) { //from here
+            var rEx = {
+              key: ex.id,
+              exname: ex.exname,
+              level: "low",
+              reps: "6-8",
+              sets: "2-3"
+            };
+            return rEx;
+          }                          /// to here will be replaced by loading exercises already in bundle
+          else {
+            var rEx = {
+              key: ex.id,
+              exname: ex.exname,
+              level: "-",
+              reps: "-",
+              sets: "-"
+            };
+            return rEx;
+          }
+          })
+        bundle = bundle.filter(entry => entry); //remove null entries
+        bundle.sort(function(a,b){          //sort by which exercises are selected or not
+          if(a.level == b.level) return 0;
+          if(a.level == "-") return 1;
+          else return -1;
+        });
+        this.setState({bundle});
+  })};
+
+  // onLevelSelect() {
+  //
+  // }
 
   render() {
     let titles = ["Select", "Exercise", "Sets", "Reps"];
-    let rows   = this.state.exercises.map(ex => {
-      if(ex.id == 2 || ex.id == 6) { //from here
-        var rEx = {
-          key: ex.id,
-          exname: ex.exname,
-          level: "low",
-          reps: "6-8",
-          sets: "2-3"
-        };
-        return rEx;
-      }                          /// to here will be replaced by loading exercises already in bundle
-      else {
-        var rEx = {
-          key: ex.id,
-          exname: ex.exname,
-          level: "-",
-          reps: "-",
-          sets: "-"
-        };
-        return rEx;
-      }
-      })
-    rows = rows.filter(word => word); //remove null entries
-    rows.sort(function(a,b){          //sort by which exercises are selected or not
-      if(a.level == b.level) return 0;
-      if(a.level == "-") return 1;
-      else return -1;
-    });
-
+    let {bundle} = this.state;
     return (
       <div>
         <h1>Create Bundle</h1>
@@ -99,12 +105,12 @@ class BundleMatrix extends Component {
               </tr>
             </thead>
             <tbody class="dash-table">
-            {rows.map(row =>
+            {bundle.map(ex =>
               <tr>
-                <td><SelectLevelBox level={row.level}/></td>
-                <td><p>{row.exname}</p></td>
-                <td><p>{row.sets}</p></td>
-                <td><p>{row.reps}</p></td>
+                <td><SelectLevelBox level={ex.level} row={ex.key}/></td>
+                <td><p>{ex.exname}</p></td>
+                <td><p>{ex.sets}</p></td>
+                <td><p>{ex.reps}</p></td>
               </tr>
             )}
               </tbody>
