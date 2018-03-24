@@ -50,6 +50,7 @@ class BundleMatrix extends Component {
       bundleID: props.bundleID,
       bundle: []
     }
+    this.onLevelSelect = this.onLevelSelect.bind(this);
   }
 
   componentWillMount() {
@@ -85,11 +86,14 @@ class BundleMatrix extends Component {
           else return -1;
         });
         this.setState({bundle});
+
   })};
 
-  // onLevelSelect() {
-  //
-  // }
+  onLevelSelect(key, level) {
+    let bundle = this.state.bundle;
+    bundle[key].level = level;
+    this.setState({ bundle });
+  }
 
   render() {
     let titles = ["Select", "Exercise", "Sets", "Reps"];
