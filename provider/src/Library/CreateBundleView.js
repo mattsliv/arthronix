@@ -40,8 +40,6 @@ class SelectLevelBox extends Component {
   }
 }
 
-
-
 class BundleMatrix extends Component {
 
   constructor(props) {
@@ -64,7 +62,8 @@ class BundleMatrix extends Component {
               exname: ex.exname,
               level: "low",
               reps: "6-8",
-              sets: "1-2"
+              sets: "1-2",
+              slb : <SelectLevelBox level={"low"} row={ex.id} onSelect= {this.onLevelSelect}/>
             };
             return rEx;
           }                          /// to here will be replaced by loading exercises already in bundle
@@ -74,7 +73,8 @@ class BundleMatrix extends Component {
               exname: ex.exname,
               level: "-",
               reps: "-",
-              sets: "-"
+              sets: "-",
+              slb : <SelectLevelBox level={"-"} row={ex.id} onSelect= {this.onLevelSelect}/>
             };
             return rEx;
           }
@@ -123,7 +123,7 @@ class BundleMatrix extends Component {
             <tbody class="dash-table">
             {bundle.map(ex =>
               <tr>
-                <td><SelectLevelBox level={ex.level} row={ex.key} onSelect= {this.onLevelSelect}/></td>
+                <td>{ex.slb} </td>
                 <td><p>{ex.exname}</p></td>
                 <td><p>{ex.sets}</p></td>
                 <td><p>{ex.reps}</p></td>
