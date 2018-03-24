@@ -45,11 +45,7 @@ class BundleMatrix extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      exercises: [],
-      bundleID: props.bundleID,
-      bundle: []
-    }
+    this.state = {exercises: []}
   }
   componentWillMount() {
     fetch('/exercises')
@@ -82,7 +78,7 @@ class BundleMatrix extends Component {
       }
       })
     rows = rows.filter(word => word); //remove null entries
-    rows.sort(function(a,b){          //sort by which exercises are selected or not
+    rows.sort(function(a,b){                //sort by which exercises are selected or not
       if(a.level == b.level) return 0;
       if(a.level == "-") return 1;
       else return -1;
@@ -90,7 +86,7 @@ class BundleMatrix extends Component {
 
     return (
       <div>
-        <h1>Create Bundle</h1>
+        <h1>Edit Bundle</h1>
           <div class = "table-responsive">
             <table id="bundleTable" class="table" data-sort="table">
             <thead>
@@ -110,9 +106,6 @@ class BundleMatrix extends Component {
               </tbody>
             </table>
           </div>
-          <p align = "right"><button type="button" class="btn btn-primary" > Cancel </button>
-             <button type="button" class="btn btn-primary" > Submit </button>
-          </p>
       </div>
     )
   }
