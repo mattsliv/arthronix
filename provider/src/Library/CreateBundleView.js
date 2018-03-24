@@ -45,7 +45,11 @@ class BundleMatrix extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {exercises: []}
+    this.state = {
+      exercises: [],
+      bundleID: props.bundleID,
+      bundle: []
+    }
   }
   componentWillMount() {
     fetch('/exercises')
@@ -78,7 +82,7 @@ class BundleMatrix extends Component {
       }
       })
     rows = rows.filter(word => word); //remove null entries
-    rows.sort(function(a,b){                //sort by which exercises are selected or not
+    rows.sort(function(a,b){          //sort by which exercises are selected or not
       if(a.level == b.level) return 0;
       if(a.level == "-") return 1;
       else return -1;
