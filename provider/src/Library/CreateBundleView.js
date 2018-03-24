@@ -1,45 +1,5 @@
 import React , { Component } from 'react'
 
-class SelectLevelBox extends Component {
-
-  constructor(props) {
-    super(props);
-    this.handleOptionChange = this.handleOptionChange.bind(this);
-      this.state = {
-        key: props.row,
-        selectedOption: props.level
-      }
-  }
-
-  handleOptionChange(changeEvent) {
-    this.setState({
-      selectedOption: changeEvent.target.value
-    });
-    const {key} = this.state;
-    const {onSelect} = this.props;
-    onSelect(key, changeEvent.target.value);
-  }
-
-  render(){
-    return (
-    <div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" value="low" checked={this.state.selectedOption === 'low'} onChange={this.handleOptionChange} />
-        <label class="form-check-label">L </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" value="med" checked={this.state.selectedOption === 'med'} onChange={this.handleOptionChange} />
-        <label class="form-check-label">M </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" value="high" checked={this.state.selectedOption === 'high'} onChange={this.handleOptionChange} />
-        <label class="form-check-label">H </label>
-      </div>
-    </div>
-   )
-  }
-}
-
 class BundleMatrix extends Component {
 
   constructor(props) {
@@ -48,7 +8,7 @@ class BundleMatrix extends Component {
       bundleID: props.bundleID,
       bundle: []
     }
-    this.onLevelSelect = this.onLevelSelect.bind(this);
+    this.onLevelChange = this.onLevelChange.bind(this);
   }
 
   componentWillMount() {
@@ -63,7 +23,6 @@ class BundleMatrix extends Component {
               level: "low",
               reps: "6-8",
               sets: "1-2",
-              slb : <SelectLevelBox level={"low"} row={ex.id} onSelect= {this.onLevelSelect}/>
             };
             return rEx;
           }                          /// to here will be replaced by loading exercises already in bundle
@@ -74,7 +33,6 @@ class BundleMatrix extends Component {
               level: "-",
               reps: "-",
               sets: "-",
-              slb : <SelectLevelBox level={"-"} row={ex.id} onSelect= {this.onLevelSelect}/>
             };
             return rEx;
           }
@@ -83,9 +41,12 @@ class BundleMatrix extends Component {
         this.setState({bundle});
   })};
 
-  onLevelSelect(key, level) {
+  onLevelChange(changeEvent){
     let bundle = this.state.bundle;
-    bundle[key-1].level = level; // key-1 since I started id's in DB at 1
+    let level = changeEvent.target.value;
+    let key = changeEvent.target.id;
+
+    bundle[key-1].level = level;
     if(level == 'high'){
       bundle[key-1].reps = "10-12";
       bundle[key-1].sets = "3-4";
@@ -99,7 +60,25 @@ class BundleMatrix extends Component {
       bundle[key-1].sets = "1-2";
     }
     this.setState({ bundle });
-    console.log(bundle);
+  }
+
+  levelBox(exercise) {
+    return (
+    <div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id={exercise.key} value="low" checked={exercise.level === 'low'} onChange={this.onLevelChange} />
+        <label class="form-check-label">L </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id={exercise.key} value="med" checked={exercise.level === 'med'} onChange={this.onLevelChange} />
+        <label class="form-check-label">M </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id={exercise.key} value="high" checked={exercise.level === 'high'} onChange={this.onLevelChange} />
+        <label class="form-check-label">H </label>
+      </div>
+    </div>
+  )
   }
 
   render() {
@@ -123,7 +102,7 @@ class BundleMatrix extends Component {
             <tbody class="dash-table">
             {bundle.map(ex =>
               <tr>
-                <td>{ex.slb} </td>
+                <td>{this.levelBox(ex)}</td>
                 <td><p>{ex.exname}</p></td>
                 <td><p>{ex.sets}</p></td>
                 <td><p>{ex.reps}</p></td>
