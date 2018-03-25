@@ -9,9 +9,11 @@ class BundleMatrix extends Component {
       bundle: []
     }
     this.onLevelChange = this.onLevelChange.bind(this);
+    this.onRemove = this.onRemove.bind(this);
   }
 
-  componentWillMount() {
+  componentWillMount() { /* fetch exercises and initialize their level */
+    let exercises = [];  /* init incase no exercises fetched. Should also do a check after fetch */
     fetch('/exercises')
       .then(res => res.json())
       .then(exercises => {
@@ -41,17 +43,36 @@ class BundleMatrix extends Component {
         this.setState({bundle});
   })};
 
-  onLevelChange(changeEvent){
+  levelBox(exercise) { /* returns jsx for level selection box */
+    return (
+    <div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id={exercise.key} value="low" checked={exercise.level === "low"} onChange={this.onLevelChange} />
+        <label class="form-check-label">L </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id={exercise.key} value="med" checked={exercise.level === "med"} onChange={this.onLevelChange} />
+        <label class="form-check-label">M </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id={exercise.key} value="high" checked={exercise.level === "high"} onChange={this.onLevelChange} />
+        <label class="form-check-label">H </label>
+      </div>
+    </div>
+  )
+  }
+
+  onLevelChange(changeEvent){ /* gets called when user selects level on level box*/
     let bundle = this.state.bundle;
     let level = changeEvent.target.value;
     let key = changeEvent.target.id;
 
     bundle[key-1].level = level;
-    if(level == 'high'){
+    if(level == "high"){
       bundle[key-1].reps = "10-12";
       bundle[key-1].sets = "3-4";
     }
-    else if (level == 'med'){
+    else if (level == "med"){
       bundle[key-1].reps = "8-10";
       bundle[key-1].sets = "2-3";
     }
@@ -62,29 +83,31 @@ class BundleMatrix extends Component {
     this.setState({ bundle });
   }
 
-  levelBox(exercise) {
+  removeBox(exercise){ /* returns jsx for remove exercise from bundle button */
     return (
-    <div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id={exercise.key} value="low" checked={exercise.level === 'low'} onChange={this.onLevelChange} />
-        <label class="form-check-label">L </label>
+      <div>
+        <button id={exercise.key} onClick={this.onRemove}>
+          Remove
+        </button>
       </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id={exercise.key} value="med" checked={exercise.level === 'med'} onChange={this.onLevelChange} />
-        <label class="form-check-label">M </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id={exercise.key} value="high" checked={exercise.level === 'high'} onChange={this.onLevelChange} />
-        <label class="form-check-label">H </label>
-      </div>
-    </div>
-  )
+    )
+  }
+
+  onRemove(e){
+    e.preventDefault();
+    let bundle = this.state.bundle;
+    let key = e.target.id;
+
+    bundle[key-1].level = "-";
+    bundle[key-1].reps = "-";
+    bundle[key-1].sets = "-";
+    this.setState({ bundle });
   }
 
   render() {
     let titles = ["Select", "Exercise", "Sets", "Reps"];
-    let bundle = this.state.bundle.slice(); //create a copy so I can rearrange it
-    bundle.sort(function(a,b){          //sort by which exercises are selected or not
+    let bundle = this.state.bundle.slice(); //create a bundle copy so I can rearrange it
+    bundle.sort(function(a,b){              //sort by which exercises are selected or not
        if(a.level == b.level) return 0;
        if(a.level == "-") return 1;
        else return -1;
@@ -106,6 +129,7 @@ class BundleMatrix extends Component {
                 <td><p>{ex.exname}</p></td>
                 <td><p>{ex.sets}</p></td>
                 <td><p>{ex.reps}</p></td>
+                <td>{this.removeBox(ex)}</td>
               </tr>
             )}
               </tbody>
