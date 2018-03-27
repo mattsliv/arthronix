@@ -6,6 +6,7 @@ import {
   Switch
 } from 'react-router-dom'
 
+import Modal from 'react-modal'
 import pdf from '../images/pdf.png';
 import CreateBundle from './CreateBundleView'
 import EditBundle from './EditBundle'
@@ -42,6 +43,7 @@ class SupportRow extends Component {
 }
 
 class VideoRow extends Component {
+
   render() {
     return (
       <div>
@@ -71,6 +73,33 @@ class VideoRow extends Component {
 }
 
 class BundleRow extends Component {
+  constructor (props) {
+    super();
+    this.state = {
+      showModal: false
+    };
+
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal () {
+    this.setState({ showModal: false });
+  }
+
+  getModal () {
+    return (
+    <Modal isOpen = {this.state.showModal}>
+         <CreateBundle/>
+         <button type="button" class="btn btn-primary"> Sumbit </button>
+         <button type="button" class="btn btn-primary" onClick = {this.handleCloseModal}> Cancel </button>
+    </Modal> )
+  }
+
   render() {
     return (
       <Router>
@@ -79,7 +108,10 @@ class BundleRow extends Component {
           <tr padding="20px">
             <td><h3>Bundles</h3></td>
             <td>
-              <Link to="/createBundle" activeClassName="active"><a href="#" class="btn btn-primary"> + Add New</a></Link>
+              <div>
+                 <button type="button" class="btn btn-primary" onClick = {this.handleOpenModal}> +Add New </button>
+                 {this.getModal()}
+              </div>
             </td>
             <td>
             <button type="button" class="btn btn-primary" >
@@ -87,11 +119,9 @@ class BundleRow extends Component {
             </button>
             </td>
           </tr>
-          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 1</a></Link>
-          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 2</a></Link>
-          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 3</a></Link>
-          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 4</a></Link>
-          <Link to = "/editBundle" activeClassName="active"> <a href = "#" class="btn btn-sm btn-pill btn-info">Week 5</a></Link>
+
+          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 1 </button>
+          {this.getModal()}
         </table>
         <Switch>
           <Route path="/createBundle" component={CreateBundle}/>
@@ -102,6 +132,8 @@ class BundleRow extends Component {
     )
   }
 }
+
+
 
 class LibraryTable extends Component {
   render() {

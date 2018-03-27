@@ -135,9 +135,6 @@ class BundleMatrix extends Component {
               </tbody>
             </table>
           </div>
-          <p align = "right"><button type="button" class="btn btn-primary" > Cancel </button>
-             <button type="button" class="btn btn-primary" > Submit </button> {/*On click, creates new bundle entry in DB with data selected*/}
-          </p>
       </div>
     )
   }
