@@ -114,8 +114,8 @@ class BundleMatrix extends Component {
     });
     return (
       <div>
-        <h1> Create Bundle</h1>
-          <div class = "table-responsive">
+        <text style={{color: 'black'}}> <font size = '10'>Create Bundle</font></text>
+          <div style={{color: 'black'}} class = "table-responsive">
             <table id="bundleTable" class="table" data-sort="table">
             <thead>
               <tr>

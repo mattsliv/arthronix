@@ -94,7 +94,6 @@ class BundleRow extends Component {
   getModal () {
     return (
     <Modal isOpen = {this.state.showModal}>
-      
          <CreateBundle/>
          <button type="button" class="btn btn-primary"> Sumbit </button>
          <button type="button" class="btn btn-primary" onClick = {this.handleCloseModal}> Cancel </button>
@@ -114,12 +113,11 @@ class BundleRow extends Component {
               </div>
             </td>
             <td>
-            <button type="button" class="btn btn-primary" >
-                Expand All
-            </button>
+              <button type="button" class="btn btn-primary" >
+                  Expand All
+              </button>
             </td>
           </tr>
-
           <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 1 </button>
           {this.getModal()}
           <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 2 </button>
@@ -130,11 +128,8 @@ class BundleRow extends Component {
           {this.getModal()}
           <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 5 </button>
           {this.getModal()}
-
         </table>
-
       </div>
-
     )
   }
 }
