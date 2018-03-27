@@ -86,7 +86,7 @@ class BundleMatrix extends Component {
   removeBox(exercise){ /* returns jsx for remove exercise from bundle button */
     return (
       <div>
-        <button id={exercise.key} onClick={this.onRemove}>
+        <button class="btn btn-primary" id={exercise.key} onClick={this.onRemove}>
           Remove
         </button>
       </div>
@@ -114,7 +114,7 @@ class BundleMatrix extends Component {
     });
     return (
       <div>
-        <h1>Create Bundle</h1>
+        <h1> Create Bundle</h1>
           <div class = "table-responsive">
             <table id="bundleTable" class="table" data-sort="table">
             <thead>

@@ -9,7 +9,7 @@ import {
 import Modal from 'react-modal'
 import pdf from '../images/pdf.png';
 import CreateBundle from './CreateBundleView'
-import EditBundle from './EditBundle'
+
 
 class SupportRow extends Component {
   render() {
@@ -94,6 +94,7 @@ class BundleRow extends Component {
   getModal () {
     return (
     <Modal isOpen = {this.state.showModal}>
+      
          <CreateBundle/>
          <button type="button" class="btn btn-primary"> Sumbit </button>
          <button type="button" class="btn btn-primary" onClick = {this.handleCloseModal}> Cancel </button>
@@ -102,7 +103,6 @@ class BundleRow extends Component {
 
   render() {
     return (
-      <Router>
       <div>
         <table class="bundle-week-button">
           <tr padding="20px">
@@ -122,13 +122,19 @@ class BundleRow extends Component {
 
           <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 1 </button>
           {this.getModal()}
+          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 2 </button>
+          {this.getModal()}
+          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 3 </button>
+          {this.getModal()}
+          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 4 </button>
+          {this.getModal()}
+          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 5 </button>
+          {this.getModal()}
+
         </table>
-        <Switch>
-          <Route path="/createBundle" component={CreateBundle}/>
-          <Route path="/editBundle" component={EditBundle}/>
-        </Switch>
+
       </div>
-      </Router>
+
     )
   }
 }
