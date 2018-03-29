@@ -17,6 +17,7 @@
     "react-chartjs-2": "^2.7.0",
     "react-dom": "^16.2.0",
     "react-json-pretty": "^1.7.4",
+    "react-modal": "^3.3.2",
     "react-pdf": "^2.5.3",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
