@@ -17,8 +17,9 @@ class BundleMatrix extends Component {
     fetch('/exercises')
       .then(res => res.json())
       .then(exercises => {
+        console.log(this.state.bundleID);
         let bundle   = exercises.map(ex => {
-          if(ex.id == 2 || ex.id == 6) { //from here
+          if((ex.id == 2 || ex.id == 6) && (this.state.bundleID == 1)){ //from here
             var rEx = {
               key: ex.id,
               exname: ex.exname,
@@ -93,7 +94,7 @@ class BundleMatrix extends Component {
     )
   }
 
-  onRemove(e){
+  onRemove(e){ /* gets called when user selects remove on an exercise */
     e.preventDefault();
     let bundle = this.state.bundle;
     let key = e.target.id;

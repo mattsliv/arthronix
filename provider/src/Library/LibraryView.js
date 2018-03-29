@@ -11,7 +11,7 @@ import pdf from '../images/pdf.png';
 import CreateBundle from './CreateBundleView'
 
 
-class SupportRow extends Component {
+class SupportRow extends Component { /* display educational support matieral*/
   render() {
     return (
       <div>
@@ -42,7 +42,7 @@ class SupportRow extends Component {
   }
 }
 
-class VideoRow extends Component {
+class VideoRow extends Component { /* display exercise video content */
 
   render() {
     return (
@@ -72,30 +72,30 @@ class VideoRow extends Component {
   }
 }
 
-class BundleRow extends Component {
+class BundleRow extends Component { /* Displays bundle and on click can edit/create */
   constructor (props) {
     super();
     this.state = {
-      showModal: false
+      showModal: -1 /* modal starts closed */
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  handleOpenModal () {
-    this.setState({ showModal: true });
+  handleOpenModal (openEvent) {
+    this.setState({ showModal: openEvent.target.value }); /* open the modal according to which bundle was clicked */
   }
 
   handleCloseModal () {
-    this.setState({ showModal: false });
+    this.setState({ showModal: -1 });
   }
 
-  getModal () {
+  getModal () { /* jsx to display modal */
     return (
-    <Modal isOpen = {this.state.showModal}>
-         <CreateBundle/>
-         <button type="button" class="btn btn-primary"> Sumbit </button>
+    <Modal isOpen = {this.state.showModal >= 0}>
+         <CreateBundle bundleID={this.state.showModal}/> {/* send which bundle it was clicked from */}
+         <button type="button" class="btn btn-primary"> Submit </button>
          <button type="button" class="btn btn-primary" onClick = {this.handleCloseModal}> Cancel </button>
     </Modal> )
   }
@@ -108,8 +108,8 @@ class BundleRow extends Component {
             <td><h3>Bundles</h3></td>
             <td>
               <div>
-                 <button type="button" class="btn btn-primary" onClick = {this.handleOpenModal}> +Add New </button>
-                 {this.getModal()}
+                 <button type="button" value='0' class="btn btn-primary" onClick = {this.handleOpenModal}> +Add New </button>
+                 {this.getModal()} {/* The modal used throughout; only need one */}
               </div>
             </td>
             <td>
@@ -118,16 +118,11 @@ class BundleRow extends Component {
               </button>
             </td>
           </tr>
-          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 1 </button>
-          {this.getModal()}
-          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 2 </button>
-          {this.getModal()}
-          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 3 </button>
-          {this.getModal()}
-          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 4 </button>
-          {this.getModal()}
-          <button type="button" class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 5 </button>
-          {this.getModal()}
+          <button type="button" value='1' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 1 </button>
+          <button type="button" value='2' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 2 </button>
+          <button type="button" value='3' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 3 </button>
+          <button type="button" value='4' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 4 </button>
+          <button type="button" value='5' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 5 </button>
         </table>
       </div>
     )
