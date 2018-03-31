@@ -7,10 +7,13 @@ CREATE TABLE Patients (
   Email varchar(255),
   Phone varchar(50),
   PatientType varchar(255),
-  NextApt date,
+  NextApt varchar(255),
   ProviderID int,
   Streak int,
-  BundleID int
+  BundleID int,
+  StatusROM varchar(255),
+  StatusPEG varchar(255),
+  StatusStrength varchar(255)
 );
 
 CREATE TABLE Bundles (
