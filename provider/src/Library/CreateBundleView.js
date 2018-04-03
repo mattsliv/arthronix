@@ -105,8 +105,7 @@ class BundleMatrix extends Component {
     this.setState({ bundle });
   }
 
-  displayGrey(ex){
-
+  showGreyEx(ex){ /* takes an exercise, if it is included in the bundle show as black, else grey */
     if(ex.level == "-"){
       return(<p style = {{color: 'grey'}}>{ex.exname}</p>)
     }
@@ -136,7 +135,7 @@ class BundleMatrix extends Component {
             {bundle.map(ex =>
               <tr>
                 <td>{this.levelBox(ex)}</td>
-                <td>{this.displayGrey(ex)}</td>
+                <td>{this.showGreyEx(ex)}</td>
                 <td><p>{ex.sets}</p></td>
                 <td><p>{ex.reps}</p></td>
                 <td>{this.removeBox(ex)}</td>
