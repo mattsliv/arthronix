@@ -60,7 +60,6 @@ class App extends Component {
                   <li><Link to="/patients" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-users"></span> Patients</a></Link></li>
                   <li><Link to="/patient" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-user"></span> Patient</a></Link></li>
                   <li><Link to="/library" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-video"></span> Library</a></Link></li>
-                  <li><Link to="/createBundle" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-video-camera"></span> Create Bundle</a></Link></li>
                   <li><Link to="/community" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-typing"></span> Community</a></Link></li>
                 </ul>
               </div>
@@ -73,10 +72,9 @@ class App extends Component {
             <Route path="/patients" render={() => <PatientDash patients={this.state.users}/>}/>
             <Route path="/patient" render={() => <PatientView patients={this.state.users}/>}/>
             <Route path="/library" component={Library}/>
-            <Route path="/createBundle" component={CreateBundle}/>
             <Route path="/community" component={Community}/>
           </Switch>
-          {/* <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty> */}
+          <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty>
 
         </div>
       </Router>

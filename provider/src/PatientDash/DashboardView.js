@@ -13,6 +13,7 @@ import red from '../images/red.png';
 import yellow from '../images/yellow.png';
 
 class PatientRow extends Component {
+
   render() {
     var rand = Math.floor((Math.random() * 3) + 1);
     let row = '';
@@ -70,11 +71,17 @@ class PatientRow extends Component {
 
 
 class PatientTable extends Component {
-
   constructor(props) {
     super(props)
-    // this.state = {patients: []}
+    this.state = {users: []}
   }
+
+  componentWillMount() {
+    fetch('/users')
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
+  }
+
   render() {
     // console.log(this.props.patients);
     const rows = []
@@ -88,53 +95,61 @@ class PatientTable extends Component {
     return (
 
       <div class="table-responsive">
+
         <table id="myTable" class="table" data-sort="table">
           <thead>
             <tr>
               <th>Name</th>
-              <th>Status</th>
+              <th>ROM</th>
+              <th>PEG</th>
+              <th>Strength</th>
               <th>Messages</th>
               <th>Type</th>
               <th>Next Appointment</th>
             </tr>
           </thead>
-          <tbody class="dash-table">
-            <tr>
-              <td>Elaine Tsun</td>
-              <td><img src={green} alt="green"/></td>
-              <td><span class="icon icon-typing"></span></td>
-              <td>Knee</td>
-              <td>01/01/2015</td>
-            </tr>
-            <tr>
-              <td>Chris Stumper</td>
-              <td><img src={yellow} alt="yellow"/></td>
-              <td><span class="icon icon-green icon-typing"></span></td>
-              <td>Hip</td>
-              <td>01/12/2015</td>
-            </tr>
-            <tr>
-              <td>Shemona Singh</td>
-              <td><img src={red} alt="red"/></td>
-              <td><span class="icon icon-typing"></span></td>
-              <td>Knee</td>
-              <td>02/05/2015</td>
-            </tr>
-            <tr>
-              <td>Savanna Smith</td>
-              <td><img src={green} alt="green"/></td>
-              <td><span class="icon icon-green icon-typing"></span></td>
-              <td>Knee</td>
-              <td>01/22/2015</td>
-            </tr>
-            <tr>
-              <td>Matt Slivinski</td>
-              <td><img src={green} alt="green"/></td>
-              <td><span class="icon icon-green icon-typing"></span></td>
-              <td>Hip</td>
-              <td>02/02/2015</td>
-            </tr>
-          </tbody>
+          {this.state.users.map(user =>
+            <tbody class="dash-table">
+              <tr>
+                <td>{user.firstname} {user.lastname}</td>
+                <td>
+                  <img src={(() => {
+                    switch (user.statusrom) {
+                      case "green":   return green;
+                      case "yellow": return yellow;
+                      case "red":  return red;
+                      default:      return green;
+                    }
+                  })()} alt="ROM Status"/>
+                </td>
+
+                <td>
+                  <img src={(() => {
+                    switch (user.statuspeg) {
+                      case "green":   return green;
+                      case "yellow": return yellow;
+                      case "red":  return red;
+                      default:      return green;
+                    }
+                  })()} alt="PEG Status"/>
+                </td>
+
+                <td>
+                  <img src={(() => {
+                    switch (user.statusstrength) {
+                      case "green":   return green;
+                      case "yellow": return yellow;
+                      case "red":  return red;
+                      default:      return green;
+                    }
+                  })()} alt="Strength Status"/>
+                </td>
+                <td><span class="icon icon-typing"></span></td>
+                <td>{user.patienttype}</td>
+                <td>{user.nextapt}</td>
+              </tr>
+            </tbody>
+          )}
         </table>
       </div>
     )
