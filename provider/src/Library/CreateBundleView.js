@@ -120,7 +120,7 @@ class BundleMatrix extends Component {
       return(
         <tr>
           <td>{this.levelBox(ex)}</td>
-          <td><p>{ex.exname}</p></td>
+          <td><p><b>{ex.exname}</b></p></td>
           <td><p>{ex.sets}</p></td>
           <td><p>{ex.reps}</p></td>
           <td>{this.removeBox(ex)}</td>
