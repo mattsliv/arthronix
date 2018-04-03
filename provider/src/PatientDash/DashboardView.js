@@ -11,6 +11,9 @@ import green from '../images/green.png';
 import red from '../images/red.png';
 import yellow from '../images/yellow.png';
 
+
+
+
 class PatientTable extends Component {
   constructor(props) {
     super(props)
