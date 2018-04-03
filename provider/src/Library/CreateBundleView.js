@@ -11,6 +11,8 @@ class BundleMatrix extends Component {
     }
     this.onLevelChange = this.onLevelChange.bind(this);
     this.onRemove = this.onRemove.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onCancel = this.onCancel.bind(this);
   }
 
   fetchBundle() { /* Is called when we are on edit bundle mode */
@@ -121,6 +123,15 @@ class BundleMatrix extends Component {
     this.setState({ bundle });
   }
 
+  onCancel() { /* tells parent to close modal */
+    const { closeModal } = this.props;
+    closeModal();
+  }
+
+  onSubmit() { /* saves bundle then tells parent to close modal */
+    this.onCancel();
+  }
+
   showGreyEx(ex){ /* takes an exercise, if it is included in the bundle show as black, else grey */
     if(ex.level == "-"){
       return(
@@ -152,9 +163,12 @@ class BundleMatrix extends Component {
        if(a.level == "-") return 1;
        else return -1;
     });
+    let text = '';
+    if(this.state.selected.exIds) {text = "Edit Bundle";}
+    else {text = "Create Bundle"};
     return (
       <div>
-        <text style={{color: 'black'}}> <font size = '10'>Create Bundle</font></text>
+        <text style={{color: 'black'}}> <font size = '10'>{text}</font></text>
           <div style={{color: 'black'}} class = "table-responsive">
             <table id="bundleTable" class="table" data-sort="table">
             <thead>
@@ -166,6 +180,8 @@ class BundleMatrix extends Component {
             {bundle.map(ex => this.showGreyEx(ex))}
               </tbody>
             </table>
+            <button type="button" class="btn btn-primary" onClick = {this.onSubmit}> Submit </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onCancel}> Cancel </button>
           </div>
       </div>
     )

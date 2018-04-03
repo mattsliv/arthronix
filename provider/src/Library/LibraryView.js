@@ -83,8 +83,8 @@ class BundleRow extends Component { /* Displays bundle and on click can edit/cre
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  handleOpenModal (openEvent) {
-    this.setState({ showModal: openEvent.target.value }); /* open the modal according to which bundle was clicked */
+  handleOpenModal (openEvent) { /* open the modal according to which bundle was clicked */
+    this.setState({ showModal: openEvent.target.value });
   }
 
   handleCloseModal () {
@@ -94,9 +94,7 @@ class BundleRow extends Component { /* Displays bundle and on click can edit/cre
   getModal () { /* jsx to display modal */
     return (
     <Modal isOpen = {this.state.showModal >= 0}>
-         <CreateBundle bundleID={this.state.showModal}/> {/* send which bundle it was clicked from */}
-         <button type="button" class="btn btn-primary"> Submit </button>
-         <button type="button" class="btn btn-primary" onClick = {this.handleCloseModal}> Cancel </button>
+         <CreateBundle bundleID={this.state.showModal} closeModal = {this.handleCloseModal}/> {/* send which bundle it was clicked from */}
     </Modal> )
   }
 
