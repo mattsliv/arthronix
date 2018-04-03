@@ -121,6 +121,29 @@ class BundleMatrix extends Component {
     this.setState({ bundle });
   }
 
+  showGreyEx(ex){ /* takes an exercise, if it is included in the bundle show as black, else grey */
+    if(ex.level == "-"){
+      return(
+      <tr bgcolor="#f7f7f7">
+        <td>{this.levelBox(ex)}</td>
+        <td><p style = {{color: 'grey'}}>{ex.exname}</p></td>
+        <td><p>{ex.sets}</p></td>
+        <td><p>{ex.reps}</p></td>
+        <td>{this.removeBox(ex)}</td>
+      </tr>)
+    }
+    else{
+      return(
+        <tr>
+          <td>{this.levelBox(ex)}</td>
+          <td><p><b>{ex.exname}</b></p></td>
+          <td><p>{ex.sets}</p></td>
+          <td><p>{ex.reps}</p></td>
+          <td>{this.removeBox(ex)}</td>
+        </tr>
+      )
+    }
+  }
   render() {
     let titles = ["Select", "Exercise", "Sets", "Reps"];
     let bundle = this.state.bundle.slice(); //create a bundle copy so I can rearrange it
@@ -140,15 +163,7 @@ class BundleMatrix extends Component {
               </tr>
             </thead>
             <tbody class="dash-table">
-            {bundle.map(ex =>
-              <tr>
-                <td>{this.levelBox(ex)}</td>
-                <td><p>{ex.exname}</p></td>
-                <td><p>{ex.sets}</p></td>
-                <td><p>{ex.reps}</p></td>
-                <td>{this.removeBox(ex)}</td>
-              </tr>
-            )}
+            {bundle.map(ex => this.showGreyEx(ex))}
               </tbody>
             </table>
           </div>
