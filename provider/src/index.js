@@ -5,13 +5,6 @@ import registerServiceWorker from './registerServiceWorker'
 
 import App from './App'
 
-// import 'styles/docs/assets/js/jquery.min.js';
-// import 'styles/docs/assets/js/popper.min.js';
-// import 'styles/docs/assets/js/chart.js';
-// import 'styles/docs/assets/js/tablesorter.min.js';
-// import 'styles/docs/assets/js/toolkit.js';
-// import 'styles/docs/assets/js/application.js';
-
 // Render app to DOM
 render((
   <Router>

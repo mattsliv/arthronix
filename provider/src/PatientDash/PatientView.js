@@ -1,8 +1,3 @@
-// import '../styles/docs/assets/css/toolkit-inverse.css';
-// import '../styles/docs/assets/css/application.css';
-// import '../../node_modules/chart.js/Chart.js';
-// import '../../node_modules/chart.js/Chart.min.js'
-
 import React , { Component } from 'react'
 import {
   BrowserRouter as Router,
@@ -13,80 +8,8 @@ import {
 import green from '../images/green.png';
 import red from '../images/red.png';
 import yellow from '../images/yellow.png';
-
-// import Charts from './Charts';
 import Charts2 from './Charts2';
 var JSONPretty = require('react-json-pretty');
-
-// import '../styles/docs/assets/js/popper.min.js';
-// import '../styles/docs/assets/js/chart.js';
-// import '../styles/docs/assets/js/tablesorter.min.js';
-// import '../styles/docs/assets/js/toolkit.js';
-// import '../styles/docs/assets/js/application.js';
-
-
-class PatientBundle extends Component {
-  render() {
-    return(
-
-      <div>
-
-        <div class="hr-divider my-4">
-          <h3 class="hr-divider-content hr-divider-heading">Quick stats</h3>
-        </div>
-
-        <div class="averages row statcards mt-3 mb-3 text-xs-center text-md-left">
-          <div class="col-6 col-md-3 statcard mb-4">
-            <h3 class="statcard-number text-success">
-              6
-              <small class="delta-indicator delta-positive">5%</small>
-            </h3>
-            <span class="statcard-desc">Average PEG</span>
-          </div>
-          <div class="col-6 col-md-3 statcard mb-4">
-            <h3 class="statcard-number text-danger">
-              160
-              <small class="delta-indicator delta-negative">1.3%</small>
-            </h3>
-            <span class="statcard-desc">Average ROM</span>
-          </div>
-
-          <table id="myTable" class="table" data-sort="table">
-          <thead>
-            <tr>
-              <th><a href="" scope="col">#</a></th>
-              <th><a href="" scope="col">Name</a></th>
-              <th><a href="" scope="col">Last Completed</a></th>
-              <th><a href="" scope="col">Reps</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <th>Body weight squats</th>
-              <th>1/2/18</th>
-              <th>10 reps</th>
-            </tr>
-            <tr>
-              <th>2</th>
-              <th>Walking lunges</th>
-              <th>1/1/18</th>
-              <th>12 reps</th>
-            </tr>
-            <tr>
-              <th>3</th>
-              <th>Jumping jacks</th>
-              <th>1/10/18</th>
-              <th>8 reps</th>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-    )
-  }
-}
 
 class AddData extends Component {
   render() {
@@ -98,37 +21,12 @@ class AddData extends Component {
   }
 }
 
-class PatientStats extends Component {
-  render(){
-    return(
-      // FIX: Render charts from Chart.js
-      <div>
-        {/* <img src={require('chart.png')} /> */}
-        {/* insert chart here */}
-
-
-
-
-      </div>
-    )
-  }
-}
-
 class PatientPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      stats: [],
       chartWeekData:{},
-      CahrtMonthData:{}}
-  }
-
-  componentWillMount() {
-    this.getChartWeekData();
-    this.getChartMonthData();
-    fetch('/stats')
-      .then(res => res.json())
-      .then(stats => this.setState({ stats }));
+      chartMonthData:{}}
   }
 
   /* Retrieves Weekly charts */
@@ -303,16 +201,10 @@ class PatientPage extends Component {
           <div class="btn-group">
             <button type="button" class="btn btn-default">+ Add new data</button>
           </div>
-          <PatientStats patient={this.props.patients}/>
-          <PatientBundle patients={this.props.patients}/>
           <Charts2 chartData={this.state.chartWeekData} title="Patient PEG & ROM (Weekly)" legendPosition="bottom"/>
           <Charts2 chartData={this.state.chartMonthData} title="Patient PEG & ROM (Monthly)" legendPosition="bottom"/>
-          {/* <Charts statsData={this.state.stats}/> */}
-
         </div>
       </Router>
-
-
     )
   }
 }
