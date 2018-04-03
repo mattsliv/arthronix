@@ -1,3 +1,8 @@
+// import '../styles/docs/assets/css/toolkit-inverse.css';
+// import '../styles/docs/assets/css/application.css';
+// import '../../node_modules/chart.js/Chart.js';
+// import '../../node_modules/chart.js/Chart.min.js'
+
 import React , { Component } from 'react'
 import {
   BrowserRouter as Router,
@@ -7,10 +12,148 @@ import {
 
 
 import green from '../images/green.png';
-import red from '../images/red.png';
-import yellow from '../images/yellow.png';
+import '../styles/docs/assets/css/patient/flickity.css';
+import '../styles/docs/assets/css/patient/flickity.pkgd.js';
+import '../styles/docs/assets/css/patient/patient-styles.css';
+
+
+// import Charts from './Charts';
 import Charts2 from './Charts2';
 var JSONPretty = require('react-json-pretty');
+
+class PatientBundle extends Component {
+  render() {
+
+    return(
+      <div>
+
+        <div class="gallery js-flickity">
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    )
+  }
+}
 
 class AddData extends Component {
   render() {
@@ -22,12 +165,37 @@ class AddData extends Component {
   }
 }
 
+class PatientStats extends Component {
+  render(){
+    return(
+      // FIX: Render charts from Chart.js
+      <div>
+        {/* <img src={require('chart.png')} /> */}
+        {/* insert chart here */}
+
+
+
+
+      </div>
+    )
+  }
+}
+
 class PatientPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      stats: [],
       chartWeekData:{},
-      chartMonthData:{}}
+      CahrtMonthData:{}}
+  }
+
+  componentWillMount() {
+    this.getChartWeekData();
+    this.getChartMonthData();
+    fetch('/stats')
+      .then(res => res.json())
+      .then(stats => this.setState({ stats }));
   }
 
   /* Retrieves Weekly charts */
@@ -202,10 +370,16 @@ class PatientPage extends Component {
           <div class="btn-group">
             <button type="button" class="btn btn-default">+ Add new data</button>
           </div>
+          <PatientStats patient={this.props.patients}/>
+          <PatientBundle patients={this.props.patients}/>
           <Charts2 chartData={this.state.chartWeekData} title="Patient PEG & ROM (Weekly)" legendPosition="bottom"/>
           <Charts2 chartData={this.state.chartMonthData} title="Patient PEG & ROM (Monthly)" legendPosition="bottom"/>
+          {/* <Charts statsData={this.state.stats}/> */}
+
         </div>
       </Router>
+
+
     )
   }
 }
