@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var stats = require('./routes/stats');
 var exercises = require('./routes/exercises');
+var bundles = require('./routes/bundles');
 
 var app = express();
 var db = pgp('postgres://arthronix@localhost/testdb');
@@ -31,6 +32,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/stats', stats);
 app.use('/exercises', exercises);
+app.use('/bundles', bundles);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

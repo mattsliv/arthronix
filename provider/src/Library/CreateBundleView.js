@@ -6,43 +6,59 @@ class BundleMatrix extends Component {
     super(props)
     this.state = {
       bundleID: props.bundleID,
-      bundle: []
+      bundle: [],
+      selected: []
     }
     this.onLevelChange = this.onLevelChange.bind(this);
     this.onRemove = this.onRemove.bind(this);
   }
 
-  componentWillMount() { /* fetch exercises and initialize their level */
-    let exercises = [];  /* init incase no exercises fetched. Should also do a check after fetch */
+  fetchBundle() { /* Is called when we are on edit bundle mode */
+    fetch('/bundles')
+      .then(res => res.json())
+      .then(bundles => {
+        let currBundle = bundles.filter(b => { /* get the bundle we actually care about */
+          if(b.id == this.state.bundleID) return b
+        })
+        let b = currBundle[0];
+        var selected = {
+          exIds: [b.ex1, b.ex2, b.ex3, b.ex4, b.ex5, b.ex6, b.ex7, b.ex8, b.ex9, b.ex10],
+          reps : [b.reps1, b.reps2, b.reps3, b.reps4, b.reps5, b.reps6, b.reps7, b.reps8, b.reps9, b.reps10],
+          sets : [b.sets1, b.sets2, b.sets3, b.sets4, b.sets5, b.sets6, b.sets7, b.sets8, b.sets9, b.sets10],
+          levs : [b.lev1, b.lev2, b.lev3, b.lev4, b.lev5, b.lev6, b.lev7, b.lev8, b.lev9, b.lev10]
+        }
+        this.setState({selected});
+  })
+  }
+
+  componentWillMount() { /* fetch exercises and initialize the level theyre set to*/
+    if (this.state.bundleID > 0) { this.fetchBundle();/* We recieved a bundle to load */}
     fetch('/exercises')
       .then(res => res.json())
-      .then(exercises => {
-        console.log(this.state.bundleID);
+      .then(exercises => { /* fetch and initialize all exercises in DB */
         let bundle   = exercises.map(ex => {
-          if((ex.id == 2 || ex.id == 6) && (this.state.bundleID == 1)){ //from here
-            var rEx = {
-              key: ex.id,
-              exname: ex.exname,
-              level: "low",
-              reps: "6-8",
-              sets: "1-2",
-            };
-            return rEx;
-          }                          /// to here will be replaced by loading exercises already in bundle
-          else {
-            var rEx = {
-              key: ex.id,
-              exname: ex.exname,
-              level: "-",
-              reps: "-",
-              sets: "-",
-            };
-            return rEx;
-          }
+          var rEx = {
+            key: ex.id,
+            exname: ex.exname,
+            level: "-",
+            reps: "-",
+            sets: "-",
+          };
+          return rEx;
           })
+          let selected = this.state.selected;
+          if(selected.exIds) {
+            for (var i = 0; i < selected.exIds.length; i++) {
+              if(selected.exIds[i] == null) break;
+              bundle[selected.exIds[i]].reps = selected.reps[i];
+              bundle[selected.exIds[i]].sets = selected.sets[i];
+              bundle[selected.exIds[i]].level = selected.levs[i];
+            }
+          }
         bundle = bundle.filter(entry => entry); //remove null entries
         this.setState({bundle});
-  })};
+      })
+  }
 
   levelBox(exercise) { /* returns jsx for level selection box */
     return (
