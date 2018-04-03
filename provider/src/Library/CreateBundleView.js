@@ -105,6 +105,15 @@ class BundleMatrix extends Component {
     this.setState({ bundle });
   }
 
+  displayGrey(ex){
+
+    if(ex.level == "-"){
+      return(<p style = {{color: 'grey'}}>{ex.exname}</p>)
+    }
+    else{
+      return(<p style = {{color: 'black'}}><b>{ex.exname}</b></p>)
+    }
+  }
   render() {
     let titles = ["Select", "Exercise", "Sets", "Reps"];
     let bundle = this.state.bundle.slice(); //create a bundle copy so I can rearrange it
@@ -127,7 +136,7 @@ class BundleMatrix extends Component {
             {bundle.map(ex =>
               <tr>
                 <td>{this.levelBox(ex)}</td>
-                <td><p>{ex.exname}</p></td>
+                <td>{this.displayGrey(ex)}</td>
                 <td><p>{ex.sets}</p></td>
                 <td><p>{ex.reps}</p></td>
                 <td>{this.removeBox(ex)}</td>
