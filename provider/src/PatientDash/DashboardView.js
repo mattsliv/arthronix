@@ -4,6 +4,8 @@ import {
   Link,
   Switch
 } from 'react-router-dom'
+
+
 import PatientView from './PatientView';
 import green from '../images/green.png';
 import red from '../images/red.png';
