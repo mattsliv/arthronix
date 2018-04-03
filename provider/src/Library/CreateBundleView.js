@@ -113,7 +113,7 @@ class BundleMatrix extends Component {
         <td><p style = {{color: 'grey'}}>{ex.exname}</p></td>
         <td><p>{ex.sets}</p></td>
         <td><p>{ex.reps}</p></td>
-        <td>{this.removeBox(ex)}</td>
+        <td><button class = "btn btn-primary" disabled> Remove </button></td>
       </tr>)
     }
     else{
