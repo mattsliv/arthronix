@@ -82,7 +82,7 @@ class App extends Component {
             <Route path="/community" component={Community}/>
           </Switch>
 
-          <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty>
+          {/* <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty> */}
         </div>
       </Router>
     )
