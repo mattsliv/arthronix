@@ -7,7 +7,8 @@ class BundleMatrix extends Component {
     this.state = {
       bundleID: props.bundleID,
       bundle: [],
-      selected: []
+      selected: [],
+      edit: false
     }
     this.onLevelChange = this.onLevelChange.bind(this);
     this.onRemove = this.onRemove.bind(this);
@@ -15,7 +16,7 @@ class BundleMatrix extends Component {
     this.onCancel = this.onCancel.bind(this);
   }
 
-  fetchBundle() { /* Is called when we are on edit bundle mode */
+  fetchBundle() { /* Is called when we are on edit or view bundle mode */
     fetch('/bundles')
       .then(res => res.json())
       .then(bundles => {
@@ -49,7 +50,7 @@ class BundleMatrix extends Component {
           return rEx;
           })
           let selected = this.state.selected;
-          if(selected.exIds) {
+          if(selected.exIds) {  /* Update selected exercises now */
             for (var i = 0; i < selected.exIds.length; i++) {
               if(selected.exIds[i] == null) break;
               bundle[selected.exIds[i]].reps = selected.reps[i];
@@ -112,7 +113,7 @@ class BundleMatrix extends Component {
     )
   }
 
-  onRemove(e){ /* gets called when user selects remove on an exercise */
+  onRemove(e){ /* gets called when user selects remove on an exercise (removes it from their bundle)*/
     e.preventDefault();
     let bundle = this.state.bundle;
     let key = e.target.id;
@@ -155,17 +156,8 @@ class BundleMatrix extends Component {
       )
     }
   }
-  render() {
+  renderEdit(text, bundle){ /* render for edit or create new bundle view */
     let titles = ["Select", "Exercise", "Sets", "Reps"];
-    let bundle = this.state.bundle.slice(); //create a bundle copy so I can rearrange it
-    bundle.sort(function(a,b){              //sort by which exercises are selected or not
-       if(a.level == b.level) return 0;
-       if(a.level == "-") return 1;
-       else return -1;
-    });
-    let text = '';
-    if(this.state.selected.exIds) {text = "Edit Bundle";}
-    else {text = "Create Bundle"};
     return (
       <div>
         <text style={{color: 'black'}}> <font size = '10'>{text}</font></text>
@@ -185,6 +177,55 @@ class BundleMatrix extends Component {
           </div>
       </div>
     )
+  }
+
+  renderView(bundle){ /* render for bundle view */
+    let titles = ["Exercise", "Sets", "Reps"];
+    return (
+      <div>
+        <text style={{color: 'black'}}> <font size = '10'>View Bundle</font></text>
+          <div style={{color: 'black'}} class = "table-responsive">
+            <table id="bundleTable" class="table" data-sort="table">
+            <thead>
+              <tr>
+                {titles.map(title => <th>{title}</th>)}
+              </tr>
+            </thead>
+            <tbody class="dash-table">
+            {bundle.map(ex => { if(ex.level!='-') {
+                return(
+                  <tr>
+                    <td><p><b>{ex.exname}</b></p></td>
+                    <td><p>{ex.sets}</p></td>
+                    <td><p>{ex.reps}</p></td>
+                  </tr>
+                )}
+             })}
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" onClick = {this.onSubmit}> Submit </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onCancel}> Cancel </button>
+          </div>
+      </div>
+    )
+  }
+
+  render() {
+    let bundle = this.state.bundle.slice(); //create a bundle copy so I can rearrange it
+    bundle.sort(function(a,b){              //sort by which exercises are selected or not
+       if(a.level == b.level) return 0;
+       if(a.level == "-") return 1;
+       else return -1;
+    });
+    let text = '';
+    if(this.state.edit) {
+      if(this.state.selected.exIds) {text = "Edit Bundle";}
+      else {text = "Create Bundle"};
+      return ( this.renderEdit(text, bundle));
+    }
+    else {
+      return ( this.renderView(bundle));
+    }
   }
 }
 export default BundleMatrix;
