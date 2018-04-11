@@ -190,7 +190,7 @@ class BundleMatrix extends Component {
     let titles = ["Exercise", "Sets", "Reps"];
     return (
       <div>
-        <text style={{color: 'black'}}> <font size = '10'>View Bundle</font></text>
+        <text style={{color: 'black'}}> <font size = '10'>Bundle {this.state.bundleID}</font></text>
           <div style={{color: 'black'}} class = "table-responsive">
             <table id="bundleTable" class="table" data-sort="table">
             <thead>
@@ -226,7 +226,7 @@ class BundleMatrix extends Component {
     });
     let text = '';
     if(this.state.edit) {
-      if(this.state.selected.exIds) {text = "Edit Bundle";}
+      if(this.state.selected.exIds) {text = "Edit Bundle " + this.state.bundleID;}
       else {text = "Create Bundle"};
       return ( this.renderEdit(text, bundle));
     }
