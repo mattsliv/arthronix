@@ -14,6 +14,7 @@ class BundleMatrix extends Component {
     this.onRemove = this.onRemove.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
+    this.onEdit   = this.onEdit.bind(this);
   }
 
   fetchBundle() { /* Is called when we are on edit or view bundle mode */
@@ -35,6 +36,7 @@ class BundleMatrix extends Component {
   }
 
   componentWillMount() { /* fetch exercises and initialize the level theyre set to*/
+    if (this.state.bundleID == 0 ) { this.setState({edit: true}) }
     if (this.state.bundleID > 0) { this.fetchBundle();/* We recieved a bundle to load */}
     fetch('/exercises')
       .then(res => res.json())
@@ -133,6 +135,11 @@ class BundleMatrix extends Component {
     this.onCancel();
   }
 
+  onEdit(e) {
+    e.preventDefault();
+    this.setState({edit:true });
+  }
+
   showGreyEx(ex){ /* takes an exercise, if it is included in the bundle show as black, else grey */
     if(ex.level == "-"){
       return(
@@ -203,8 +210,8 @@ class BundleMatrix extends Component {
              })}
               </tbody>
             </table>
-            <button type="button" class="btn btn-primary" onClick = {this.onSubmit}> Submit </button>
-            <button type="button" class="btn btn-primary" onClick = {this.onCancel}> Cancel </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onEdit}> Edit </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onCancel}> Close </button>
           </div>
       </div>
     )
