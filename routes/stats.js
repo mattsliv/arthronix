@@ -8,7 +8,6 @@ var db = pgp('postgres://arthronix@localhost/testdb');
 router.get('/', function(req, res, next){
   db.any('SELECT * FROM Statistics ORDER BY daterecorded')
      .then(function(data) {
-       console.log(data);
        res.json(data);
      })
      .catch(function(error) {
