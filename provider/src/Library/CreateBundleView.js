@@ -29,7 +29,6 @@ class BundleMatrix extends Component {
           exIds: [b.ex1, b.ex2, b.ex3, b.ex4, b.ex5, b.ex6, b.ex7, b.ex8, b.ex9, b.ex10],
           reps : [b.reps1, b.reps2, b.reps3, b.reps4, b.reps5, b.reps6, b.reps7, b.reps8, b.reps9, b.reps10],
           sets : [b.sets1, b.sets2, b.sets3, b.sets4, b.sets5, b.sets6, b.sets7, b.sets8, b.sets9, b.sets10],
-          levs : [b.lev1, b.lev2, b.lev3, b.lev4, b.lev5, b.lev6, b.lev7, b.lev8, b.lev9, b.lev10]
         }
         this.setState({selected});
   })
@@ -57,12 +56,20 @@ class BundleMatrix extends Component {
               if(selected.exIds[i] == null) break;
               bundle[selected.exIds[i]].reps = selected.reps[i];
               bundle[selected.exIds[i]].sets = selected.sets[i];
-              bundle[selected.exIds[i]].level = selected.levs[i];
+              bundle[selected.exIds[i]].level = this.computeLevel(selected.reps[i], selected.sets[i]);
             }
           }
         bundle = bundle.filter(entry => entry); //remove null entries
         this.setState({bundle});
       })
+  }
+
+  computeLevel(reps, sets){
+    if (reps == '-')       { return '-'}
+    else if (sets == '1-2'){ return 'low'}
+    else if (sets == '2-3'){ return 'med'}
+    else if (sets == '3-4'){ return 'high'}
+    else {                   return 'custom'}
   }
 
   levelBox(exercise) { /* returns jsx for level selection box */
@@ -132,12 +139,11 @@ class BundleMatrix extends Component {
   }
 
   onSubmit() { /* saves bundle then tells parent to close modal */
-    let data = {
+    let data = { // will replace this with data the user has edited
       id: 999,
       ex1: 22,
       sets1: 1000,
       reps1: 2000,
-      lev1: 'high'
     };
     var request = new Request('/addBundle', {
       method: 'POST',
@@ -151,10 +157,10 @@ class BundleMatrix extends Component {
           .then(function(data) {
           })
       })
-    this.onCancel();
+    this.onCancel(); //close
   }
 
-  onEdit(e) {
+  onEdit(e) { /* When edit is clicked, switches state to edit mode (which will render edit view) */
     e.preventDefault();
     this.setState({edit:true });
   }
@@ -189,13 +195,9 @@ class BundleMatrix extends Component {
         <text style={{color: 'black'}}> <font size = '10'>{text}</font></text>
           <div style={{color: 'black'}} class = "table-responsive">
             <table id="bundleTable" class="table" data-sort="table">
-            <thead>
-              <tr>
-                {titles.map(title => <th>{title}</th>)}
-              </tr>
-            </thead>
+            <thead> <tr> {titles.map(title => <th>{title}</th>)} </tr> </thead>
             <tbody class="dash-table">
-            {bundle.map(ex => this.showGreyEx(ex))}
+                {bundle.map(ex => this.showGreyEx(ex))}
               </tbody>
             </table>
             <button type="button" class="btn btn-primary" onClick = {this.onSubmit}> Submit </button>
@@ -212,11 +214,7 @@ class BundleMatrix extends Component {
         <text style={{color: 'black'}}> <font size = '10'>Bundle {this.state.bundleID}</font></text>
           <div style={{color: 'black'}} class = "table-responsive">
             <table id="bundleTable" class="table" data-sort="table">
-            <thead>
-              <tr>
-                {titles.map(title => <th>{title}</th>)}
-              </tr>
-            </thead>
+            <thead> <tr> {titles.map(title => <th>{title}</th>)} </tr> </thead>
             <tbody class="dash-table">
             {bundle.map(ex => { if(ex.level!='-') {
                 return(
@@ -244,12 +242,12 @@ class BundleMatrix extends Component {
        else return -1;
     });
     let text = '';
-    if(this.state.edit) {
+    if(this.state.edit) {                   //user wants to edit bundle so show edit view
       if(this.state.selected.exIds) {text = "Edit Bundle " + this.state.bundleID;}
       else {text = "Create Bundle"};
       return ( this.renderEdit(text, bundle));
     }
-    else {
+    else {                                 //user is just viewing bundle :)
       return ( this.renderView(bundle));
     }
   }

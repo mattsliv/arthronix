@@ -28,9 +28,7 @@ CREATE TABLE Bundles (
   Reps1 varchar(50), Reps2 varchar(50),Reps3 varchar(50), Reps4 varchar(50), Reps5 varchar(50),
   Reps6 varchar(50), Reps7 varchar(50),Reps8 varchar(50), Reps9 varchar(50), Reps10 varchar(50),
   Sets1 varchar(50), Sets2 varchar(50), Sets3 varchar(50), Sets4 varchar(50), Sets5 varchar(50),
-  Sets6 varchar(50), Sets7 varchar(50), Sets8 varchar(50), Sets9 varchar(50), Sets10 varchar(50),
-  Lev1 varchar(50), Lev2 varchar(50), Lev3 varchar(50), Lev4 varchar(50), Lev5 varchar(50),
-  Lev6 varchar(50), Lev7 varchar(50), Lev8 varchar(50), Lev9 varchar(50), Lev10 varchar(50)
+  Sets6 varchar(50), Sets7 varchar(50), Sets8 varchar(50), Sets9 varchar(50), Sets10 varchar(50)
 );
 
 CREATE TABLE Exercises (
