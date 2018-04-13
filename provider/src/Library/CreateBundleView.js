@@ -132,6 +132,25 @@ class BundleMatrix extends Component {
   }
 
   onSubmit() { /* saves bundle then tells parent to close modal */
+    let data = {
+      id: 999,
+      ex1: 22,
+      sets1: 1000,
+      reps1: 2000,
+      lev1: 'high'
+    };
+    var request = new Request('/addBundle', {
+      method: 'POST',
+      headers: new Headers({'Content-Type': 'application/json'}),
+      body: JSON.stringify(data)
+    });
+
+    fetch(request)
+      .then(function(response) {
+        response.json()
+          .then(function(data) {
+          })
+      })
     this.onCancel();
   }
 
