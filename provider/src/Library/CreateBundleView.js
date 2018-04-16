@@ -6,7 +6,7 @@ class BundleMatrix extends Component {
     super(props)
     this.state = {
       bundleID: props.bundleID,
-      bundle: [],
+      exercises: [],
       selected: [],
       edit: false
     }
@@ -40,7 +40,7 @@ class BundleMatrix extends Component {
     fetch('/exercises')
       .then(res => res.json())
       .then(exercises => { /* fetch and initialize all exercises in DB */
-        let bundle   = exercises.map(ex => {
+        let b   = exercises.map(ex => {
           var rEx = {
             key: ex.id,
             exname: ex.exname,
@@ -54,13 +54,13 @@ class BundleMatrix extends Component {
           if(selected.exIds) {  /* Update selected exercises now */
             for (var i = 0; i < selected.exIds.length; i++) {
               if(selected.exIds[i] == null) break;
-              bundle[selected.exIds[i]].reps = selected.reps[i];
-              bundle[selected.exIds[i]].sets = selected.sets[i];
-              bundle[selected.exIds[i]].level = this.computeLevel(selected.reps[i], selected.sets[i]);
+              b[selected.exIds[i]].reps = selected.reps[i];
+              b[selected.exIds[i]].sets = selected.sets[i];
+              b[selected.exIds[i]].level = this.computeLevel(selected.reps[i], selected.sets[i]);
             }
           }
-        bundle = bundle.filter(entry => entry); //remove null entries
-        this.setState({bundle});
+        exercises = b.filter(entry => entry); //remove null entries
+        this.setState({exercises});
       })
   }
 
@@ -92,24 +92,24 @@ class BundleMatrix extends Component {
   }
 
   onLevelChange(changeEvent){ /* gets called when user selects level on level box*/
-    let bundle = this.state.bundle;
+    let exercises = this.state.exercises;
     let level = changeEvent.target.value;
     let key = changeEvent.target.id;
 
-    bundle[key-1].level = level;
+    exercises[key-1].level = level;
     if(level == "high"){
-      bundle[key-1].reps = "10-12";
-      bundle[key-1].sets = "3-4";
+      exercises[key-1].reps = "10-12";
+      exercises[key-1].sets = "3-4";
     }
     else if (level == "med"){
-      bundle[key-1].reps = "8-10";
-      bundle[key-1].sets = "2-3";
+      exercises[key-1].reps = "8-10";
+      exercises[key-1].sets = "2-3";
     }
     else {
-      bundle[key-1].reps = "6-8";
-      bundle[key-1].sets = "1-2";
+      exercises[key-1].reps = "6-8";
+      exercises[key-1].sets = "1-2";
     }
-    this.setState({ bundle });
+    this.setState({ exercises });
   }
 
   removeBox(exercise){ /* returns jsx for remove exercise from bundle button */
@@ -124,13 +124,13 @@ class BundleMatrix extends Component {
 
   onRemove(e){ /* gets called when user selects remove on an exercise (removes it from their bundle)*/
     e.preventDefault();
-    let bundle = this.state.bundle;
+    let exercises = this.state.exercises;
     let key = e.target.id;
 
-    bundle[key-1].level = "-";
-    bundle[key-1].reps = "-";
-    bundle[key-1].sets = "-";
-    this.setState({ bundle });
+    exercises[key-1].level = "-";
+    exercises[key-1].reps = "-";
+    exercises[key-1].sets = "-";
+    this.setState({ exercises });
   }
 
   onCancel() { /* tells parent to close modal */
@@ -235,8 +235,8 @@ class BundleMatrix extends Component {
   }
 
   render() {
-    let bundle = this.state.bundle.slice(); //create a bundle copy so I can rearrange it
-    bundle.sort(function(a,b){              //sort by which exercises are selected or not
+    let exercises = this.state.exercises.slice(); //create a bundle copy so I can rearrange it
+    exercises.sort(function(a,b){              //sort by which exercises are selected or not
        if(a.level == b.level) return 0;
        if(a.level == "-") return 1;
        else return -1;
@@ -245,10 +245,10 @@ class BundleMatrix extends Component {
     if(this.state.edit) {                   //user wants to edit bundle so show edit view
       if(this.state.selected.exIds) {text = "Edit Bundle " + this.state.bundleID;}
       else {text = "Create Bundle"};
-      return ( this.renderEdit(text, bundle));
+      return ( this.renderEdit(text, exercises));
     }
     else {                                 //user is just viewing bundle :)
-      return ( this.renderView(bundle));
+      return ( this.renderView(exercises));
     }
   }
 }
