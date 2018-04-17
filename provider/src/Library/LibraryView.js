@@ -52,7 +52,6 @@ constructor (props){
 
 class SupportRow extends Component { /* display educational support matieral*/
 
-
    constructor (props) {
       super();
       this.state = {
