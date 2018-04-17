@@ -11,10 +11,10 @@ var users = require('./routes/users');
 var stats = require('./routes/stats');
 var exercises = require('./routes/exercises');
 var bundles = require('./routes/bundles');
+var addBundle = require('./routes/addBundle');
 
 var app = express();
 var db = pgp('postgres://arthronix@localhost/testdb');
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +33,7 @@ app.use('/users', users);
 app.use('/stats', stats);
 app.use('/exercises', exercises);
 app.use('/bundles', bundles);
+app.use('/addBundle', addBundle);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
