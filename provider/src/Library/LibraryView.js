@@ -37,6 +37,7 @@ constructor (props){
     const {pageNumber, numPages} = this.state;
 
     return (
+
       <div align = 'center'>
         <p>Page {this.state.pageNumber} of {this.state.numPages}</p>
         <Document file = {pdfFile} onLoadSucess={this.onDocumentLoad}>
@@ -77,7 +78,7 @@ class SupportRow extends Component { /* display educational support matieral*/
            <text style={{color: 'black'}}> <font size = '5'> Viewing PDF </font></text>
            <PdfView />
            <div align = 'right'>
-            <button type="button" class="btn btn-primary" onClick = {this.handleCloseModal}> Close </button>
+            <button type="button" class="btn btn-primary" onClick = {this.handleCloseModal} style = {{position: 'fixed', bottom: '50px', right: '50px'}}> Close </button>
           </div>
       </Modal> )
     }
