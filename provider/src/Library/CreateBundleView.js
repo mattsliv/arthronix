@@ -197,8 +197,8 @@ class BundleMatrix extends Component {
                 {bundle.map(ex => this.showGreyEx(ex))}
               </tbody>
             </table>
-            <button type="button" class="btn btn-primary" onClick = {this.onSubmit}> Submit </button>
-            <button type="button" class="btn btn-primary" onClick = {this.onCancel}> Cancel </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onSubmit} style = {{position: 'fixed', bottom: '50px', right: '100px'}} > Submit </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onCancel} style = {{position: 'fixed', bottom: '50px', right: '50px'}} > Cancel </button>
           </div>
       </div>
     )
@@ -224,8 +224,8 @@ class BundleMatrix extends Component {
              })}
               </tbody>
             </table>
-            <button type="button" class="btn btn-primary" onClick = {this.onEdit}> Edit </button>
-            <button type="button" class="btn btn-primary" onClick = {this.onCancel}> Close </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onEdit} style = {{position: 'fixed', bottom: '50px', right: '50px'}}> Edit </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onCancel} style = {{position: 'fixed', bottom: '50px', right: '90px'}}> Close </button>
           </div>
       </div>
     )
