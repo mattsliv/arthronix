@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import Modal from 'react-modal'
-import pdf from '../images/pdf.png'
+import pdf from '../images/pdf.png';
 import pdfFile from './PDFs/leg.pdf'
 import CreateBundle from './CreateBundleView'
 import {Document,Page} from 'react-pdf'
@@ -42,6 +42,7 @@ constructor (props){
         <Document file = {pdfFile} onLoadSucess={this.onDocumentLoad}>
             <Page pageNumber = {pageNumber} />
         </Document>
+        <button type = 'button' onClick = {this.onPageChange}>NEXT</button>
       </div>
     )
   }
