@@ -139,15 +139,9 @@ class BundleMatrix extends Component {
   }
 
   onSubmit() { /* saves bundle then tells parent to close modal */
-    // let data = { // will replace this with data the user has edited
-    //   id: 999,
-    //   ex1: 22,
-    //   sets1: 1000,
-    //   reps1: 2000,
-    // };
     let data = {
       exercises: this.state.exercises
-    }
+    };
     var request = new Request('/addBundle', {
       method: 'POST',
       headers: new Headers({'Content-Type': 'application/json'}),
@@ -155,14 +149,11 @@ class BundleMatrix extends Component {
     });
 
     fetch(request)
-      // .then(function(response) {
-      //   response.json()
-      //     .then(function(data) {
-      //     })
-      // .catch((error) => {
-      //   console.error(error);
-      // });
-      // })
+      .then((response) => response.json())
+      .catch((error) => {
+        console.error(error);
+      });
+
     this.onCancel(); //close
   }
 
