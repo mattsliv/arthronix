@@ -140,14 +140,23 @@ class BundleMatrix extends Component {
 
   onSubmit() { /* saves bundle then tells parent to close modal */
     let data = {
-      exercises: this.state.exercises
+      exercises: this.state.exercises,
+      id: this.state.bundleID
     };
-    var request = new Request('/addBundle', {
-      method: 'POST',
-      headers: new Headers({'Content-Type': 'application/json'}),
-      body: JSON.stringify(data)
-    });
-
+    if(this.state.bundleID < 1) { // create new bundle
+      var request = new Request('/addBundle', {
+        method: 'POST',
+        headers: new Headers({'Content-Type': 'application/json'}),
+        body: JSON.stringify(data)
+      });
+    }
+    else {                        //edit bundle
+      var request = new Request('/editBundle', {
+        method: 'PUT',
+        headers: new Headers({'Content-Type': 'application/json'}),
+        body: JSON.stringify(data)
+      });
+    }
     fetch(request)
       .then((response) => response.json())
       .catch((error) => {
