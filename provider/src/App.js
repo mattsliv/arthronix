@@ -11,6 +11,7 @@ import CreateBundle from './Library/CreateBundleView'
 import Community from './Community'
 import PatientView from './PatientDash/PatientView'
 
+import screen from 'images/screen.png';
 import 'styles/docs/assets/css/toolkit-inverse.css';
 import 'styles/docs/assets/css/application.css';
 import 'styles/docs/assets/css/docs.css';
@@ -28,12 +29,38 @@ class Patients extends Component {
     const patients = this.props.patients;
     return(
       <div>
-        <h1>Patients</h1>
+        {/* <h1>Patients</h1>
         <h3>
           {patients.map(patient =>
             <div key={patient.id}>{patient.id} : {patient.firstname} {patient.lastname}</div>)}
-        </h3>
-      </div>
+        </h3> */}
+
+        <div class="container home-content">
+
+          <div class="row">
+            <div class="col-md-5 col-centered">
+              <h1>Arthronix</h1>
+              <div class="hr-divider">
+                <h3 class="hr-divider-content hr-divider-heading"></h3>
+              </div>
+              <p>Arthronix is a new web and mobile application available for
+                physical therapy patients and providers, respectively. It is intended to
+                support patients with their treatment plans through better connection
+                and information exchange with their healthcare teams. It serves as a
+                hub for resources that address patient concerns pre and post surgery
+                in a concise manner. This enables patients to learn more about their
+                procedure which helps them gain confidence in recovery.</p>
+            </div>
+
+            <div class="col-md-7">
+              <img class="screen" src={screen} alt="screen" />
+            </div>
+          </div>
+
+          </div>
+
+        </div>
+
     )
   }
 }
@@ -82,7 +109,7 @@ class App extends Component {
             <Route path="/community" component={Community}/>
           </Switch>
 
-          <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty>
+          {/* <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty> */}
         </div>
       </Router>
     )

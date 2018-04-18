@@ -16,6 +16,7 @@
     "popper.js": "^1.12.9",
     "react": "^16.2.0",
     "react-chartjs-2": "^2.7.0",
+    "react-datetime": "^2.14.0",
     "react-dom": "^16.2.0",
     "react-input-calendar": "^0.5.2",
     "react-json-pretty": "^1.7.4",

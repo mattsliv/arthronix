@@ -1,3 +1,35 @@
+/* HEADING STYLES */
+
+.btn{
+  font-size: 14px!important;
+  background-color: #434856;
+}
+
+.btn:hover{
+  background-color: #515665;
+  transition:ease .4s;
+}
+
+.btn, .btn:hover{
+  color: #fff;
+  border-style:none!important
+}
+
+.patient-main h2{
+  font-size:2.5rem
+}
+
+.input-group .form-control{
+  font-size:12px
+}
+
+.data-datepicker{
+  margin-top:80px
+}
+
+
+/* SLIDER STYLES */
+
 * {
 -webkit-box-sizing: border-box;
 box-sizing: border-box;
@@ -5,21 +37,27 @@ box-sizing: border-box;
 
 body { font-family: sans-serif; }
 
+.gallery{
+  clear:both;
+  margin:0 auto;
+  margin-top:50px;
+  background-color: #434856;
+}
 
 .gallery-cell {
 width: 28%;
 margin-right: 10px;
 background: #8C8;
 counter-increment: gallery-cell;
-margin-top:3%;
+margin-top:1.5%;
 text-align:center
 }
 
 .gallery-cell.is-selected {
-background: #ED2;
-height: 215px;
-transition: ease .3s;
+background: #9F86FF;
+height: 180px;
 margin-top:0;
+padding:3rem!important
 }
 
 /* cell number */
@@ -33,5 +71,18 @@ color: white;
 }
 
 .flickity-viewport{
-  height: 250px!important;
+  height: 200px!important;
+  margin-top: 24px;
+}
+
+.flickity-page-dots{
+  display:none;
+}
+
+.statcard-desc{
+  font-size:12px!important
+}
+
+.statcard-desc input{
+  margin-right:5px
 }

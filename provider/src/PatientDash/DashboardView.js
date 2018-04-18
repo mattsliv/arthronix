@@ -10,7 +10,7 @@ import PatientView from './PatientView';
 import green from '../images/green.png';
 import red from '../images/red.png';
 import yellow from '../images/yellow.png';
-
+import '../styles/docs/assets/css/patient/dashboard/dashboard-styles.css';
 
 
 
@@ -79,7 +79,7 @@ class PatientTable extends Component {
                   </td>
                   <td><span class="icon icon-typing"></span></td>
                   <td>{patient.patienttype}</td>
-                  <td>{patient.nextapt}</td>
+                  <td>{patient.nextapt}June 13th, 2018</td>
                 </tr>
               </tbody>
             ))}

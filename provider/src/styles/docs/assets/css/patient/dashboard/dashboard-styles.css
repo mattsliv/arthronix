@@ -1,0 +1,13 @@
+h1, .table-responsive{
+  max-width:70%;
+  margin:0 auto
+}
+
+h1{
+  margin-bottom:35px!important;
+  font-size:28px;
+}
+
+table, h1{
+  text-align:center
+}
