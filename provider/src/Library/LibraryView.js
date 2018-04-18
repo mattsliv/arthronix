@@ -10,6 +10,7 @@ import Modal from 'react-modal'
 import pdf from '../images/pdf.png';
 import pdfFile from './PDFs/leg.pdf'
 import CreateBundle from './CreateBundleView'
+import Video from './VideoModal'
 import {Document,Page} from 'react-pdf'
 
 class PdfView extends Component {
@@ -19,25 +20,18 @@ constructor (props){
       numPages: 2,
       pageNumber: 1,
     };
-
     this.onDocumentLoad = this.onDocumentLoad.bind(this);
-
 }
-
   onDocumentLoad = ({numPages}) => {
     this.setState({ numPages });
   }
   onPageChange= ({pageNumber}) => {
     this.setState({pageNumber: 2});
   }
-
-
-
   render() {
     const {pageNumber, numPages} = this.state;
 
     return (
-
       <div align = 'center'>
         <p>Page {this.state.pageNumber} of {this.state.numPages}</p>
         <Document file = {pdfFile} onLoadSucess={this.onDocumentLoad}>
@@ -60,7 +54,6 @@ class SupportRow extends Component { /* display educational support matieral*/
 
       this.handleOpenModal = this.handleOpenModal.bind(this);
       this.handleCloseModal = this.handleCloseModal.bind(this);
-
     }
 
     handleOpenModal () {
@@ -114,7 +107,30 @@ class SupportRow extends Component { /* display educational support matieral*/
 }
 
 class VideoRow extends Component { /* display exercise video content */
-
+  constructor (props) {
+     super();
+     this.state = {
+      showModal: false,
+      videoValue : null
+     };
+     this.handleOpenModal = this.handleOpenModal.bind(this);
+     this.handleCloseModal = this.handleCloseModal.bind(this);
+   }
+   handleOpenModal (openEvent) {
+     this.setState({ showModal: true, videoValue: openEvent.target.id});
+   }
+   handleCloseModal () {
+     this.setState({ showModal: false });
+   }
+  getModal () {
+     return (
+     <Modal isOpen = {this.state.showModal}>
+          <Video videoID = {this.state.videoValue} />
+          <div align = 'right'>
+           <button type="button" class="btn btn-primary" onClick = {this.handleCloseModal} style = {{position: 'fixed', bottom: '50px', right: '50px'}}> Close </button>
+         </div>
+     </Modal> )
+   }
   render() {
     return (
       <div>
@@ -122,9 +138,10 @@ class VideoRow extends Component { /* display exercise video content */
           <tr padding="20px">
             <td><h3>Videos</h3></td>
             <td>
-              <button type="button" class="btn btn-primary" >
+              <button type="button" class="btn btn-primary" onClick = {this.handleOpenModal}>
                 + Add New
               </button>
+              {this.getModal()}
             </td>
             <td>
               <button type="button" class="btn btn-primary" >
@@ -132,11 +149,13 @@ class VideoRow extends Component { /* display exercise video content */
               </button>
             </td>
           </tr>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
+
+         <img src = "https://img.youtube.com/vi/o5b0gS7wI1k/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/o5b0gS7wI1k' />
+         <img src = "https://img.youtube.com/vi/A7OTduW8QqI/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/A7OTduW8QqI'/>
+         <img src = "https://img.youtube.com/vi/9Vs7-M-pkNA/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id= 'https://www.youtube.com/embed/9Vs7-M-pkNA'/>
+         <img src = "https://img.youtube.com/vi/3OiJqAtPQUc/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/3OiJqAtPQUc'/>
+         <img src = "https://img.youtube.com/vi/1uwAyZ2RyLQ/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/1uwAyZ2RyLQ'/>
+
         </table>
       </div>
     )
@@ -197,8 +216,6 @@ class BundleRow extends Component { /* Displays bundle and on click can edit/cre
     )
   }
 }
-
-
 
 class LibraryTable extends Component {
   render() {
