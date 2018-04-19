@@ -184,14 +184,24 @@ class BundleMatrix extends Component {
   onDelete(e) { /* When clicked, will delete the particular bundle. */
     e.preventDefault();
     let bundleKeys = this.state.bundleKeys;
-    let bindex = -1;
+    //make the request
+    let data = {id: this.state.bundleID}
+    var request = new Request('/deleteBundle', {
+      method: 'DELETE',
+      headers: new Headers({'Content-Type': 'application/json'}),
+      body: JSON.stringify(data)
+    })
+    fetch(request)
+      .catch((error) => {console.error(error);})
+    //update locally and inform the parent
     const { updateBundle } = this.props; //parent's update function
+    let bindex = -1;
     for(var i=0; i<bundleKeys.length; i++){
       if(bundleKeys[i] == this.state.bundleID){ bindex = i;}
     }
     if(bindex > -1) { bundleKeys.splice(bindex,1); } //remove the key
     this.setState({bundleKeys});
-    this.updateBundle(bundleKeys);
+    updateBundle(bundleKeys);
     this.onCancel();                     //close Modal
   }
 
