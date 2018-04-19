@@ -85,20 +85,11 @@ class SupportRow extends Component { /* display educational support matieral*/
     render() {
       return (
         <div>
+        <h3>Educational Support</h3>
+        <button type="button" class="btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal} >
+         + Add New Doc
+        </button>
           <table>
-            <tr padding="20px">
-              <td><h3>Educational Support</h3></td>
-              <td>
-                <button type="button" class="btn btn-primary" onClick = {this.handleOpenModal} >
-                 + Add New
-                </button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-primary" >
-                  Expand All
-                </button>
-              </td>
-            </tr>
             {this.getModal()}
             <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile}/>
             <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile2}/>
@@ -140,20 +131,16 @@ class VideoRow extends Component { /* display exercise video content */
   render() {
     return (
       <div>
+      <h3> Videos </h3>
+        <button type="button" class="btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal} >
+          + Add New Video
+        </button>
         <table class="bundle-week-video">
           <tr padding="20px">
-            <td><h3>Videos</h3></td>
-            <td>
-              <button type="button" class="btn btn-primary" onClick = {this.handleOpenModal}>
-                + Add New
-              </button>
+
+
               {this.getModal()}
-            </td>
-            <td>
-              <button type="button" class="btn btn-primary" >
-                Expand All
-              </button>
-            </td>
+
           </tr>
 
          <img src = "https://img.youtube.com/vi/o5b0gS7wI1k/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/o5b0gS7wI1k' />
@@ -219,21 +206,12 @@ class BundleRow extends Component { /* Displays bundle and on click can edit/cre
     let bundleKeys = this.state.bundleKeys;
     return (
       <div>
+         <h3>Bundles</h3>
+         <button type="button" value='0' class = "btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal}> +Add New Bundle </button>
+         {this.getModal()} {/* The modal used throughout; only need one */}
+
         <table class="bundle-week-button">
-          <tr padding="20px">
-            <td><h3>Bundles</h3></td>
-            <td>
-              <div>
-                 <button type="button" value='0' class="btn btn-primary" onClick = {this.handleOpenModal}> +Add New </button>
-                 {this.getModal()} {/* The modal used throughout; only need one */}
-              </div>
-            </td>
-            <td>
-              <button type="button" class="btn btn-primary" >
-                  Expand All
-              </button>
-            </td>
-          </tr>
+
           {bundleKeys.map(key => { //dynamic bundle button
             return (
               <button type="button" value={key} class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week {key} </button>
