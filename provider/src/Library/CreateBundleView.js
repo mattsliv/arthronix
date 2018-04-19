@@ -53,9 +53,9 @@ class BundleMatrix extends Component {
           return rEx;
           })
           let selected = this.state.selected;
-          if(selected.exIds) {  /* Update selected exercises now */
+          if(selected.exIds) {  /* Update selected exercises now */ //is this right
             for (var i = 0; i < selected.exIds.length; i++) {
-              if(selected.exIds[i] == null) break;
+              if(selected.exIds[i] == null) break; //this entry is blank
               b[selected.exIds[i]].reps = selected.reps[i];
               b[selected.exIds[i]].sets = selected.sets[i];
               b[selected.exIds[i]].level = this.computeLevel(selected.reps[i], selected.sets[i]);

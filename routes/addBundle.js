@@ -4,9 +4,10 @@ var pgp = require('pg-promise')(/*options*/)
 var db = pgp('postgres://arthronix@localhost/testdb');
 
 router.post('/', function(req, res, next){
-  db.query('SELECT COUNT(*) FROM bundles')
+   db.query('SELECT id FROM bundles where id = (SELECT max(id) FROM bundles)')
     .then(function(data) {
-      let id = parseInt(data[0].count) + 1; //get the last row number to know what id we're on
+      let id = 1;                         //default
+      if(data[0]) { id = parseInt(data[0].id) + 1; } //get the last row number to know what id we're on
       let values = [id];                //the values to insert into DB. start with bundle id.
       let exs = req.body.exercises;
       for(i = 0; i < exs.length; i++) { //fill in selected exercises
@@ -25,7 +26,8 @@ router.post('/', function(req, res, next){
            .catch(function(error) {
              console.log(error);
            });
-        res.send({id}); //depreciated
+        console.log("Generated bundle {id}");
+        res.send({id});
       }
     })
     .catch(function(error) {
