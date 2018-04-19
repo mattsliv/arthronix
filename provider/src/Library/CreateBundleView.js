@@ -8,13 +8,15 @@ class BundleMatrix extends Component {
       bundleID: props.bundleID,
       exercises: [],
       selected: [],
-      edit: false
+      edit: false,
+      bundleKeys: props.bundleKeys
     }
     this.onLevelChange = this.onLevelChange.bind(this);
     this.onRemove = this.onRemove.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onEdit   = this.onEdit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
   fetchBundle() { /* Is called when we are on edit or view bundle mode */
@@ -139,36 +141,58 @@ class BundleMatrix extends Component {
   }
 
   onSubmit() { /* saves bundle then tells parent to close modal */
+    const { updateBundle } = this.props; //parent's update function
     let data = {
       exercises: this.state.exercises,
       id: this.state.bundleID
     };
-    if(this.state.bundleID < 1) { // create new bundle
+    if(this.state.bundleID < 1) { // create new bundle request type
       var request = new Request('/addBundle', {
         method: 'POST',
         headers: new Headers({'Content-Type': 'application/json'}),
         body: JSON.stringify(data)
       });
     }
-    else {                        //edit bundle
+    else {                        //edit bundle request type
       var request = new Request('/editBundle', {
         method: 'PUT',
         headers: new Headers({'Content-Type': 'application/json'}),
         body: JSON.stringify(data)
       });
     }
-    fetch(request)
-      .then((response) => response.json())
+    fetch(request)              //execute request
+      .then((response) =>  response.json())
+      .then(data => {          //if new bundle, append the new key to bundleKeys
+        if(this.state.bundleID < 1){
+          let bundleKeys = this.state.bundleKeys;
+          bundleKeys.push(data.id);
+          this.setState({bundleKeys});
+          updateBundle(bundleKeys);  //and inform parent of the change.
+        }
+      })
       .catch((error) => {
         console.error(error);
       });
-
     this.onCancel(); //close
   }
 
   onEdit(e) { /* When edit is clicked, switches state to edit mode (which will render edit view) */
     e.preventDefault();
     this.setState({edit:true });
+  }
+
+  onDelete(e) { /* When clicked, will delete the particular bundle. */
+    e.preventDefault();
+    let bundleKeys = this.state.bundleKeys;
+    let bindex = -1;
+    const { updateBundle } = this.props; //parent's update function
+    for(var i=0; i<bundleKeys.length; i++){
+      if(bundleKeys[i] == this.state.bundleID){ bindex = i;}
+    }
+    if(bindex > -1) { bundleKeys.splice(bindex,1); } //remove the key
+    this.setState({bundleKeys});
+    this.updateBundle(bundleKeys);
+    this.onCancel();                     //close Modal
   }
 
   showGreyEx(ex){ /* takes an exercise, if it is included in the bundle show as black, else grey */
@@ -206,6 +230,7 @@ class BundleMatrix extends Component {
                 {bundle.map(ex => this.showGreyEx(ex))}
               </tbody>
             </table>
+            <button type="button" class="btn btn-primary" onClick = {this.onDelete} style = {{position: 'fixed', top: '50px', right: '60px'}}> Delete </button>
             <button type="button" class="btn btn-primary" onClick = {this.onSubmit} style = {{position: 'fixed', bottom: '50px', right: '110px'}} > Submit </button>
             <button type="button" class="btn btn-primary" onClick = {this.onCancel} style = {{position: 'fixed', bottom: '50px', right: '60px'}} > Cancel </button>
           </div>
@@ -233,6 +258,7 @@ class BundleMatrix extends Component {
              })}
               </tbody>
             </table>
+            <button type="button" class="btn btn-primary" onClick = {this.onDelete} style = {{position: 'fixed', top: '50px', right: '60px'}}> Delete </button>
             <button type="button" class="btn btn-primary" onClick = {this.onEdit} style = {{position: 'fixed', bottom: '50px', right: '60px'}}> Edit </button>
             <button type="button" class="btn btn-primary" onClick = {this.onCancel} style = {{position: 'fixed', bottom: '50px', right: '100px'}}> Close </button>
           </div>

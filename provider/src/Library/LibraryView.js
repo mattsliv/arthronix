@@ -166,11 +166,24 @@ class BundleRow extends Component { /* Displays bundle and on click can edit/cre
   constructor (props) {
     super();
     this.state = {
-      showModal: -1 /* modal starts closed */
+      showModal: -1, /* modal starts closed */
+      bundleKeys: []
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleUpdateBundle = this.handleUpdateBundle.bind(this);
+  }
+
+  componentWillMount () { /* Get the bundle keys */
+    fetch('/bundleKeys')
+      .then(res => res.json())
+      .then(bundleKeys => {
+        let bk = bundleKeys.map(key => parseInt(key.id));
+        function sortNumber(a,b) {return a - b;}
+        bk.sort(sortNumber);
+        this.setState({bundleKeys: bk});
+      })
   }
 
   handleOpenModal (openEvent) { /* open the modal according to which bundle was clicked */
@@ -181,14 +194,19 @@ class BundleRow extends Component { /* Displays bundle and on click can edit/cre
     this.setState({ showModal: -1 });
   }
 
+  handleUpdateBundle (bundleKeys) {
+    this.setState({bundleKeys});
+  }
+
   getModal () { /* jsx to display modal */
     return (
     <Modal isOpen = {this.state.showModal >= 0}>
-         <CreateBundle bundleID={this.state.showModal} closeModal = {this.handleCloseModal}/> {/* send which bundle it was clicked from */}
+         <CreateBundle bundleID={this.state.showModal} bundleKeys={this.state.bundleKeys} updateBundle = {this.handleUpdateBundle} closeModal = {this.handleCloseModal}/> {/* send which bundle it was clicked from */}
     </Modal> )
   }
 
   render() {
+    let bundleKeys = this.state.bundleKeys;
     return (
       <div>
         <table class="bundle-week-button">
@@ -206,11 +224,11 @@ class BundleRow extends Component { /* Displays bundle and on click can edit/cre
               </button>
             </td>
           </tr>
-          <button type="button" value='1' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 1 </button>
-          <button type="button" value='2' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 2 </button>
-          <button type="button" value='3' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 3 </button>
-          <button type="button" value='4' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 4 </button>
-          <button type="button" value='5' class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week 5 </button>
+          {bundleKeys.map(key => { //dynamic bundle button
+            return (
+              <button type="button" value={key} class="btn btn-sm btn-pill btn-info" onClick = {this.handleOpenModal}> Week {key} </button>
+            )
+          })}
         </table>
       </div>
     )

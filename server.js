@@ -13,6 +13,7 @@ var exercises = require('./routes/exercises');
 var bundles = require('./routes/bundles');
 var addBundle = require('./routes/addBundle');
 var editBundle = require('./routes/editBundle');
+var bundleKeys = require('./routes/bundleKeys');
 
 var app = express();
 var db = pgp('postgres://arthronix@localhost/testdb');
@@ -36,6 +37,7 @@ app.use('/exercises', exercises);
 app.use('/bundles', bundles);
 app.use('/addBundle', addBundle);
 app.use('/editBundle', editBundle);
+app.use('/bundleKeys', bundleKeys);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
