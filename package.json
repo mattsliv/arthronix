@@ -16,6 +16,8 @@
     "pg-promise": "^7.5.2",
     "react-json-pretty": "^1.7.4",
     "react-modal": "^3.3.2",
+    "react-pdf": "^3.0.4",
+    "react-pdf-reader": "^0.1.8",
     "serve-favicon": "~2.4.5"
   }
 }

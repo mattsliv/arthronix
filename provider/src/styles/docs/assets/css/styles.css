@@ -65,6 +65,11 @@ table th{
 .pdf-image{
   max-width:15%
 }
+.video-thumbnail{
+  margin: 1em;
+  width: 180px;
+  height: 135px;
+}
 
 
 /* --------- Patient View --------- */
