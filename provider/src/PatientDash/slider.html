@@ -1,0 +1,169 @@
+<head>
+  <!-- other head stuff... -->
+  <link rel="stylesheet" href="flickity.css" media="screen">
+  <style>
+  /* external css: flickity.css */
+      * {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      }
+      body { font-family: sans-serif; }
+      .gallery {
+      background: #EEE;
+      }
+      .gallery-cell {
+      width: 28%;
+      margin-right: 10px;
+      background: #8C8;
+      counter-increment: gallery-cell;
+      margin-top:3%;
+      text-align:center
+      }
+      .gallery-cell.is-selected {
+      background: #ED2;
+      height: 250px;
+      transition: ease .3s;
+      margin-top:0;
+      }
+      /* cell number */
+      .gallery-cell:before {
+      display: block;
+      text-align: center;
+      /* content: counter(gallery-cell); */
+      line-height: 200px;
+      font-size: 80px;
+      color: white;
+      }
+      .flickity-viewport{
+        height: 250px!important;
+      }
+  </style>
+</head>
+<body>
+  <!-- all your great html... -->
+  <!-- Flickity HTML init -->
+<div class="gallery js-flickity">
+  <div class="gallery-cell">
+    <p>3/24/18</p>
+    <h2>Name of Bundle</h2>
+    <div>
+    <input type="checkbox" id="coding" name="interest" value="coding" checked>
+    <label for="coding">Lunges (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Squats (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+    </div>
+  </div>
+
+
+  <div class="gallery-cell">
+    <p>3/24/18</p>
+    <h2>Name of Bundle</h2>
+    <div>
+    <input type="checkbox" id="coding" name="interest" value="coding" checked>
+    <label for="coding">Lunges (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Squats (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+    </div>
+  </div>
+
+  <div class="gallery-cell">
+    <p>3/24/18</p>
+    <h2>Name of Bundle</h2>
+    <div>
+    <input type="checkbox" id="coding" name="interest" value="coding" checked>
+    <label for="coding">Lunges (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Squats (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+    </div>
+  </div>
+
+  <div class="gallery-cell">
+    <p>3/24/18</p>
+    <h2>Name of Bundle</h2>
+    <div>
+    <input type="checkbox" id="coding" name="interest" value="coding" checked>
+    <label for="coding">Lunges (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Squats (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+    </div>
+  </div>
+
+  <div class="gallery-cell">
+    <p>3/24/18</p>
+    <h2>Name of Bundle</h2>
+    <div>
+    <input type="checkbox" id="coding" name="interest" value="coding" checked>
+    <label for="coding">Lunges (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Squats (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+    </div>
+  </div>
+
+  <div class="gallery-cell">
+    <p>3/24/18</p>
+    <h2>Name of Bundle</h2>
+    <div>
+    <input type="checkbox" id="coding" name="interest" value="coding" checked>
+    <label for="coding">Lunges (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Squats (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+    </div>
+  </div>
+
+  <div class="gallery-cell">
+    <p>3/24/18</p>
+    <h2>Name of Bundle</h2>
+    <div>
+    <input type="checkbox" id="coding" name="interest" value="coding" checked>
+    <label for="coding">Lunges (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Squats (1-2 x 15-20)</label>
+    </div>
+    <div>
+      <input type="checkbox" id="music" name="interest" value="music">
+      <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+    </div>
+  </div>
+
+</div>
+
+  <script src="flickity.pkgd.min.js"></script>
+</body>

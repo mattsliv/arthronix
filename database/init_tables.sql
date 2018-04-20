@@ -70,20 +70,20 @@ INSERT INTO Bundles(ID, Ex1, Ex2, Ex3, Ex4, Reps1, Reps2, Reps3, Reps4, Sets1, S
 VALUES ('005', '001', '002', '003', '004', '6-8','6-8', '6-8', '8-10', '1-2', '1-2', '1-2', '2-3');
 
 /* PATIENTS */
-INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, ProviderID, Streak, BundleID)
-VALUES ('001', 'Tsun','Elaine','et@gmail.com', '8608225463', 'knee', '001', '0', '001');
+INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, NextApt, ProviderID, Streak, BundleID, StatusROM, StatusPEG, StatusStrength)
+VALUES ('001', 'Tsun','Elaine','et@gmail.com', '8608225463', 'Knee', 'April 7th, 10:00am', '001', '0', '001', 'red', 'green', 'yellow');
 
-INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, ProviderID, Streak, BundleID)
-VALUES ('002', 'Stumper','Chris','cs@yahoo.com', '8908881234', 'knee', '001', '0', '002');
+INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, NextApt, ProviderID, Streak, BundleID, StatusROM, StatusPEG, StatusStrength)
+VALUES ('002', 'Stumper','Chris','cs@yahoo.com', '8908881234', 'Knee', 'April 9th, 1:00pm', '001', '0', '002', 'green', 'green', 'yellow');
 
-INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, ProviderID, Streak, BundleID)
-VALUES ('003', 'Singh','Shemona','ss@aol.com', '8908881111', 'hip', '002', '0', '003');
+INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, NextApt, ProviderID, Streak, BundleID, StatusROM, StatusPEG, StatusStrength)
+VALUES ('003', 'Singh','Shemona','ss@aol.com', '8908881111', 'Hip', 'April 1st, 7:00am', '002', '0', '003', 'red', 'red', 'green');
 
-INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, ProviderID, Streak, BundleID)
-VALUES ('004', 'Smith','Savanna','sos@yahoo.com', '4441234567', 'hip', '002', '0', '004');
+INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, NextApt, ProviderID, Streak, BundleID, StatusROM, StatusPEG, StatusStrength)
+VALUES ('004', 'Smith','Savanna','sos@yahoo.com', '4441234567', 'Hip', 'April 10th, 10:00am', '002', '0', '004', 'yellow', 'green', 'yellow');
 
-INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, ProviderID, Streak, BundleID)
-VALUES ('005', 'Slivinski','Matt','ms@yahoo.com', '3338885463', 'knee', '001', '0', '002');
+INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, NextApt, ProviderID, Streak, BundleID, StatusROM, StatusPEG, StatusStrength)
+VALUES ('005', 'Slivinski','Matt','ms@yahoo.com', '3338885463', 'Knee', 'April 7th, 12:30pm', '001', '0', '002', 'green', 'green', 'red');
 
 /* EXERCISES */
 INSERT INTO Exercises(ID,ExName)

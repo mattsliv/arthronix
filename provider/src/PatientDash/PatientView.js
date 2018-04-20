@@ -10,80 +10,147 @@ import {
   Link
 } from 'react-router-dom'
 
+
 import green from '../images/green.png';
-import red from '../images/red.png';
-import yellow from '../images/yellow.png';
+import '../styles/docs/assets/css/patient/flickity.css';
+import '../styles/docs/assets/css/patient/flickity.pkgd.js';
+import '../styles/docs/assets/css/patient/patient-styles.css';
+
 
 // import Charts from './Charts';
 import Charts2 from './Charts2';
 var JSONPretty = require('react-json-pretty');
 
-// import '../styles/docs/assets/js/popper.min.js';
-// import '../styles/docs/assets/js/chart.js';
-// import '../styles/docs/assets/js/tablesorter.min.js';
-// import '../styles/docs/assets/js/toolkit.js';
-// import '../styles/docs/assets/js/application.js';
-
-
 class PatientBundle extends Component {
   render() {
-    return(
 
+    return(
       <div>
 
-        <div class="hr-divider my-4">
-          <h3 class="hr-divider-content hr-divider-heading">Quick stats</h3>
+        <div class="gallery js-flickity">
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
+          <div class="gallery-cell">
+            <p>3/24/18</p>
+            <h2>Name of Bundle</h2>
+            <div>
+            <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+            <label for="coding">Lunges (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Squats (1-2 x 15-20)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="music" name="interest" value="music"/>
+              <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+            </div>
+          </div>
+
         </div>
 
-        <div class="averages row statcards mt-3 mb-3 text-xs-center text-md-left">
-          <div class="col-6 col-md-3 statcard mb-4">
-            <h3 class="statcard-number text-success">
-              6
-              <small class="delta-indicator delta-positive">5%</small>
-            </h3>
-            <span class="statcard-desc">Average PEG</span>
-          </div>
-          <div class="col-6 col-md-3 statcard mb-4">
-            <h3 class="statcard-number text-danger">
-              160
-              <small class="delta-indicator delta-negative">1.3%</small>
-            </h3>
-            <span class="statcard-desc">Average ROM</span>
-          </div>
-
-          <table id="myTable" class="table" data-sort="table">
-          <thead>
-            <tr>
-              <th><a href="" scope="col">#</a></th>
-              <th><a href="" scope="col">Name</a></th>
-              <th><a href="" scope="col">Last Completed</a></th>
-              <th><a href="" scope="col">Reps</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <th>Body weight squats</th>
-              <th>1/2/18</th>
-              <th>10 reps</th>
-            </tr>
-            <tr>
-              <th>2</th>
-              <th>Walking lunges</th>
-              <th>1/1/18</th>
-              <th>12 reps</th>
-            </tr>
-            <tr>
-              <th>3</th>
-              <th>Jumping jacks</th>
-              <th>1/10/18</th>
-              <th>8 reps</th>
-            </tr>
-          </tbody>
-        </table>
       </div>
-
-    </div>
     )
   }
 }

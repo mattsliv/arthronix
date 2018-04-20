@@ -6,7 +6,6 @@ import DashboardView from './DashboardView';
 export default class extends Component {
   render() {
     const patients = this.props.patients
-
     return (
       <Router>
         <div>
