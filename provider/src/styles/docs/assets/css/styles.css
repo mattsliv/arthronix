@@ -61,12 +61,14 @@ table th{
 .bundle-week-video iframe{
   margin:1em
 }
-
+.cap{
+  padding: 10px;
+  width: 175px;
+}
 .pdf-image{
   width: 175px;
   height: 225px;
-
-  margin-right: 3em
+  padding: 10px;
 }
 .video-thumbnail{
   margin: 1em;
@@ -76,6 +78,7 @@ table th{
 
 .container{
   float: left;
+
 }
 
 
