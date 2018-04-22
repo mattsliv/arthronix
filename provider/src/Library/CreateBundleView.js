@@ -20,6 +20,7 @@ class BundleMatrix extends Component {
   }
 
   fetchBundle() { /* Is called when we are on edit or view bundle mode */
+    console.log("Fetching Bundle!")
     fetch('/bundles')
       .then(res => res.json())
       .then(bundles => {
@@ -32,6 +33,7 @@ class BundleMatrix extends Component {
           reps : [b.reps1, b.reps2, b.reps3, b.reps4, b.reps5, b.reps6, b.reps7, b.reps8, b.reps9, b.reps10],
           sets : [b.sets1, b.sets2, b.sets3, b.sets4, b.sets5, b.sets6, b.sets7, b.sets8, b.sets9, b.sets10],
         }
+        console.log(selected);
         this.setState({selected});
   })
   }
@@ -241,7 +243,7 @@ class BundleMatrix extends Component {
               </tbody>
             </table>
             <button type="button" class="btn btn-primary" onClick = {this.onDelete} style = {{position: 'fixed', top: '50px', right: '60px'}}> Delete </button>
-            <button type="button" class="btn btn-primary" onClick = {this.onSubmit} style = {{position: 'fixed', bottom: '50px', right: '110px'}} > Submit </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onSubmit} style = {{position: 'fixed', bottom: '50px', right: '120px'}} > Submit </button>
             <button type="button" class="btn btn-primary" onClick = {this.onCancel} style = {{position: 'fixed', bottom: '50px', right: '60px'}} > Cancel </button>
           </div>
       </div>
@@ -252,7 +254,7 @@ class BundleMatrix extends Component {
     let titles = ["Exercise", "Sets", "Reps"];
     return (
       <div>
-        <text style={{color: 'black'}}> <font size = '10'>Bundle {this.state.bundleID}</font></text>
+        <text style={{color: 'black'}}> <font size = '10'>Week {this.state.bundleID}</font></text>
           <div style={{color: 'black'}} class = "table-responsive">
             <table id="bundleTable" class="table" data-sort="table">
             <thead> <tr> {titles.map(title => <th>{title}</th>)} </tr> </thead>
@@ -269,8 +271,8 @@ class BundleMatrix extends Component {
               </tbody>
             </table>
             <button type="button" class="btn btn-primary" onClick = {this.onDelete} style = {{position: 'fixed', top: '50px', right: '60px'}}> Delete </button>
-            <button type="button" class="btn btn-primary" onClick = {this.onEdit} style = {{position: 'fixed', bottom: '50px', right: '60px'}}> Edit </button>
-            <button type="button" class="btn btn-primary" onClick = {this.onCancel} style = {{position: 'fixed', bottom: '50px', right: '100px'}}> Close </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onEdit} style = {{position: 'fixed', bottom: '50px', right: '120px'}}> Edit </button>
+            <button type="button" class="btn btn-primary" onClick = {this.onCancel} style = {{position: 'fixed', bottom: '50px', right: '60px'}}> Close </button>
           </div>
       </div>
     )
@@ -285,7 +287,7 @@ class BundleMatrix extends Component {
     });
     let text = '';
     if(this.state.edit) {                   //user wants to edit bundle so show edit view
-      if(this.state.selected.exIds) {text = "Edit Bundle " + this.state.bundleID;}
+      if(this.state.selected.exIds) {text = "Edit Week " + this.state.bundleID;}
       else {text = "Create Bundle"};
       return ( this.renderEdit(text, exercises));
     }

@@ -79,7 +79,7 @@ class PatientTable extends Component {
                   </td>
                   <td><span class="icon icon-typing"></span></td>
                   <td>{patient.patienttype}</td>
-                  <td>{patient.nextapt}June 13th, 2018</td>
+                  <td>{patient.nextapt} </td>
                 </tr>
               </tbody>
             ))}
