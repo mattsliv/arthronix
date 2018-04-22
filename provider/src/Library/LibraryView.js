@@ -8,6 +8,11 @@ import {
 
 import Modal from 'react-modal'
 import pdf from '../images/pdf.png';
+import p1 from './pdf previews/1.png';
+import p2 from './pdf previews/2.png';
+import p3 from './pdf previews/3.png'
+import p4 from './pdf previews/4.png'
+import p5 from './pdf previews/5.png'
 import pdfFile from './PDFs/leg.pdf'
 import pdfFile2 from './PDFs/leg2.pdf'
 import pdfFile3 from './PDFs/description.pdf'
@@ -88,16 +93,27 @@ class SupportRow extends Component { /* display educational support matieral*/
         <h3>Educational Support</h3>
         <button type="button" class="btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal} >
          + Add New Doc
-        </button>
-          <table>
-            {this.getModal()}
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile}/>
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile2}/>
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile3}/>
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile4}/>
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile5}/>
-
-          </table>
+        </button> {this.getModal()}
+        <div class = 'container'>
+          <div class = 'row'>
+            <div class = 'col-md-2'>
+                <img src = {p1} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile} />
+            </div>
+            <div class = 'col-md-2'>
+                <img src = {p2}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile2}/>
+            </div>
+            <div class = 'col-md-2'>
+                <img src = {p3}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile3}/>
+            </div>
+            <div class = 'col-md-2'>
+                <img src = {p4}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile4}/>
+            </div>
+            <div class = 'col-md-2'>
+                <img src = {p5}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile5}/>
+            </div>
+            <div class = 'col-md-2'> </div>
+          </div>
+        </div>
         </div>
       )
     }
