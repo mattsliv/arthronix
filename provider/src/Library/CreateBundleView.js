@@ -7,7 +7,6 @@ class BundleMatrix extends Component {
     this.state = {
       bundleID: props.bundleID,
       exercises: [],
-      selected: [],
       edit: false,
       bundleKeys: props.bundleKeys
     }
@@ -19,32 +18,12 @@ class BundleMatrix extends Component {
     this.onDelete = this.onDelete.bind(this);
   }
 
-  fetchBundle() { /* Is called when we are on edit or view bundle mode */
-    console.log("Fetching Bundle!")
-    fetch('/bundles')
-      .then(res => res.json())
-      .then(bundles => {
-        let currBundle = bundles.filter(b => { /* get the bundle we actually care about */
-          if(b.id == this.state.bundleID) return b
-        })
-        let b = currBundle[0];
-        var selected = {
-          exIds: [b.ex1, b.ex2, b.ex3, b.ex4, b.ex5, b.ex6, b.ex7, b.ex8, b.ex9, b.ex10],
-          reps : [b.reps1, b.reps2, b.reps3, b.reps4, b.reps5, b.reps6, b.reps7, b.reps8, b.reps9, b.reps10],
-          sets : [b.sets1, b.sets2, b.sets3, b.sets4, b.sets5, b.sets6, b.sets7, b.sets8, b.sets9, b.sets10],
-        }
-        console.log(selected);
-        this.setState({selected});
-  })
-  }
-
   componentWillMount() { /* fetch exercises and initialize the level theyre set to*/
-    if (this.state.bundleID == 0 ) { this.setState({edit: true}) }
-    if (this.state.bundleID > 0) { this.fetchBundle();/* We recieved a bundle to load */}
+    if (this.state.bundleID == 0 ) { this.setState({edit: true}) } /* Because we are on create bundle view*/
     fetch('/exercises')
       .then(res => res.json())
       .then(exercises => { /* fetch and initialize all exercises in DB */
-        let b   = exercises.map(ex => {
+        let e   = exercises.map(ex => {
           var rEx = {
             key: ex.id,
             exname: ex.exname,
@@ -54,17 +33,33 @@ class BundleMatrix extends Component {
           };
           return rEx;
           })
-          let selected = this.state.selected;
-          if(selected.exIds) {  /* Update selected exercises now */ //is this right
-            for (var i = 0; i < selected.exIds.length; i++) {
-              if(selected.exIds[i] == null) break; //this entry is blank
-              b[selected.exIds[i]].reps = selected.reps[i];
-              b[selected.exIds[i]].sets = selected.sets[i];
-              b[selected.exIds[i]].level = this.computeLevel(selected.reps[i], selected.sets[i]);
-            }
+          if(this.state.bundleID > 0) { /* there's a bundle to fetch */
+          fetch('/bundles')
+            .then(res => res.json())
+            .then(bundles => {
+              let currBundle = bundles.filter(b => { if(b.id == this.state.bundleID) return b})
+              let b = currBundle[0];
+              var selected = {
+                exIds: [b.ex1, b.ex2, b.ex3, b.ex4, b.ex5, b.ex6, b.ex7, b.ex8, b.ex9, b.ex10],
+                reps : [b.reps1, b.reps2, b.reps3, b.reps4, b.reps5, b.reps6, b.reps7, b.reps8, b.reps9, b.reps10],
+                sets : [b.sets1, b.sets2, b.sets3, b.sets4, b.sets5, b.sets6, b.sets7, b.sets8, b.sets9, b.sets10],
+              }
+              console.log("All exercises:", e);
+              console.log("Selected exercises:", selected);
+              for (var i = 0; i < selected.exIds.length; i++) {
+                if(selected.exIds[i] == null) break; //this entry is blank
+                e[selected.exIds[i]-1].reps = selected.reps[i];
+                e[selected.exIds[i]-1].sets = selected.sets[i];
+                e[selected.exIds[i]-1].level = this.computeLevel(selected.reps[i], selected.sets[i]);
+              }
+              exercises = e.filter(entry => entry); //remove null entries
+              this.setState({exercises});
+            })
           }
-        exercises = b.filter(entry => entry); //remove null entries
-        this.setState({exercises});
+          else {
+            exercises = e.filter(entry => entry); //remove null entries
+            this.setState({exercises});
+          }
       })
   }
 
@@ -287,7 +282,7 @@ class BundleMatrix extends Component {
     });
     let text = '';
     if(this.state.edit) {                   //user wants to edit bundle so show edit view
-      if(this.state.selected.exIds) {text = "Edit Week " + this.state.bundleID;}
+      if(this.state.bundleID > 0) {text = "Edit Week " + this.state.bundleID;}
       else {text = "Create Bundle"};
       return ( this.renderEdit(text, exercises));
     }
