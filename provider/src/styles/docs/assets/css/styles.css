@@ -104,3 +104,21 @@ table th{
   font-size:135%;
   text-align: center
 }
+
+/* --------- Home Page --------- */
+.screen{
+  background-color: #828282;
+  max-width: 70%;
+  padding: 1em;
+}
+
+.home-content h1{
+  font-size:60px;
+  text-align: left;
+  margin-left:0;
+  margin-bottom:20px!important;
+}
+
+.home-content p{
+  font-size:16px;
+}

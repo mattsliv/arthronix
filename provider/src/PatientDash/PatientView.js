@@ -10,80 +10,155 @@ import {
   Link
 } from 'react-router-dom'
 
+
 import green from '../images/green.png';
-import red from '../images/red.png';
-import yellow from '../images/yellow.png';
+import '../styles/docs/assets/css/patient/flickity.css';
+import '../styles/docs/assets/css/patient/flickity.pkgd.js';
+import '../styles/docs/assets/css/patient/patient-styles.css';
+import '../styles/docs/assets/css/patient/datepicker.js';
 
 // import Charts from './Charts';
 import Charts2 from './Charts2';
 var JSONPretty = require('react-json-pretty');
 
-// import '../styles/docs/assets/js/popper.min.js';
-// import '../styles/docs/assets/js/chart.js';
-// import '../styles/docs/assets/js/tablesorter.min.js';
-// import '../styles/docs/assets/js/toolkit.js';
-// import '../styles/docs/assets/js/application.js';
-
 
 class PatientBundle extends Component {
   render() {
-    return(
 
+    return(
       <div>
 
-        <div class="hr-divider my-4">
-          <h3 class="hr-divider-content hr-divider-heading">Quick stats</h3>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 gallery js-flickity">
+              <div class="statcard statcard-primary p-4 mb-2 gallery-cell">
+                <p class="statcard-number">3/24/18</p>
+                <h2 class="statcard-number">Name of Bundle</h2>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+                  <label for="coding">Lunges (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Squats (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+                </div>
+              </div>
+
+
+              <div class="statcard statcard-primary p-4 mb-2 gallery-cell">
+                <p class="statcard-number">3/24/18</p>
+                <h2 class="statcard-number">Name of Bundle</h2>
+                <div class="statcard-desc">
+                <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+                <label for="coding">Lunges (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Squats (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+                </div>
+              </div>
+
+              <div class="statcard statcard-primary p-4 mb-2 gallery-cell">
+                <p class="statcard-number">3/24/18</p>
+                <h2 class="statcard-number">Name of Bundle</h2>
+                <div class="statcard-desc">
+                <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+                <label for="coding">Lunges (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Squats (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+                </div>
+              </div>
+
+              <div class="statcard statcard-primary p-4 mb-2 gallery-cell">
+                <p class="statcard-number">3/24/18</p>
+                <h2 class="statcard-number">Name of Bundle</h2>
+                <div class="statcard-desc">
+                <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+                <label for="coding">Lunges (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Squats (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+                </div>
+              </div>
+
+              <div class="statcard statcard-primary p-4 mb-2 gallery-cell">
+                <p class="statcard-number">3/24/18</p>
+                <h2 class="statcard-number">Name of Bundle</h2>
+                <div class="statcard-desc">
+                <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+                <label for="coding">Lunges (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Squats (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+                </div>
+              </div>
+
+              <div class="statcard statcard-primary p-4 mb-2 gallery-cell">
+                <p class="statcard-number">3/24/18</p>
+                <h2 class="statcard-number">Name of Bundle</h2>
+                <div class="statcard-desc">
+                <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+                <label for="coding">Lunges (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Squats (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+                </div>
+              </div>
+
+              <div class="statcard statcard-primary p-4 mb-2 gallery-cell">
+                <p class="statcard-number">3/24/18</p>
+                <h2 class="statcard-number">Name of Bundle</h2>
+                <div class="statcard-desc">
+                <input type="checkbox" id="coding" name="interest" value="coding" checked/>
+                <label for="coding">Lunges (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Squats (1-2 x 15-20)</label>
+                </div>
+                <div class="statcard-desc">
+                  <input type="checkbox" id="music" name="interest" value="music"/>
+                  <label for="music">Jumping Jacks (1-2 x 15-20)</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
 
-        <div class="averages row statcards mt-3 mb-3 text-xs-center text-md-left">
-          <div class="col-6 col-md-3 statcard mb-4">
-            <h3 class="statcard-number text-success">
-              6
-              <small class="delta-indicator delta-positive">5%</small>
-            </h3>
-            <span class="statcard-desc">Average PEG</span>
-          </div>
-          <div class="col-6 col-md-3 statcard mb-4">
-            <h3 class="statcard-number text-danger">
-              160
-              <small class="delta-indicator delta-negative">1.3%</small>
-            </h3>
-            <span class="statcard-desc">Average ROM</span>
-          </div>
 
-          <table id="myTable" class="table" data-sort="table">
-          <thead>
-            <tr>
-              <th><a href="" scope="col">#</a></th>
-              <th><a href="" scope="col">Name</a></th>
-              <th><a href="" scope="col">Last Completed</a></th>
-              <th><a href="" scope="col">Reps</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <th>Body weight squats</th>
-              <th>1/2/18</th>
-              <th>10 reps</th>
-            </tr>
-            <tr>
-              <th>2</th>
-              <th>Walking lunges</th>
-              <th>1/1/18</th>
-              <th>12 reps</th>
-            </tr>
-            <tr>
-              <th>3</th>
-              <th>Jumping jacks</th>
-              <th>1/10/18</th>
-              <th>8 reps</th>
-            </tr>
-          </tbody>
-        </table>
+
       </div>
-
-    </div>
     )
   }
 }
@@ -276,6 +351,8 @@ class PatientPage extends Component {
    )
   }
 
+
+
   render() {
     const patients = this.props.patients;
 
@@ -283,28 +360,40 @@ class PatientPage extends Component {
     let readyPatient = '';
     if(patients[1]) {
        readyPatient = (
-      <table class="patient-main">
-        <tr padding="15px">
-          <td><h2>Elaine Tsun</h2></td>
-          <td><img src={green} alt="green" width="25px"/></td>
-        </tr>
-        <tr>
-          <h3><a href="#">Messages <span class="badge">1</span></a></h3>
-        </tr>
-        <tr><h5>Knee</h5></tr>
-      </table>
+      <div class="container">
+       <div class="row">
+         <div class="col-md-10 patient-main">
+             <h2>Elaine Tsun</h2>
+             <img src={green} alt="green" width="25px"/>
+             <h5>KNEE</h5>
+             <h3><a href="#">Messages <span class="badge">1</span></a></h3>
+        </div>
+           <div class="col-md-2">
+            <div class="row">
+              <button type="button" class="btn btn-default">+ Add new data</button>
+            </div>
+            <div class="row">
+              <div class="btn-toolbar dashhead-toolbar">
+                <div class="btn-toolbar-item input-with-icon">
+                  <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker"/>
+                  <span class="icon icon-calendar"></span>
+                </div>
+              </div>
+            </div>
+           </div>
+
+       </div>
+      </div>
     )
     }
     return (
       <Router>
         <div>
-          <h1>Patient Page</h1>
           {readyPatient}
-          <div class="btn-group">
-            <button type="button" class="btn btn-default">+ Add new data</button>
-          </div>
-          <PatientStats patient={this.props.patients}/>
           <PatientBundle patients={this.props.patients}/>
+
+          <PatientStats patient={this.props.patients}/>
+
           <Charts2 chartData={this.state.chartWeekData} title="Patient PEG & ROM (Weekly)" legendPosition="bottom"/>
           <Charts2 chartData={this.state.chartMonthData} title="Patient PEG & ROM (Monthly)" legendPosition="bottom"/>
           {/* <Charts statsData={this.state.stats}/> */}
