@@ -8,7 +8,8 @@ class BundleMatrix extends Component {
       bundleID: props.bundleID,
       exercises: [],
       edit: false,
-      bundleKeys: props.bundleKeys
+      bundleKeys: props.bundleKeys,
+      
     }
     this.onLevelChange = this.onLevelChange.bind(this);
     this.onRemove = this.onRemove.bind(this);
@@ -218,8 +219,8 @@ class BundleMatrix extends Component {
         <tr>
           <td>{this.levelBox(ex)}</td>
           <td><p><b>{ex.exname}</b></p></td>
-          <td><p>{ex.sets}</p></td>
-          <td><p>{ex.reps}</p></td>
+          <td><input type = 'text' placeholder = {ex.sets} /></td>
+          <td><input type = 'text' placeholder = {ex.sets} /></td>
           <td>{this.removeBox(ex)}</td>
         </tr>
       )
