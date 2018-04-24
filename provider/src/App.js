@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
+  NavLink,
   Switch } from 'react-router-dom'
 
 import PatientDash from './PatientDash/'
@@ -29,12 +30,6 @@ class Overview extends Component {
     const patients = this.props.patients;
     return(
       <div>
-        {/* <h1>Patients</h1>
-          <h3>
-          {patients.map(patient =>
-            <div key={patient.id}>{patient.id} : {patient.firstname} {patient.lastname}</div>)}
-        </h3> */}
-
         <div class="container home-content">
           <div class="row">
             <div class="col-md-5 col-centered">
@@ -50,16 +45,12 @@ class Overview extends Component {
                 in a concise manner. This enables patients to learn more about their
               procedure which helps them gain confidence in recovery.</p>
             </div>
-
             <div class="col-md-7">
               <img class="screen" src={screen} alt="screen" />
             </div>
           </div>
-
         </div>
-
       </div>
-
     )
   }
 }
@@ -67,7 +58,7 @@ class Overview extends Component {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {users: []}
+    this.state = { users: [] }
   }
 
   componentWillMount() {
@@ -90,9 +81,9 @@ class App extends Component {
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav">
                   <li><Link to="/patients" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-users"></span> Patients</a></Link></li>
-                  <li><Link to="/patient" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-user"></span> Patient</a></Link></li>
+                  {/* <li><Link to="/patient" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-user"></span> Patient</a></Link></li> */}
                   <li><Link to="/library" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-video"></span> Library</a></Link></li>
-                {/*  <li><Link to="/community" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-typing"></span> Community</a></Link></li> */}
+                  {/*  <li><Link to="/community" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-typing"></span> Community</a></Link></li> */}
                 </ul>
               </div>
             </div>
@@ -102,13 +93,16 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" render={() => <Overview />}/>
-            <Route path="/patients" render={() => <PatientDash patients={this.state.users}/>}/>
-            <Route path="/patient" render={() => <PatientView patients={this.state.users}/>}/>
+            <Route path="/patients" render={() =>
+              <PatientDash patients={this.state.users}/>}/>
+            <Route path="/patient" render={() =>
+              <PatientView patients={this.state.users}/>}/>
             <Route path="/library" component={Library}/>
-            <Route path="/community" component={Community}/>
+            {/* <Route path="/community" component={Community}/> */}
           </Switch>
 
-          {/* <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty> */}
+          {/* Print out users from DB */}
+          <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty>
         </div>
       </Router>
     )

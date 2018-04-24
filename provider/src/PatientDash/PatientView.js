@@ -1,8 +1,3 @@
-// import '../styles/docs/assets/css/toolkit-inverse.css';
-// import '../styles/docs/assets/css/application.css';
-// import '../../node_modules/chart.js/Chart.js';
-// import '../../node_modules/chart.js/Chart.min.js'
-
 import React , { Component } from 'react'
 import {
   BrowserRouter as Router,
@@ -24,7 +19,7 @@ var JSONPretty = require('react-json-pretty');
 
 class PatientBundle extends Component {
   render() {
-
+    console.log(this.props)
     return(
       <div>
         <div class="container">
@@ -159,13 +154,16 @@ class PatientBundle extends Component {
 class PatientPage extends Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       chartData:{},
+      isToggleWeek: true
     }
   }
 
   componentWillMount() {
     this.getChartWeekData();
+    // this.getChartMonthData();
   }
 
   /* Retrieves Weekly charts */
@@ -220,6 +218,69 @@ class PatientPage extends Component {
    )
   }
 
+  /* Retrieves Monthly charts */
+  getChartMonthData(){
+    // Ajax calls here
+    this.setState({
+      chartData:
+        {
+          labels:[
+            "April 22",
+            "April 23",
+            "April 24",
+            "April 25",
+            "April 26",
+            "April 27",
+            "April 28"
+          ],
+          datasets:[
+            {
+              label: 'PEG',
+              yAxisID: "y-axis-1",
+              data:[
+                10,7,9,4,7,2,5
+              ],
+              fill: false,
+              backgroundColor:'rgb(114, 71, 255)',
+              borderColor: 'rgb(114, 71, 255)'
+            },
+            {
+              label: 'Strength',
+              yAxisID: "y-axis-1",
+              data:[
+                9,8,7,6,5,4,3
+              ],
+              fill: false,
+              backgroundColor:'rgba(57, 172, 255, 1)',
+              borderColor: 'rgba(57, 172, 255, 1)'
+            },
+            {
+              label: 'ROM',
+              yAxisID: "y-axis-2",
+              data:[
+                40,0,80,40,120,80,160
+              ],
+              fill: false,
+              backgroundColor: 'rgb(249, 179, 60)',
+              borderColor: 'rgb(249, 179, 60)'
+            }
+          ]
+      }
+    }
+   )
+  }
+
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleWeek: !prevState.isToggleWeek
+    }));
+    if (this.isToggleWeek) {
+      this.getChartWeekData();
+    } else {
+      this.getChartMonthData();
+    }
+  }
+
   render() {
     const patients = this.props.patients;
 
@@ -250,6 +311,9 @@ class PatientPage extends Component {
             </div>
           </div>
           <PatientBundle patients={this.props.patients}/>
+          {/* <button onClick={this.handleClick}>
+            {this.state.isToggleWeek ? 'Week' : 'Month'}
+          </button> */}
           <LineCharts chartData={this.state.chartData} title="Patient Progress" legendPosition="top"/>
         </div>
       </Router>
