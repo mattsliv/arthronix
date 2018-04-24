@@ -99,7 +99,7 @@ class PatientTable extends Component {
   render() {
     const patients = this.props.patients;
     return (
-      <div class="table-responsive">
+      <div class="dash-table table-responsive">
         <table id="myTable" class="table" data-sort="table">
           <thead>
             <tr>
@@ -113,7 +113,7 @@ class PatientTable extends Component {
             </tr>
           </thead>
           {patients.map( (patient) => (
-            <tbody class="dash-table">
+            <tbody>
               <tr>
                 <td>
                   <Link to={"/patient/"+`${patient.id}`}  value="Refresh Page" onClick="window.location.reload()">
