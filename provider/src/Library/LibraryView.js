@@ -19,12 +19,9 @@ import pdfFile3 from './PDFs/description.pdf'
 import pdfFile4 from './PDFs/knee.pdf'
 import pdfFile5 from './PDFs/paper.pdf'
 import CreateBundle from './CreateBundleView'
-<<<<<<< HEAD
 import '../styles/docs/assets/css/library/styles.css';
-=======
 import Video from './VideoModal'
 import {Document,Page} from 'react-pdf'
->>>>>>> 273e0e7a407a60651a77494d8c659c7d2e6a3b58
 
 class PdfView extends Component {
 constructor (props){
