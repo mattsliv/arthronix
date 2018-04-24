@@ -45,9 +45,24 @@
 .dash-table{
   max-width:65%!important
 }
+.cap{
+  padding: 10px;
+  width: 175px;
+}
+.pdf-image{
+  width: 175px;
+  height: 225px;
+  padding: 10px;
+}
+.video-thumbnail{
+  margin: 1em;
+  width: 180px;
+  height: 135px;
+}
 
-table th{
-  font-size:22px
+.container{
+  float: left;
+
 }
 
 /* --------- Patient View --------- */

@@ -9,7 +9,7 @@ export default class extends Component {
     return (
       <Router>
         <div>
-          <h1>Library Page</h1>
+          <h1>Library</h1>
           <LibraryView />
         </div>
       </Router>

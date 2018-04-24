@@ -28,9 +28,7 @@ CREATE TABLE Bundles (
   Reps1 varchar(50), Reps2 varchar(50),Reps3 varchar(50), Reps4 varchar(50), Reps5 varchar(50),
   Reps6 varchar(50), Reps7 varchar(50),Reps8 varchar(50), Reps9 varchar(50), Reps10 varchar(50),
   Sets1 varchar(50), Sets2 varchar(50), Sets3 varchar(50), Sets4 varchar(50), Sets5 varchar(50),
-  Sets6 varchar(50), Sets7 varchar(50), Sets8 varchar(50), Sets9 varchar(50), Sets10 varchar(50),
-  Lev1 varchar(50), Lev2 varchar(50), Lev3 varchar(50), Lev4 varchar(50), Lev5 varchar(50),
-  Lev6 varchar(50), Lev7 varchar(50), Lev8 varchar(50), Lev9 varchar(50), Lev10 varchar(50)
+  Sets6 varchar(50), Sets7 varchar(50), Sets8 varchar(50), Sets9 varchar(50), Sets10 varchar(50)
 );
 
 CREATE TABLE Exercises (
@@ -56,20 +54,20 @@ CREATE TABLE Statistics (
 COMMIT;
 
 /* Bundles */
-INSERT INTO Bundles(ID, Ex1, Ex2, Ex3, Reps1, Reps2, Reps3, Sets1, Sets2, Sets3, Lev1, Lev2, Lev3)
-VALUES ('001', '001', '002', '005', '6-8', '6-8', '6-8', '1-2', '1-2', '1-2', 'low', 'low', 'low');
+INSERT INTO Bundles(ID, Ex1, Ex2, Ex3, Reps1, Reps2, Reps3, Sets1, Sets2, Sets3)
+VALUES ('001', '001', '002', '005', '6-8', '6-8', '6-8', '1-2', '1-2', '1-2');
 
-INSERT INTO Bundles(ID, Ex1, Ex2, Ex3, Reps1, Reps2, Reps3, Sets1, Sets2, Sets3, Lev1, Lev2, Lev3)
-VALUES ('002', '002', '004', '005', '8-10', '6-8', '6-8', '2-3', '1-2', '1-2', 'med', 'low', 'low');
+INSERT INTO Bundles(ID, Ex1, Ex2, Ex3, Reps1, Reps2, Reps3, Sets1, Sets2, Sets3)
+VALUES ('002', '002', '004', '005', '8-10', '6-8', '6-8', '2-3', '1-2', '1-2');
 
-INSERT INTO Bundles(ID, Ex1, Ex2, Reps1, Reps2, Sets1, Sets2, Lev1, Lev2)
-VALUES ('003', '004', '005', '8-10', '8-10', '2-3', '2-3', 'med', 'med');
+INSERT INTO Bundles(ID, Ex1, Ex2, Reps1, Reps2, Sets1, Sets2)
+VALUES ('003', '004', '005', '8-10', '8-10', '2-3', '2-3');
 
-INSERT INTO Bundles(ID, Ex1, Ex2, Ex3, Reps1, Reps2, Reps3, Sets1, Sets2, Sets3, Lev1, Lev2, Lev3)
-VALUES ('004', '003', '004', '005', '6-8', '8-10', '10-12', '1-2', '2-3', '3-4', 'low', 'med', 'high');
+INSERT INTO Bundles(ID, Ex1, Ex2, Ex3, Reps1, Reps2, Reps3, Sets1, Sets2, Sets3)
+VALUES ('004', '003', '004', '005', '6-8', '8-10', '10-12', '1-2', '2-3', '3-4');
 
-INSERT INTO Bundles(ID, Ex1, Ex2, Ex3, Ex4, Reps1, Reps2, Reps3, Reps4, Sets1, Sets2, Sets3, Sets4, Lev1, Lev2, Lev3, Lev4)
-VALUES ('005', '001', '002', '003', '004', '6-8','6-8', '6-8', '8-10', '1-2', '1-2', '1-2', '2-3', 'low', 'low', 'low', 'med');
+INSERT INTO Bundles(ID, Ex1, Ex2, Ex3, Ex4, Reps1, Reps2, Reps3, Reps4, Sets1, Sets2, Sets3, Sets4)
+VALUES ('005', '001', '002', '003', '004', '6-8','6-8', '6-8', '8-10', '1-2', '1-2', '1-2', '2-3');
 
 /* PATIENTS */
 INSERT INTO Patients(ID, LastName, FirstName, Email, Phone, PatientType, NextApt, ProviderID, Streak, BundleID, StatusROM, StatusPEG, StatusStrength)

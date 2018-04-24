@@ -3,10 +3,12 @@ var router = express.Router();
 var pgp = require('pg-promise')(/*options*/)
 var db = pgp('postgres://arthronix@localhost/testdb');
 
-router.get('/', function(req, res, next){
-  db.any('SELECT * FROM bundles')
+
+router.delete('/', function(req, res, next){
+  let bid = req.body.id; // need the bundle id to delete!
+  db.none('DELETE FROM bundles WHERE id=$1', bid)
      .then(function(data) {
-       res.json(data);
+       console.log("REMOVED BUNDLE {bid}");
      })
      .catch(function(error) {
        console.log(error);

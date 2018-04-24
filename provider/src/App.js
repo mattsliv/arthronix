@@ -20,7 +20,7 @@ import 'styles/docs/assets/css/styles.css';
 
 var JSONPretty = require('react-json-pretty');
 
-class Patients extends Component {
+class Overview extends Component {
   constructor(props) {
     super(props)
   }
@@ -30,13 +30,12 @@ class Patients extends Component {
     return(
       <div>
         {/* <h1>Patients</h1>
-        <h3>
+          <h3>
           {patients.map(patient =>
             <div key={patient.id}>{patient.id} : {patient.firstname} {patient.lastname}</div>)}
         </h3> */}
 
         <div class="container home-content">
-
           <div class="row">
             <div class="col-md-7 col-centered">
               <h1>Arthronix</h1>
@@ -49,7 +48,7 @@ class Patients extends Component {
                 and information exchange with their healthcare teams. It serves as a
                 hub for resources that address patient concerns pre and post surgery
                 in a concise manner. This enables patients to learn more about their
-                procedure which helps them gain confidence in recovery.</p>
+              procedure which helps them gain confidence in recovery.</p>
             </div>
 
             <div class="col-md-4">
@@ -57,9 +56,9 @@ class Patients extends Component {
             </div>
           </div>
 
-          </div>
-
         </div>
+
+      </div>
 
     )
   }
@@ -91,9 +90,9 @@ class App extends Component {
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav">
                   <li><Link to="/patients" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-users"></span> Patients</a></Link></li>
-                  <li><Link to="/patient" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-user"></span> Patient</a></Link></li>
+                  {/* <li><Link to="/patient" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-user"></span> Patient</a></Link></li> */}
                   <li><Link to="/library" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-video"></span> Library</a></Link></li>
-                  <li><Link to="/community" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-typing"></span> Community</a></Link></li>
+                  {/*  <li><Link to="/community" activeClassName="active"><a href="#" class="btn btn-outline-primary px-3"><span class="icon icon-typing"></span> Community</a></Link></li> */}
                 </ul>
               </div>
             </div>
@@ -102,14 +101,13 @@ class App extends Component {
           <hr/>
 
           <Switch>
-            <Route exact path="/" render={() => <Patients patients={this.state.users}/>}/>
+            <Route exact path="/" render={() => <Overview />}/>
             <Route path="/patients" render={() => <PatientDash patients={this.state.users}/>}/>
             <Route path="/patient" render={() => <PatientView patients={this.state.users}/>}/>
             <Route path="/library" component={Library}/>
             <Route path="/community" component={Community}/>
           </Switch>
 
-          {/* <JSONPretty id="json-pretty" json={this.state.users}></JSONPretty> */}
         </div>
       </Router>
     )
