@@ -8,6 +8,11 @@ import {
 
 import Modal from 'react-modal'
 import pdf from '../images/pdf.png';
+import p1 from './pdf previews/1.png';
+import p2 from './pdf previews/2.png';
+import p3 from './pdf previews/3.png'
+import p4 from './pdf previews/4.png'
+import p5 from './pdf previews/5.png'
 import pdfFile from './PDFs/leg.pdf'
 import pdfFile2 from './PDFs/leg2.pdf'
 import pdfFile3 from './PDFs/description.pdf'
@@ -85,19 +90,38 @@ class SupportRow extends Component { /* display educational support matieral*/
     render() {
       return (
         <div>
-        <h3>Educational Support</h3>
-        <button type="button" class="btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal} >
-         + Add New Doc
-        </button>
-          <table>
-            {this.getModal()}
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile}/>
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile2}/>
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile3}/>
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile4}/>
-            <img src = {pdf} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile5}/>
+        <div class = 'col-md-12'>
+        <h3>Educational Support
+          <button type="button" class="btn btn-primary" style = {{float: 'right', marginRight: '10px'}}onClick = {this.handleOpenModal} > + Add New Doc </button>
+        </h3>
+        </div>
+        {this.getModal()}
+        <div class = 'container'>
 
-          </table>
+          <div class = 'row'>
+            <div class = 'col-md-2'>
+                <img src = {p1} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile} />
+                <div class = 'cap' align='center'><text> <font size = '3'>Leg Strength (1)</font></text></div>
+            </div>
+            <div class = 'col-md-2'>
+                <img src = {p2}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile2}/>
+                <div class = 'cap' align='center'><text> <font size = '3'>Leg Strength (2)</font></text></div>
+            </div>
+            <div class = 'col-md-2'>
+                <img src = {p3}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile3}/>
+                <div class = 'cap' align='center'><text> <font size = '3'>Physical Therapy</font></text></div>
+            </div>
+            <div class = 'col-md-2'>
+                <img src = {p4}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile4}/>
+                <div class = 'cap' align='center'><text> <font size = '3'>Information</font></text></div>
+            </div>
+            <div class = 'col-md-2'>
+                <img src = {p5}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile5}/>
+                <div class = 'cap' align='center'><text> <font size = '3'>Paper</font></text></div>
+            </div>
+
+          </div>
+        </div>
         </div>
       )
     }
@@ -131,30 +155,44 @@ class VideoRow extends Component { /* display exercise video content */
   render() {
     return (
       <div>
-      <h3> Videos </h3>
-        <button type="button" class="btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal} >
-          + Add New Video
-        </button>
-        <table class="bundle-week-video">
-          <tr padding="20px">
-
-
-              {this.getModal()}
-
-          </tr>
-
-         <img src = "https://img.youtube.com/vi/o5b0gS7wI1k/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/o5b0gS7wI1k' />
-
-         <img src = "https://img.youtube.com/vi/A7OTduW8QqI/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/A7OTduW8QqI'/>
-
-         <img src = "https://img.youtube.com/vi/9Vs7-M-pkNA/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id= 'https://www.youtube.com/embed/9Vs7-M-pkNA'/>
-
-         <img src = "https://img.youtube.com/vi/3OiJqAtPQUc/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/3OiJqAtPQUc'/>
-
-         <img src = "https://img.youtube.com/vi/1uwAyZ2RyLQ/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/1uwAyZ2RyLQ'/>
-
-        </table>
+      <div class = 'row'>
+        <div class = 'col'>
+        <h3>Videos
+          <button type="button" class="btn btn-primary" style = {{float: 'right', marginRight: '10px'}}onClick = {this.handleOpenModal} > + Add New Video </button>
+        </h3>
+        </div>
       </div>
+        <div class = 'container'>
+               {this.getModal()}
+          <div class = 'row'>
+            <div class = 'col-md-2'>
+                 <img src = "https://img.youtube.com/vi/o5b0gS7wI1k/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/o5b0gS7wI1k' />
+                <div class = 'cap' align='center'><text> <font size = '3'>Knee Pain Exercises</font></text></div>
+            </div>
+            <div class = 'col-md-2'>
+                 <img src = "https://img.youtube.com/vi/A7OTduW8QqI/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/A7OTduW8QqI'/>
+
+                <div class = 'cap' align='center'><text> <font size = '3'>Hip Pain Exercises</font></text></div>
+            </div>
+            <div class = 'col-md-2'>
+                <img src = "https://img.youtube.com/vi/9Vs7-M-pkNA/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id= 'https://www.youtube.com/embed/9Vs7-M-pkNA'/>
+                <div class = 'cap' align='center'><text> <font size = '3'>Range of Motion</font></text></div>
+            </div>
+            <div class = 'col-md-2'>
+                 <img src = "https://img.youtube.com/vi/3OiJqAtPQUc/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/3OiJqAtPQUc'/>
+                <div class = 'cap' align='center'><text> <font size = '3'>Hip ROM</font></text></div>
+            </div>
+            <div class = 'col-md-4'>
+                   <img src = "https://img.youtube.com/vi/1uwAyZ2RyLQ/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/1uwAyZ2RyLQ'/>
+                <div class = 'cap' align='center'><text> <font size = '3'>Leg Stretch</font></text></div>
+            </div>
+
+          </div>
+        </div>
+        </div>
+
+
+
     )
   }
 }
@@ -206,8 +244,13 @@ class BundleRow extends Component { /* Displays bundle and on click can edit/cre
     let bundleKeys = this.state.bundleKeys;
     return (
       <div>
-         <h3>Bundles</h3>
-         <button type="button" value='0' class = "btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal}> +Add New Bundle </button>
+      <div class = 'row'>
+        <div class = 'col'>
+        <h3>Bundles
+          <button type="button" value = '0' class="btn btn-primary" style = {{float: 'right',marginRight: '10px'}}onClick = {this.handleOpenModal} > + Add New Bundle </button>
+        </h3>
+        </div>
+      </div>
          {this.getModal()} {/* The modal used throughout; only need one */}
 
         <table class="bundle-week-button">
@@ -231,6 +274,7 @@ class LibraryTable extends Component {
           <BundleRow />
           <VideoRow />
           <SupportRow />
+
         </div>
       </Router>
 
