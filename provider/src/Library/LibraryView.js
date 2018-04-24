@@ -9,6 +9,7 @@ import {
 import Modal from 'react-modal'
 import pdf from '../images/pdf.png';
 import CreateBundle from './CreateBundleView'
+import '../styles/docs/assets/css/library/styles.css';
 
 
 class SupportRow extends Component { /* display educational support matieral*/
@@ -61,11 +62,11 @@ class VideoRow extends Component { /* display exercise video content */
               </button>
             </td>
           </tr>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
-          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="130" frameborder="0" allowfullscreen></iframe>
+          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="95" frameborder="0" allowfullscreen></iframe>
+          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="95" frameborder="0" allowfullscreen></iframe>
+          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="95" frameborder="0" allowfullscreen></iframe>
+          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="95" frameborder="0" allowfullscreen></iframe>
+          <iframe src="http://www.youtube.com/embed/W7qWa52k-nE" width="230" height="95" frameborder="0" allowfullscreen></iframe>
         </table>
       </div>
     )

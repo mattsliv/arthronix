@@ -23,7 +23,7 @@ class PatientTable extends Component {
     // const parentURL = this.props.match.url
     return (
       <Router>
-        <div class="table-responsive">
+        <div class="dash-table table-responsive">
           <table id="myTable" class="table" data-sort="table">
             <thead>
               <tr>
@@ -37,7 +37,7 @@ class PatientTable extends Component {
               </tr>
             </thead>
             {patients.map( (patient) => (
-              <tbody class="dash-table">
+              <tbody class="">
                 <tr>
                   <td>
                     <Link to={"${parentURL}/${patient.id}"}>

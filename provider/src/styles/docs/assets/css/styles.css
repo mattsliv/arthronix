@@ -39,33 +39,16 @@
 }
 
 .dash-table td{
-  font-size:15px
-}
-
-table th{
   font-size:18px
 }
 
-/* --------- Library View --------- */
-
-.bundle-week-button .btn-info{
-  padding: 1em;
-  font-size: 25px;
-  margin: 1em;
+.dash-table{
+  max-width:65%!important
 }
 
-.bundle-week-button .btn-pill{
-  border-radius:10px
+table th{
+  font-size:22px
 }
-
-.bundle-week-video iframe{
-  margin:1em
-}
-
-.pdf-image{
-  max-width:15%
-}
-
 
 /* --------- Patient View --------- */
 
@@ -92,9 +75,7 @@ table th{
 
 /* --------- Home Page --------- */
 .screen{
-  background-color: #828282;
-  max-width: 70%;
-  padding: 1em;
+  max-width: 100%;
 }
 
 .home-content h1{

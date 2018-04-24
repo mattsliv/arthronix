@@ -14,6 +14,7 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
     "pg-promise": "^7.5.2",
+    "react-datetime": "^2.14.0",
     "react-json-pretty": "^1.7.4",
     "react-modal": "^3.3.2",
     "serve-favicon": "~2.4.5"
