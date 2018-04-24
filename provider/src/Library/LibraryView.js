@@ -90,13 +90,14 @@ class SupportRow extends Component { /* display educational support matieral*/
     render() {
       return (
         <div>
-        <div class = 'container'>
-        <button type="button" class="btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal} >
-         + Add New Doc
-        </button>
-          <h3>Educational Support</h3>
-
+        <div class = 'col-md-12'>
+        <h3>Educational Support
+          <button type="button" class="btn btn-primary" style = {{float: 'right', marginRight: '10px'}}onClick = {this.handleOpenModal} > + Add New Doc </button>
+        </h3>
+        </div>
         {this.getModal()}
+        <div class = 'container'>
+
           <div class = 'row'>
             <div class = 'col-md-2'>
                 <img src = {p1} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile} />
@@ -118,7 +119,7 @@ class SupportRow extends Component { /* display educational support matieral*/
                 <img src = {p5}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile5}/>
                 <div class = 'cap' align='center'><text> <font size = '3'>Paper</font></text></div>
             </div>
-            <div class = 'col-md-2'> </div>
+
           </div>
         </div>
         </div>
@@ -154,12 +155,15 @@ class VideoRow extends Component { /* display exercise video content */
   render() {
     return (
       <div>
-      <button type="button" class="btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal} >
-        + Add New Video
-      </button>
+      <div class = 'row'>
+        <div class = 'col'>
+        <h3>Videos
+          <button type="button" class="btn btn-primary" style = {{float: 'right', marginRight: '10px'}}onClick = {this.handleOpenModal} > + Add New Video </button>
+        </h3>
+        </div>
+      </div>
         <div class = 'container'>
-        <h3> Videos </h3>
-           {this.getModal()}
+               {this.getModal()}
           <div class = 'row'>
             <div class = 'col-md-2'>
                  <img src = "https://img.youtube.com/vi/o5b0gS7wI1k/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/o5b0gS7wI1k' />
@@ -178,7 +182,7 @@ class VideoRow extends Component { /* display exercise video content */
                  <img src = "https://img.youtube.com/vi/3OiJqAtPQUc/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/3OiJqAtPQUc'/>
                 <div class = 'cap' align='center'><text> <font size = '3'>Hip ROM</font></text></div>
             </div>
-            <div class = 'col-md-2'>
+            <div class = 'col-md-4'>
                    <img src = "https://img.youtube.com/vi/1uwAyZ2RyLQ/0.jpg" class = 'video-thumbnail' onClick = {this.handleOpenModal} id = 'https://www.youtube.com/embed/1uwAyZ2RyLQ'/>
                 <div class = 'cap' align='center'><text> <font size = '3'>Leg Stretch</font></text></div>
             </div>
@@ -186,6 +190,7 @@ class VideoRow extends Component { /* display exercise video content */
           </div>
         </div>
         </div>
+
 
 
     )
@@ -239,8 +244,13 @@ class BundleRow extends Component { /* Displays bundle and on click can edit/cre
     let bundleKeys = this.state.bundleKeys;
     return (
       <div>
-         <h3>Bundles</h3>
-         <button type="button" value='0' class = "btn btn-primary" style = {{float: 'right', margin: '2em'}} onClick = {this.handleOpenModal}> +Add New Bundle </button>
+      <div class = 'row'>
+        <div class = 'col'>
+        <h3>Bundles
+          <button type="button" value = '0' class="btn btn-primary" style = {{float: 'right',marginRight: '10px'}}onClick = {this.handleOpenModal} > + Add New Bundle </button>
+        </h3>
+        </div>
+      </div>
          {this.getModal()} {/* The modal used throughout; only need one */}
 
         <table class="bundle-week-button">
@@ -264,6 +274,7 @@ class LibraryTable extends Component {
           <BundleRow />
           <VideoRow />
           <SupportRow />
+
         </div>
       </Router>
 
