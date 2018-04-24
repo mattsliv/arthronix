@@ -164,6 +164,7 @@ class PatientPage extends Component {
   componentWillMount() {
     this.getChartWeekData();
     // this.getChartMonthData();
+
   }
 
   /* Retrieves Weekly charts */
@@ -283,6 +284,12 @@ class PatientPage extends Component {
 
   render() {
     const patients = this.props.patients;
+    function openAssignModal(){
+      document.getElementById('assign-modal').style.display = "block";
+    }
+    function closeAssignModal(){
+      document.getElementById('assign-modal').style.display = "none";
+    }
 
     return (
       <Router>
@@ -297,7 +304,31 @@ class PatientPage extends Component {
               </div>
               <div class="col-md-2">
                 <div class="row">
-                  <button type="button" class="btn btn-default">+ Add new data</button>
+                  {/* <button type="button" class="btn btn-default">+ Add New Data</button> */}
+                  <button type="button" class="btn btn-default" onClick={openAssignModal}>+ Assign Bundle</button>
+                  <div class="assign-modal">
+                    <div id="assign-modal" class="my-modal" tabindex="-1" role="dialog">
+                      <div class="my-modal-dialog" role="document">
+                        <div class="my-modal-content">
+                          <div class="my-modal-header">
+                            <h3 class="my-modal-title">Assign Bundle</h3>
+                          </div>
+                          <div class="my-modal-body">
+                            <select class="assign-select">
+                              <option value="1">Week 1</option>
+                              <option value="2">Week 2</option>
+                              <option value="3">Week 3</option>
+                              <option value="4">Week 4</option>
+                              <option value="4">Week 5</option>
+                            </select>
+                          </div>
+                          <div class="my-modal-footer">
+                            <button type="button" class="btn btn-primary" onClick={closeAssignModal}>Assign</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="row">
                   <div class="btn-toolbar dashhead-toolbar">

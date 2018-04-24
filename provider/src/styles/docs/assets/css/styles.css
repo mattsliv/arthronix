@@ -1,4 +1,25 @@
 /* --------- Nav Styles --------- */
+.my-modal{
+  background: black;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 30em;
+  margin-top: 15%;
+  padding: 3em;
+  overflow: auto;
+  margin-left: 37%;
+  display: none;
+  border-radius: 8px;
+}
+
+.assign-select {
+  color: black;
+  font-size: 16pt;
+  margin-bottom: 1em;
+}
 
 .nav.navbar-nav{
   display: -webkit-inline-box;
