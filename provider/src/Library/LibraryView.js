@@ -20,7 +20,6 @@ import pdfFile4 from './PDFs/knee.pdf'
 import pdfFile5 from './PDFs/paper.pdf'
 import CreateBundle from './CreateBundleView'
 import '../styles/docs/assets/css/library/styles.css';
-
 import Video from './VideoModal'
 import {Document,Page} from 'react-pdf'
 
