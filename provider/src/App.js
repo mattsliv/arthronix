@@ -11,7 +11,7 @@ import CreateBundle from './Library/CreateBundleView'
 import Community from './Community'
 import PatientView from './PatientDash/PatientView'
 
-import screen from 'images/screen.png';
+import logo from 'images/logo.png';
 import 'styles/docs/assets/css/toolkit-inverse.css';
 import 'styles/docs/assets/css/application.css';
 import 'styles/docs/assets/css/docs.css';
@@ -37,7 +37,7 @@ class Overview extends Component {
 
         <div class="container home-content">
           <div class="row">
-            <div class="col-md-5 col-centered">
+            <div class="col-md-7 col-centered">
               <h1>Arthronix</h1>
               <div class="hr-divider">
                 <h3 class="hr-divider-content hr-divider-heading"></h3>
@@ -51,8 +51,8 @@ class Overview extends Component {
               procedure which helps them gain confidence in recovery.</p>
             </div>
 
-            <div class="col-md-7">
-              <img class="screen" src={screen} alt="screen" />
+            <div class="col-md-4">
+              <img class="screen" src={logo} alt="logo" />
             </div>
           </div>
 

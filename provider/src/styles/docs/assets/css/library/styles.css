@@ -1,0 +1,22 @@
+.bundle-week-button{
+  margin:0 auto
+}
+
+.bundle-week-button .btn-info{
+  padding: 1em;
+  font-size: 25px!important;
+  margin: .5em;
+}
+
+.bundle-week-button .btn-pill{
+  border-radius:8px
+}
+
+.bundle-week-video iframe{
+  margin:1em;
+  max-width: 14%!important
+}
+
+.pdf-image{
+  max-width:13%
+}
