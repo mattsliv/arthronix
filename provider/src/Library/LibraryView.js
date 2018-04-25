@@ -91,38 +91,36 @@ class SupportRow extends Component { /* display educational support matieral*/
     render() {
       return (
         <div>
-        <div class = 'col-md-12'>
-        <h3>Educational Support
-          <button type="button" class="btn btn-primary" style = {{float: 'right', marginRight: '10px'}}onClick = {this.handleOpenModal} > + Add New Doc </button>
-        </h3>
-        </div>
-        {this.getModal()}
-        <div class = 'container'>
-
-          <div class = 'row'>
-            <div class = 'col-md-2'>
+          <div class = 'col-md-12'>
+            <h3>Educational Support
+              <button type="button" class="btn btn-primary" style = {{float: 'right', marginRight: '10px'}}onClick = {this.handleOpenModal} > + Add New Doc </button>
+            </h3>
+          </div>
+          {this.getModal()}
+          <div class = 'container'>
+            <div class = 'row'>
+              <div class = 'col-md-2'>
                 <img src = {p1} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile} />
                 <div class = 'cap' align='center'><text> <font size = '3'>Leg Strength (1)</font></text></div>
-            </div>
-            <div class = 'col-md-2'>
-                <img src = {p2}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile2}/>
+              </div>
+              <div class = 'col-md-2'>
+                <img src = {p2} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile2}/>
                 <div class = 'cap' align='center'><text> <font size = '3'>Leg Strength (2)</font></text></div>
-            </div>
-            <div class = 'col-md-2'>
-                <img src = {p3}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile3}/>
+              </div>
+              <div class = 'col-md-2'>
+                <img src = {p3} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile3}/>
                 <div class = 'cap' align='center'><text> <font size = '3'>Physical Therapy</font></text></div>
-            </div>
-            <div class = 'col-md-2'>
-                <img src = {p4}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile4}/>
+              </div>
+              <div class = 'col-md-2'>
+                <img src = {p4} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile4}/>
                 <div class = 'cap' align='center'><text> <font size = '3'>Information</font></text></div>
-            </div>
-            <div class = 'col-md-2'>
-                <img src = {p5}class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile5}/>
+              </div>
+              <div class = 'col-md-2'>
+                <img src = {p5} class = 'pdf-image' onClick = {this.handleOpenModal} id = {pdfFile5}/>
                 <div class = 'cap' align='center'><text> <font size = '3'>Paper</font></text></div>
+              </div>
             </div>
-
           </div>
-        </div>
         </div>
       )
     }
