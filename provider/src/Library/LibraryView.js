@@ -24,7 +24,7 @@ import Video from './VideoModal'
 import {Document,Page} from 'react-pdf'
 
 class PdfView extends Component {
-constructor (props){
+  constructor (props){
     super(props);
     this.state = {
       numPages: 2,
@@ -32,7 +32,7 @@ constructor (props){
       pdfID: props.pdfID,
     };
     this.onDocumentLoad = this.onDocumentLoad.bind(this);
-}
+  }
   onDocumentLoad = ({numPages}) => {
     this.setState({ numPages });
   }

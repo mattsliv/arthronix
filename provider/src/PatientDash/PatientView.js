@@ -298,7 +298,7 @@ class PatientPage extends Component {
             <div class="row">
               <div class="col-md-10 patient-main">
                 <h2>Elaine Tsun</h2>
-                <img src={green} alt="green" width="25px"/>
+                {/* <img src={green} alt="green" width="25px"/> */}
                 <h5>KNEE</h5>
                 <h3><a href="#">Messages <span class="badge">1</span></a></h3>
               </div>
