@@ -86,3 +86,7 @@ color: white;
 .statcard-desc input{
   margin-right:5px
 }
+
+.container{
+  float:none!important
+}

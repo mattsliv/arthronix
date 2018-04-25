@@ -43,7 +43,7 @@
 }
 
 .nav.navbar-nav a{
-  font-size:12px!important
+  font-size:16px!important
 }
 
 .btn:focus{
@@ -56,11 +56,15 @@
 }
 
 .dash-table img{
-  max-width:10%;
+  max-width:20%;
+}
+
+.dash-table th{
+  font-size:22px
 }
 
 .dash-table td{
-  font-size:18px
+  font-size:20px
 }
 
 .dash-table{
@@ -112,6 +116,10 @@
 /* --------- Home Page --------- */
 .screen{
   max-width: 100%;
+}
+
+.home-content{
+  float:none
 }
 
 .home-content h1{
