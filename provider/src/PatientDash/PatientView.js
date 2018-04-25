@@ -22,7 +22,7 @@ class PatientBundle extends Component {
     console.log(this.props)
     return(
       <div>
-        <div class="container">
+        <div class="container float-container">
           <div class="row">
             <div class="col-md-12 gallery js-flickity">
               <div class="statcard statcard-primary p-4 mb-2 gallery-cell">
@@ -294,7 +294,7 @@ class PatientPage extends Component {
     return (
       <Router>
         <div>
-          <div class="container">
+          <div class="container float-container">
             <div class="row">
               <div class="col-md-10 patient-main">
                 <h2>Elaine Tsun</h2>
