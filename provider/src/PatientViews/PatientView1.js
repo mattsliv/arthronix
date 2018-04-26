@@ -13,12 +13,13 @@ import '../styles/docs/assets/css/patient/patient-styles.css';
 import '../styles/docs/assets/css/patient/datepicker.js';
 
 // import Charts from './Charts';
-import Charts2 from './Charts2';
-import LineCharts from './LineCharts';
+import Charts2 from '../PatientDash/Charts2';
+import LineCharts from '../PatientDash/LineCharts';
 var JSONPretty = require('react-json-pretty');
 
 class PatientBundle extends Component {
   render() {
+    console.log(this.props)
     return(
       <div>
         <div class="container float-container">
@@ -153,7 +154,7 @@ class PatientBundle extends Component {
 class PatientPage extends Component {
   constructor(props) {
     super(props);
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       chartData:{},
       isToggleWeek: true
@@ -163,6 +164,7 @@ class PatientPage extends Component {
   componentWillMount() {
     this.getChartWeekData();
     // this.getChartMonthData();
+
   }
 
   /* Retrieves Weekly charts */
@@ -269,19 +271,19 @@ class PatientPage extends Component {
    )
   }
 
-  // handleClick() {
-  //   this.setState(prevState => ({
-  //     isToggleWeek: !prevState.isToggleWeek
-  //   }));
-  //   if (this.isToggleWeek) {
-  //     this.getChartWeekData();
-  //   } else {
-  //     this.getChartMonthData();
-  //   }
-  // }
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleWeek: !prevState.isToggleWeek
+    }));
+    if (this.isToggleWeek) {
+      this.getChartWeekData();
+    } else {
+      this.getChartMonthData();
+    }
+  }
 
   render() {
-    const name = this.props.name;
+    const patients = this.props.patients;
     function openAssignModal(){
       document.getElementById('assign-modal').style.display = "block";
     }
@@ -295,7 +297,7 @@ class PatientPage extends Component {
           <div class="container float-container">
             <div class="row">
               <div class="col-md-10 patient-main">
-                <h2>{name}</h2>
+                <h2>Elaine Tsun</h2>
                 {/* <img src={green} alt="green" width="25px"/> */}
                 <h5>KNEE</h5>
                 <h3><a href="#">Messages <span class="badge">1</span></a></h3>

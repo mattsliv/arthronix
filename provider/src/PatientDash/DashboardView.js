@@ -20,6 +20,7 @@ class PatientTable extends Component {
 
   render() {
     const patients = this.props.patients;
+    console.log(patients);
     return (
       <div class="dash-table table-responsive">
         <table id="myTable" class="table" data-sort="table">
@@ -38,9 +39,16 @@ class PatientTable extends Component {
             <tbody>
               <tr>
                 <td>
-                  <Link to={"/patient/"+`${patient.id}`}  value="Refresh Page" onClick="window.location.reload()">
+                  {/* value="Refresh Page" onClick="window.location.reload()" */}
+                  <Link to={"/patient/"+`${patient.id}`} value="Refresh Page" onClick="window.location.reload()">
                     {patient.firstname} {patient.lastname}
                   </Link>
+                  <Switch>
+                    <Route path={"/patient/"+`${patient.id}`} render={() =>
+                      <PatientView patients={patient}/>}/>
+                  </Switch>
+
+
                 </td>
                 <td>
                   <img class="status-bubble" src={(() => {
@@ -78,13 +86,10 @@ class PatientTable extends Component {
                 <td>{patient.patienttype}</td>
                 <td>{patient.nextapt} </td>
               </tr>
-              <Switch>
-                <Route exact path={"/patient/"+`${patient.id}`} render={() =>
-                  <PatientView patients={patient}/>}/>
-              </Switch>
             </tbody>
           ))}
         </table>
+
       </div>
     )
   }

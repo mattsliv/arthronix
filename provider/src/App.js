@@ -10,6 +10,7 @@ import Library from './Library/'
 import CreateBundle from './Library/CreateBundleView'
 import Community from './Community'
 import PatientView from './PatientDash/PatientView'
+// import PatientView from './PatientViews/PatientView1'
 
 import logo from 'images/logo.png';
 import 'styles/docs/assets/css/toolkit-inverse.css';
@@ -22,7 +23,7 @@ var JSONPretty = require('react-json-pretty');
 
 class Overview extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render(){
@@ -77,6 +78,7 @@ class App extends Component {
   }
 
   render() {
+    const patients = this.state.users;
     return (
       <Router>
         <div>
@@ -103,7 +105,33 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Overview />}/>
             <Route path="/patients" render={() => <PatientDash patients={this.state.users}/>}/>
-            <Route path="/patient" render={() => <PatientView patients={this.state.users}/>}/>
+            <Route path="/patient/1" render={() => <PatientView name={"Elaine Tsun"} patient={this.state.users}/>}/>
+            <Route path="/patient/2" render={() => <PatientView name={"Chris Stumper"} patient={this.state.users}/>}/>
+            <Route path="/patient/3" render={() => <PatientView name={"Shemona Sing"} patient={this.state.users}/>}/>
+            <Route path="/patient/4" render={() => <PatientView name={"Savanna Smith"} patient={this.state.users}/>}/>
+            <Route path="/patient/5" render={() => <PatientView name={"Matt Slivinski"} patient={this.state.users}/>}/>
+            <Route path="/patient/6" render={() => <PatientView name={"John Johnson"} patient={this.state.users}/>}/>
+            <Route path="/patient/7" render={() => <PatientView name={"Robert Mac"} patient={this.state.users}/>}/>
+            <Route path="/patient/8" render={() => <PatientView name={"Elon Musk"} patient={this.state.users}/>}/>
+            <Route path="/patient/9" render={() => <PatientView name={"Sam White"} patient={this.state.users}/>}/>
+            <Route path="/patient/10" render={() => <PatientView name={"Kathy Cat"} patient={this.state.users}/>}/>
+            <Route path="/patient/11" render={() => <PatientView name={"Michelle Read"} patient={this.state.users}/>}/>
+            <Route path="/patient/12" render={() => <PatientView name={"Steve Williams"} patient={this.state.users}/>}/>
+            <Route path="/patient/13" render={() => <PatientView name={"Harry Ron"} patient={this.state.users}/>}/>
+            <Route path="/patient/14" render={() => <PatientView name={"Samantha Vally"} patient={this.state.users}/>}/>
+            <Route path="/patient/15" render={() => <PatientView name={"Tak Yun"} patient={this.state.users}/>}/>
+            <Route path="/patient/16" render={() => <PatientView name={"Joe Trolly"} patient={this.state.users}/>}/>
+            <Route path="/patient/17" render={() => <PatientView name={"Nick Cohen"} patient={this.state.users}/>}/>
+            <Route path="/patient/18" render={() => <PatientView name={"Mary Stratton"} patient={this.state.users}/>}/>
+            <Route path="/patient/19" render={() => <PatientView name={"Bryant Lai"} patient={this.state.users}/>}/>
+            <Route path="/patient/20" render={() => <PatientView name={"Matthew Wu"} patient={this.state.users}/>}/>
+            <Route path="/patient/21" render={() => <PatientView name={"Sammi Ford"} patient={this.state.users}/>}/>
+            <Route path="/patient/22" render={() => <PatientView name={"Jessica Swan"} patient={this.state.users}/>}/>
+            <Route path="/patient/23" render={() => <PatientView name={"Song Han"} patient={this.state.users}/>}/>
+            <Route path="/patient/24" render={() => <PatientView name={"Sarah LeBlanc"} patient={this.state.users}/>}/>
+            <Route path="/patient/25" render={() => <PatientView name={"Jesse Rogers"} patient={this.state.users}/>}/>
+
+
             <Route path="/library" component={Library}/>
             <Route path="/community" component={Community}/>
           </Switch>
