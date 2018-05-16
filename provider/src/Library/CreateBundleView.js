@@ -5,9 +5,9 @@ class BundleMatrix extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bundleID: props.bundleID,
+      bundleID: props.bundleID, //will either be sent the id of the bundle, or 0 to create one.
       exercises: [],
-      edit: false,
+      edit: false, //do we want to just display the exercises or allow for editing?
       bundleKeys: props.bundleKeys
     }
     this.onLevelChange = this.onLevelChange.bind(this);
@@ -22,7 +22,7 @@ class BundleMatrix extends Component {
     if (this.state.bundleID == 0 ) { this.setState({edit: true}) } /* Because we are on create bundle view*/
     fetch('/exercises')
       .then(res => res.json())
-      .then(exercises => { /* fetch and initialize all exercises in DB */
+      .then(exercises => { /* fetch all exercises in DB and initialize with defauts*/
         let e   = exercises.map(ex => {
           var rEx = {
             key: ex.id,
@@ -34,18 +34,16 @@ class BundleMatrix extends Component {
           return rEx;
           })
           if(this.state.bundleID > 0) { /* there's a bundle to fetch */
-          fetch('/bundles')
+          fetch('/bundles')   /* fetch the specified bundle and update exercises as accordingly*/
             .then(res => res.json())
             .then(bundles => {
               let currBundle = bundles.filter(b => { if(b.id == this.state.bundleID) return b})
               let b = currBundle[0];
-              var selected = {
+              var selected = { //the selected exercises in this bundle
                 exIds: [b.ex1, b.ex2, b.ex3, b.ex4, b.ex5, b.ex6, b.ex7, b.ex8, b.ex9, b.ex10],
                 reps : [b.reps1, b.reps2, b.reps3, b.reps4, b.reps5, b.reps6, b.reps7, b.reps8, b.reps9, b.reps10],
                 sets : [b.sets1, b.sets2, b.sets3, b.sets4, b.sets5, b.sets6, b.sets7, b.sets8, b.sets9, b.sets10],
               }
-              console.log("All exercises:", e);
-              console.log("Selected exercises:", selected);
               for (var i = 0; i < selected.exIds.length; i++) {
                 if(selected.exIds[i] == null) break; //this entry is blank
                 e[selected.exIds[i]-1].reps = selected.reps[i];
@@ -58,7 +56,7 @@ class BundleMatrix extends Component {
           }
           else {
             exercises = e.filter(entry => entry); //remove null entries
-            this.setState({exercises});
+            this.setState({exercises}); //exercises is updated to include the selected exercises data
           }
       })
   }
@@ -173,7 +171,7 @@ class BundleMatrix extends Component {
     this.onCancel(); //close
   }
 
-  onEdit(e) { /* When edit is clicked, switches state to edit mode (which will render edit view) */
+  onEdit(e) { /* When edit is clicked, switches state to edit mode (which will render the edit view) */
     e.preventDefault();
     this.setState({edit:true });
   }

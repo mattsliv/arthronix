@@ -17,9 +17,12 @@ class PatientBundle extends Component {
       <div>
 
         {/* BUG START */}
+        {/* BUNDLE SLIDER */}
         <div class="container float-container">
           <div class="row">
             <div class="col-md-12 gallery js-flickity">
+
+              {/* ONE BUNDLE CARD - PRIMARY DEFINES COLOR*/}
               <div class="statcard statcard-primary p-4 mb-2 gallery-cell">
                 <p class="statcard-number">4/22/18</p>
                 <h2 class="statcard-number">Name of Bundle</h2>
@@ -142,7 +145,6 @@ class PatientBundle extends Component {
           </div>
         </div>
         {/* BUG END */}
-
       </div>
     )
   }
@@ -234,14 +236,20 @@ class PatientPage extends Component {
         {/* BUG START */}
         <div class="container float-container">
           <div class="row">
+
+            {/* PATIENT NAME AND INFO */}
             <div class="col-md-10 patient-main">
               <h2>{name}</h2>
               <h5>KNEE</h5>
               <h3><a href="#">Messages <span class="badge">1</span></a></h3>
             </div>
+
+            {/* REST OF DATA IS RENDERED */}
             <div class="col-md-2">
               <div class="row">
                 <button type="button" class="btn btn-default" onClick={openAssignModal}>+ Assign Bundle</button>
+
+                {/* BUNDLE ASSIGN FEATURE MODAL POPUP */}
                 <div class="assign-modal">
                   <div id="assign-modal" class="my-modal" tabindex="-1" role="dialog">
                     <div class="my-modal-dialog" role="document">
@@ -266,6 +274,8 @@ class PatientPage extends Component {
                   </div>
                 </div>
               </div>
+
+              {/* CALENDAR */}
               <div class="row">
                 <div class="btn-toolbar dashhead-toolbar">
                   <div class="btn-toolbar-item input-with-icon">
@@ -287,4 +297,4 @@ class PatientPage extends Component {
   }
 }
 
-export default PatientPage
+export default PatientPage;
