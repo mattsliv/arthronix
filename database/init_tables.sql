@@ -174,6 +174,13 @@ INSERT INTO Providers(ID,LastName, FirstName, PatientIDs)
 VALUES ('002', 'Knope', 'Leslie', '[003, 004]');
 
 /* STATISTICS */
+INSERT INTO Statistics (UserId, DateRecorded, ROM, Strength, PEG)
+VALUES ('001', '01/23/18', '50.4', '2.0', '4.0');
 
+INSERT INTO Statistics (UserId, DateRecorded, ROM, Strength, PEG)
+VALUES ('001', '02/9/18', '62.2', '5.0', '4.7');
+
+INSERT INTO Statistics (UserId, DateRecorded, ROM, Strength, PEG)
+VALUES ('001', '02/10/18', '65.9', '6.0', '5.0');
 
 COMMIT;
