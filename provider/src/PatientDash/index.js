@@ -1,18 +1,17 @@
+/* Modules */
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
 
+/* Component */
 import DashboardView from './DashboardView';
 
+/* Main index.js file for PatientDash */
 export default class extends Component {
   render() {
-    const patients = this.props.patients
     return (
-      <Router>
-        <div>
-          <h1>Patient Dashboard</h1>
-          <DashboardView patients={patients}/>
-        </div>
-      </Router>
+      <div>
+        <h1>Patient Dashboard</h1>
+        <DashboardView patients={this.props.patients}/>
+      </div>
     )
   }
 }

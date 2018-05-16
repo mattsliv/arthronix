@@ -1,47 +1,119 @@
-import React, { Component } from 'react'
-import {Bar} from 'react-chartjs-2';
+/* Modules */
+import React, {Component} from "react";
+import {Line} from "react-chartjs-2";
 
-var options = {
-    scales: {
-        yAxes: [{
-            ticks: {
-                beginAtZero: true
-            }
-        }]
-    }
-}
-function formatDate(elem){
-    let date = new Date(elem.daterecorded);
-    return (date.getMonth()+1) + "-" + date.getDate(); //month index starts at 0
-}
-
-function transformStats(stats) {
-  let chartData = {
-    labels: stats.map(formatDate),
-    datasets: [{
-            label: 'PEG',
-            data: stats.map(e => e.peg),
-            backgroundColor:'rgba(75, 192, 192, 0.2)',
-            borderColor:'rgba(153, 102, 255, 1)',
-            borderWidth: 1
-        }]
-  }
-  return chartData;
-}
-
-class Charts extends Component {
+/* Chart: component that builds line chart configuration */
+export default class Chart extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      chartData: props.chartData
+    };
   }
+
+  /* set default config */
+  static defaultProps = {
+    displayTitle: true,
+    displayLegend: true,
+    legendPosition: "right"
+  };
 
   render() {
     return (
-      <Bar
-      data={transformStats(this.props.statsData)}
-      options={options}
-      />
-    )
+      <div className="chart">
+        <Line data={this.state.chartData} options={{
+          title: {
+            display: this.props.displayTitle,
+            text: this.props.title,
+            fontSize: 25,
+            fontColor: "white"
+          },
+          legend: {
+            display: this.props.displayLegend,
+            position: this.props.legendPosition,
+            labels: {
+              fontColor: "white"
+            }
+          },
+          scales: {
+            xAxes: [
+            {
+                display: true,
+                distribution: "series",
+              scaleLabel: {
+                  display: true,
+                  fontSize: 18,
+                  fontColor: "white",
+                  labelString: "Day of the Week"
+              },
+              ticks: {
+                  fontColor: "white"
+              },
+              gridLines: {
+                  display: true,
+                  drawBorder: true,
+                  drawOnChartArea: false,
+                  drawTicks: true,
+                  color: "white"
+              }
+            }
+            ],
+            yAxes: [
+            {
+              ticks: {
+                  fontColor: "white",
+                  suggestedMin: 0,
+                  suggestedMax: 10
+              },
+                type: "linear",
+                display: true,
+                position: "left",
+                id: "y-axis-1",
+              scaleLabel: {
+                  display: true,
+                  fontSize: 18,
+                  fontColor: "white",
+                  labelString: "PEG & Strength Score (0-10)"
+              },
+              gridLines: {
+                  display: true,
+                  drawBorder: true,
+                  drawOnChartArea: false,
+                  drawTicks: true,
+                  color: "white"
+              }
+            }, {
+              ticks: {
+                  fontColor: "white",
+                  reverse: true,
+                  suggestedMin: 0,
+                  suggestedMax: 180
+              },
+                type: "linear",
+                display: true,
+                position: "right",
+                id: "y-axis-2",
+              scaleLabel: {
+                  display: true,
+                  fontSize: 18,
+                  fontColor: "white",
+                  labelString: "ROM Percentage (0-180%)"
+              },
+              gridLines: {
+                  display: true,
+                  drawBorder: true,
+                  drawOnChartArea: false,
+                  drawTicks: true,
+                  color: "white"
+              }
+            }
+            ]
+          },
+          tooltips: {
+            mode: "index",
+            intersect: false
+          }
+        }}/>
+      </div>);
   }
 }
-
-export default Charts

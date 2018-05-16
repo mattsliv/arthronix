@@ -1,26 +1,26 @@
+/* Modules */
 import React , { Component } from 'react'
 import {
-  BrowserRouter as Router,
   Route,
   Link,
   Switch,
-  Redirect
 } from 'react-router-dom'
+
+/* Components */
 import PatientView from './PatientView';
 
+/* Images */
 import green from '../images/green.png';
 import red from '../images/red.png';
 import yellow from '../images/yellow.png';
+
+/* Styles */
 import '../styles/docs/assets/css/patient/dashboard/dashboard-styles.css';
 
+/* PatientTable: renders patient table in dashboard */
 class PatientTable extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const patients = this.props.patients;
-    console.log(patients);
     return (
       <div class="dash-table table-responsive">
         <table id="myTable" class="table" data-sort="table">
@@ -35,20 +35,23 @@ class PatientTable extends Component {
               <th>Next Appointment</th>
             </tr>
           </thead>
+
+          {/* Render each row of patients */}
           {patients.map( (patient) => (
             <tbody>
               <tr>
                 <td>
-                  {/* value="Refresh Page" onClick="window.location.reload()" */}
+
+                  {/* BUG START */}
                   <Link to={"/patient/"+`${patient.id}`} value="Refresh Page" onClick="window.location.reload()">
                     {patient.firstname} {patient.lastname}
                   </Link>
+                  {/* BUG END */}
+                  
                   <Switch>
                     <Route path={"/patient/"+`${patient.id}`} render={() =>
                       <PatientView patients={patient}/>}/>
                   </Switch>
-
-
                 </td>
                 <td>
                   <img class="status-bubble" src={(() => {
@@ -89,7 +92,6 @@ class PatientTable extends Component {
             </tbody>
           ))}
         </table>
-
       </div>
     )
   }

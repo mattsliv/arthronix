@@ -1,26 +1,22 @@
+/* Modules */
 import React , { Component } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
 
-
-import green from '../images/green.png';
+/* Styles */
 import '../styles/docs/assets/css/patient/flickity.css';
 import '../styles/docs/assets/css/patient/flickity.pkgd.js';
 import '../styles/docs/assets/css/patient/patient-styles.css';
 import '../styles/docs/assets/css/patient/datepicker.js';
 
-// import Charts from './Charts';
-import Charts2 from './Charts2';
-import LineCharts from './LineCharts';
-var JSONPretty = require('react-json-pretty');
+/* Components */
+import Charts from './Charts';
 
+/* PatientBundle: component that displays bundle view */
 class PatientBundle extends Component {
   render() {
     return(
       <div>
+
+        {/* BUG START */}
         <div class="container float-container">
           <div class="row">
             <div class="col-md-12 gallery js-flickity">
@@ -145,26 +141,27 @@ class PatientBundle extends Component {
             </div>
           </div>
         </div>
+        {/* BUG END */}
+
       </div>
     )
   }
 }
 
+/* PatientPage: component that displays patient page info */
 class PatientPage extends Component {
   constructor(props) {
     super(props);
-    // this.handleClick = this.handleClick.bind(this);
     this.state = {
       chartData:{},
-      isToggleWeek: true
     }
   }
 
   componentWillMount() {
     this.getChartWeekData();
-    // this.getChartMonthData();
   }
 
+  /* BUG START */
   /* Retrieves Weekly charts */
   getChartWeekData(){
     // Ajax calls here
@@ -216,136 +213,76 @@ class PatientPage extends Component {
     }
    )
   }
-
-  /* Retrieves Monthly charts */
-  getChartMonthData(){
-    // Ajax calls here
-    this.setState({
-      chartData:
-        {
-          labels:[
-            "April 22",
-            "April 23",
-            "April 24",
-            "April 25",
-            "April 26",
-            "April 27",
-            "April 28"
-          ],
-          datasets:[
-            {
-              label: 'PEG',
-              yAxisID: "y-axis-1",
-              data:[
-                10,7,9,4,7,2,5
-              ],
-              fill: false,
-              backgroundColor:'rgb(114, 71, 255)',
-              borderColor: 'rgb(114, 71, 255)'
-            },
-            {
-              label: 'Strength',
-              yAxisID: "y-axis-1",
-              data:[
-                9,8,7,6,5,4,3
-              ],
-              fill: false,
-              backgroundColor:'rgba(57, 172, 255, 1)',
-              borderColor: 'rgba(57, 172, 255, 1)'
-            },
-            {
-              label: 'ROM',
-              yAxisID: "y-axis-2",
-              data:[
-                40,0,80,40,120,80,160
-              ],
-              fill: false,
-              backgroundColor: 'rgb(249, 179, 60)',
-              borderColor: 'rgb(249, 179, 60)'
-            }
-          ]
-      }
-    }
-   )
-  }
-
-  // handleClick() {
-  //   this.setState(prevState => ({
-  //     isToggleWeek: !prevState.isToggleWeek
-  //   }));
-  //   if (this.isToggleWeek) {
-  //     this.getChartWeekData();
-  //   } else {
-  //     this.getChartMonthData();
-  //   }
-  // }
+  /* BUG END */
 
   render() {
     const name = this.props.name;
+
+    /* display open modal */
     function openAssignModal(){
       document.getElementById('assign-modal').style.display = "block";
     }
+
+    /* display close modal */
     function closeAssignModal(){
       document.getElementById('assign-modal').style.display = "none";
     }
 
     return (
-      <Router>
-        <div>
-          <div class="container float-container">
-            <div class="row">
-              <div class="col-md-10 patient-main">
-                <h2>{name}</h2>
-                {/* <img src={green} alt="green" width="25px"/> */}
-                <h5>KNEE</h5>
-                <h3><a href="#">Messages <span class="badge">1</span></a></h3>
-              </div>
-              <div class="col-md-2">
-                <div class="row">
-                  {/* <button type="button" class="btn btn-default">+ Add New Data</button> */}
-                  <button type="button" class="btn btn-default" onClick={openAssignModal}>+ Assign Bundle</button>
-                  <div class="assign-modal">
-                    <div id="assign-modal" class="my-modal" tabindex="-1" role="dialog">
-                      <div class="my-modal-dialog" role="document">
-                        <div class="my-modal-content">
-                          <div class="my-modal-header">
-                            <h3 class="my-modal-title">Assign Bundle</h3>
-                          </div>
-                          <div class="my-modal-body">
-                            <select class="assign-select">
-                              <option value="1">Week 1</option>
-                              <option value="2">Week 2</option>
-                              <option value="3">Week 3</option>
-                              <option value="4">Week 4</option>
-                              <option value="4">Week 5</option>
-                            </select>
-                          </div>
-                          <div class="my-modal-footer">
-                            <button type="button" class="btn btn-primary" onClick={closeAssignModal}>Assign</button>
-                          </div>
+      <div>
+
+        {/* BUG START */}
+        <div class="container float-container">
+          <div class="row">
+            <div class="col-md-10 patient-main">
+              <h2>{name}</h2>
+              <h5>KNEE</h5>
+              <h3><a href="#">Messages <span class="badge">1</span></a></h3>
+            </div>
+            <div class="col-md-2">
+              <div class="row">
+                <button type="button" class="btn btn-default" onClick={openAssignModal}>+ Assign Bundle</button>
+                <div class="assign-modal">
+                  <div id="assign-modal" class="my-modal" tabindex="-1" role="dialog">
+                    <div class="my-modal-dialog" role="document">
+                      <div class="my-modal-content">
+                        <div class="my-modal-header">
+                          <h3 class="my-modal-title">Assign Bundle</h3>
+                        </div>
+                        <div class="my-modal-body">
+                          <select class="assign-select">
+                            <option value="1">Week 1</option>
+                            <option value="2">Week 2</option>
+                            <option value="3">Week 3</option>
+                            <option value="4">Week 4</option>
+                            <option value="4">Week 5</option>
+                          </select>
+                        </div>
+                        <div class="my-modal-footer">
+                          <button type="button" class="btn btn-primary" onClick={closeAssignModal}>Assign</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="btn-toolbar dashhead-toolbar">
-                    <div class="btn-toolbar-item input-with-icon">
-                      <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker"/>
-                      <span class="icon icon-calendar"></span>
-                    </div>
+              </div>
+              <div class="row">
+                <div class="btn-toolbar dashhead-toolbar">
+                  <div class="btn-toolbar-item input-with-icon">
+                    <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker"/>
+                    <span class="icon icon-calendar"></span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <PatientBundle patients={this.props.patients}/>
-          {/* <button onClick={this.handleClick}>
-            {this.state.isToggleWeek ? 'Week' : 'Month'}
-          </button> */}
-          <LineCharts chartData={this.state.chartData} title="Patient Progress" legendPosition="top"/>
         </div>
-      </Router>
+        {/* BUG END */}
+
+        {/* Render child components */}
+        <PatientBundle patients={this.props.patients}/>
+        <Charts chartData={this.state.chartData} title="Patient Progress" legendPosition="top"/>
+      </div>
     )
   }
 }

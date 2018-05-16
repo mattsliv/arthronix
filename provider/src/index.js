@@ -1,16 +1,14 @@
+/* Modules */
 import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import registerServiceWorker from './registerServiceWorker'
 
+/* Component */
 import App from './App'
 
-// Render app to DOM
+/* Main render of app to DOM */
 render((
   <Router>
     <App />
   </Router>),
    document.getElementById('root'))
-
-// Service worker for cache speedup
-registerServiceWorker();

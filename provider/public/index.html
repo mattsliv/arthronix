@@ -31,8 +31,6 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-
     <!-- Bootstrap theme files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="..src/styles/docs/assets/js/popper.min.js"></script>
@@ -43,11 +41,12 @@
     <script src="..src/styles/docs/assets/js/application.js"></script>
     <script src="dist/toolkit.min.js"></script>
     <script>
-      // execute/clear BS loaders for docs
+
+      /* execute/clear BS loaders for docs */
       $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
 
       $(document).ready(function() {
-        // call the tablesorter plugin
+        // calls the tablesorter plugin
         $("[data-sort=table]").tablesorter({
           // Sort on the second column, in ascending order
           sortList: [[1,0]]
