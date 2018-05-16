@@ -1,5 +1,7 @@
+/* Modules */
 import React , { Component } from 'react'
 
+/* BundleMatrix: creates bundle matrix view */
 class BundleMatrix extends Component {
 
   constructor(props) {
@@ -223,6 +225,7 @@ class BundleMatrix extends Component {
       )
     }
   }
+  
   renderEdit(text, bundle){ /* render for edit or create new bundle view */
     let titles = ["Select", "Exercise", "Sets", "Reps"];
     return (

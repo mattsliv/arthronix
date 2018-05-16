@@ -1,5 +1,7 @@
+/* Modules */
 import React, { Component } from 'react';
 
+/* Video: renders viewing video component */
 class Video extends Component {
 
   constructor (props){
