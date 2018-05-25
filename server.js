@@ -1,3 +1,4 @@
+/* Modules */
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var pgp = require('pg-promise')(/*options*/)
 
+/* Routes */
 var index = require('./routes/index');
 var users = require('./routes/users');
 var stats = require('./routes/stats');
@@ -16,6 +18,7 @@ var editBundle = require('./routes/editBundle');
 var bundleKeys = require('./routes/bundleKeys');
 var deleteBundle = require('./routes/deleteBundle');
 
+/* Setup */
 var app = express();
 var db = pgp('postgres://arthronix@localhost/testdb');
 

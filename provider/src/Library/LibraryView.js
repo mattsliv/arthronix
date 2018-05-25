@@ -8,11 +8,11 @@ import {
 
 /* Images */
 import pdf from '../images/pdf.png';
-import p1 from './pdf previews/1.png';
-import p2 from './pdf previews/2.png';
-import p3 from './pdf previews/3.png'
-import p4 from './pdf previews/4.png'
-import p5 from './pdf previews/5.png'
+import p1 from './pdfPreviews/1.png';
+import p2 from './pdfPreviews/2.png';
+import p3 from './pdfPreviews/3.png'
+import p4 from './pdfPreviews/4.png'
+import p5 from './pdfPreviews/5.png'
 import pdfFile from './PDFs/leg.pdf'
 import pdfFile2 from './PDFs/leg2.pdf'
 import pdfFile3 from './PDFs/description.pdf'
